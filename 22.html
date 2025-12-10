@@ -1,0 +1,2780 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Годжо Сатору | Сильнейший колдун</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gojo-blue: #1e40af;
+            --gojo-light-blue: #60a5fa;
+            --gojo-electric-blue: #3b82f6;
+            --gojo-purple: #7c3aed;
+            --gojo-violet: #8b5cf6;
+            --gojo-white: #f8fafc;
+            --gojo-dark: #0f172a;
+            --gojo-darker: #020617;
+            --gojo-red: #ef4444;
+            --gojo-pink: #ec4899;
+            --gojo-cyan: #22d3ee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--gojo-darker);
+            color: var(--gojo-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%2360a5fa" opacity="0.7"/></svg>'), auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+        }
+
+        .special-font {
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Эффект частиц */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Стилизованный скроллбар */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gojo-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--gojo-light-blue), var(--gojo-purple));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--gojo-electric-blue), var(--gojo-violet));
+        }
+
+        /* Герой-секция с параллаксом */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(239, 68, 68, 0.1) 0%, transparent 40%);
+            z-index: -1;
+            transform: translateZ(-200px) scale(2);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
+            transform-style: preserve-3d;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-cyan), var(--gojo-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+            animation: titleGlow 4s infinite alternate, float 6s infinite ease-in-out;
+            position: relative;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.7)); }
+            50% { filter: drop-shadow(0 0 25px rgba(96, 165, 250, 0.9)) drop-shadow(0 0 40px rgba(96, 165, 250, 0.5)); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); }
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--gojo-white);
+            font-weight: 300;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-subtitle::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gojo-light-blue), transparent);
+            bottom: -10px;
+            left: 0;
+        }
+
+        /* Анимированные глаза Годжо */
+        .gojo-eyes {
+            width: 200px;
+            height: 100px;
+            margin: 40px auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .eye {
+            width: 80px;
+            height: 80px;
+            background: var(--gojo-white);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.5);
+            animation: eyeGlow 3s infinite alternate;
+        }
+
+        @keyframes eyeGlow {
+            0% { box-shadow: 0 0 20px rgba(96, 165, 250, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(96, 165, 250, 0.8), 0 0 60px rgba(96, 165, 250, 0.4); }
+        }
+
+        .iris {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, var(--gojo-light-blue), var(--gojo-blue));
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .pupil {
+            width: 20px;
+            height: 20px;
+            background: var(--gojo-darker);
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        /* Навигация с неоновым эффектом */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(2, 7, 23, 0.95);
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo::before {
+            content: '六眼';
+            margin-right: 15px;
+            font-size: 2.2rem;
+        }
+
+        .nav-logo::after {
+            content: 'GOJO';
+            font-size: 2.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--gojo-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 20px;
+            border-radius: 4px;
+            overflow: hidden;
+            display: block;
+            text-align: center;
+            min-width: 120px;
+            background: rgba(30, 64, 175, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--gojo-light-blue);
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.7);
+            background: rgba(96, 165, 250, 0.15);
+            border-color: var(--gojo-light-blue);
+        }
+
+        .nav-link.active {
+            background: rgba(96, 165, 250, 0.2);
+            color: var(--gojo-light-blue);
+            box-shadow: 0 0 15px rgba(96, 165, 250, 0.3);
+            border-color: var(--gojo-light-blue);
+        }
+
+        /* Стиль для кнопки */
+        .nav-cta {
+            background: linear-gradient(45deg, var(--gojo-red), var(--gojo-pink));
+            color: var(--gojo-white);
+            border: none;
+            margin-left: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-cta:hover {
+            background: linear-gradient(45deg, var(--gojo-pink), var(--gojo-red));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Разделы */
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gojo-light-blue), var(--gojo-purple), var(--gojo-red));
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        /* Карточки способностей с 3D эффектом */
+        .abilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .ability-card {
+            background: linear-gradient(145deg, rgba(30, 64, 175, 0.2), rgba(15, 23, 42, 0.8));
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .ability-card:hover {
+            transform: perspective(1000px) rotateY(10deg) translateY(-15px);
+            box-shadow: 0 25px 50px rgba(96, 165, 250, 0.3);
+            border-color: var(--gojo-light-blue);
+        }
+
+        .ability-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.7s ease;
+        }
+
+        .ability-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .ability-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .ability-icon i {
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
+        }
+
+        .ability-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--gojo-white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .ability-title::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--gojo-red);
+            bottom: -10px;
+            left: 0;
+        }
+
+        /* Галерея с эффектом магнитного притяжения */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 350px;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform-origin: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .gallery-item:hover img, .gallery-item:hover video {
+            transform: scale(1.15);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(2, 7, 23, 0.9), transparent);
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Биография с интерактивной временной шкалой */
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 40px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--gojo-light-blue), var(--gojo-purple), var(--gojo-red));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 80px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+            z-index: 2;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: linear-gradient(145deg, rgba(30, 64, 175, 0.2), rgba(15, 23, 42, 0.8));
+            border-radius: 15px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            z-index: 3;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(96, 165, 250, 0.2);
+            border-color: var(--gojo-light-blue);
+        }
+
+        .timeline-year {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--gojo-light-blue);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 30px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--gojo-light-blue);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.7);
+            border: 3px solid var(--gojo-darker);
+        }
+
+        /* Интерактивная секция Бесконечности */
+        .infinity-section {
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+            overflow: hidden;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.1) 0%, transparent 40%);
+        }
+
+        .infinity-title {
+            font-size: 5rem;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-cyan), var(--gojo-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
+            animation: infinityTitle 5s infinite alternate;
+        }
+
+        @keyframes infinityTitle {
+            0% { filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5)); }
+            100% { filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.8)) drop-shadow(0 0 50px rgba(96, 165, 250, 0.3)); }
+        }
+
+        .infinity-container {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .infinity-animation {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+
+        .infinity-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            animation: spin 10s linear infinite;
+        }
+
+        .ring-1 {
+            width: 300px;
+            height: 300px;
+            border-top: 3px solid var(--gojo-light-blue);
+            border-bottom: 3px solid var(--gojo-light-blue);
+            animation-delay: 0s;
+        }
+
+        .ring-2 {
+            width: 240px;
+            height: 240px;
+            top: 30px;
+            left: 30px;
+            border-left: 3px solid var(--gojo-purple);
+            border-right: 3px solid var(--gojo-purple);
+            animation-delay: -2s;
+            animation-direction: reverse;
+        }
+
+        .ring-3 {
+            width: 180px;
+            height: 180px;
+            top: 60px;
+            left: 60px;
+            border-top: 3px solid var(--gojo-red);
+            border-bottom: 3px solid var(--gojo-red);
+            animation-delay: -4s;
+        }
+
+        .ring-4 {
+            width: 120px;
+            height: 120px;
+            top: 90px;
+            left: 90px;
+            border-left: 3px solid var(--gojo-cyan);
+            border-right: 3px solid var(--gojo-cyan);
+            animation-delay: -6s;
+            animation-direction: reverse;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .infinity-center {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--gojo-light-blue), var(--gojo-blue));
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.8);
+        }
+
+        /* Видео-плеер с Google Drive */
+        .video-player-section {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-player-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gojo-red), var(--gojo-purple), var(--gojo-light-blue));
+        }
+
+        .video-player-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(2, 7, 23, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .player-header {
+            background: linear-gradient(90deg, var(--gojo-blue), var(--gojo-purple));
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .player-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gojo-white);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .player-title i {
+            color: var(--gojo-red);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .player-controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .player-main {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        /* ИСПРАВЛЕННЫЙ ВИДЕО-КОНТЕЙНЕР */
+        .video-container {
+            position: relative;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9; /* Стандартное соотношение для видео */
+            margin-bottom: 20px;
+            min-height: 400px;
+            width: 100%;
+        }
+
+        /* ИСПРАВЛЕННЫЙ ВРАППЕР ДЛЯ IFRAME */
+        .video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ИСПРАВЛЕННЫЙ GOOGLE DRIVE ПЛЕЕР */
+        .google-drive-player {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            pointer-events: all;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .video-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--gojo-red), var(--gojo-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.7);
+        }
+
+        .episode-info {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            margin-top: 20px;
+        }
+
+        .episode-info h4 {
+            color: var(--gojo-cyan);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .episode-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .episode-detail {
+            background: rgba(30, 64, 175, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--gojo-light-blue);
+        }
+
+        .episode-detail strong {
+            color: var(--gojo-light-blue);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .episode-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .player-sidebar {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            color: var(--gojo-light-blue);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .selection-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .selection-grid::-webkit-scrollbar-thumb {
+            background: var(--gojo-purple);
+            border-radius: 3px;
+        }
+
+        .selection-btn {
+            background: rgba(30, 64, 175, 0.2);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            color: var(--gojo-white);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .selection-btn:hover {
+            background: rgba(96, 165, 250, 0.3);
+            border-color: var(--gojo-light-blue);
+            transform: translateY(-2px);
+        }
+
+        .selection-btn.active {
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple));
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.4);
+        }
+
+        .selection-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .season-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .season-tab {
+            background: rgba(30, 64, 175, 0.2);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            color: var(--gojo-white);
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .season-tab:hover {
+            background: rgba(96, 165, 250, 0.3);
+            border-color: var(--gojo-light-blue);
+            transform: translateY(-2px);
+        }
+
+        .season-tab.active {
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple));
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.4);
+        }
+
+        /* Футер с анимированным градиентом */
+        footer {
+            background: linear-gradient(to top, rgba(2, 7, 23, 0.95), rgba(15, 23, 42, 0.8));
+            padding: 70px 0 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gojo-light-blue), var(--gojo-purple), var(--gojo-red));
+        }
+
+        /* Стили для формы обратной связи */
+        .feedback-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 7, 23, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feedback-container {
+            background: linear-gradient(145deg, rgba(30, 64, 175, 0.9), rgba(15, 23, 42, 0.95));
+            max-width: 600px;
+            width: 90%;
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .feedback-modal.show .feedback-container {
+            transform: translateY(0);
+        }
+
+        .input-error {
+            border-color: var(--gojo-red) !important;
+            background: rgba(239, 68, 68, 0.1) !important;
+        }
+
+        .error-message {
+            color: var(--gojo-red);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: block;
+            min-height: 20px;
+        }
+
+        #feedback-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.4);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #feedback-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(96, 165, 250, 0.6);
+        }
+
+        #feedback-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 25px;
+            height: 25px;
+            background: var(--gojo-red);
+            border-radius: 50%;
+            color: white;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Мобильная адаптация */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .player-main {
+                grid-template-columns: 1fr;
+            }
+            
+            .episode-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-container {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .player-main {
+                padding: 20px;
+            }
+            
+            .video-container {
+                min-height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .infinity-title {
+                font-size: 3rem;
+            }
+            
+            .nav-logo {
+                font-size: 1.8rem;
+            }
+            
+            .nav-logo::before {
+                font-size: 1.6rem;
+                margin-right: 10px;
+            }
+            
+            .player-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .selection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            }
+            
+            .gojo-eyes {
+                width: 150px;
+                gap: 30px;
+            }
+            
+            .eye {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .iris {
+                width: 30px;
+                height: 30px;
+                top: 15px;
+                left: 15px;
+            }
+            
+            .pupil {
+                width: 15px;
+                height: 15px;
+                top: 7.5px;
+                left: 7.5px;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            /* Корректировка для мобильных */
+            .video-container {
+                aspect-ratio: 16/9;
+                min-height: 250px;
+            }
+
+            #feedback-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .feedback-container {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Анимация загрузки */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gojo-darker);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-center-sphere {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                var(--gojo-violet), 
+                var(--gojo-purple),
+                rgba(124, 58, 237, 0.9));
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10001;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 0;
+            height: 0;
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .sphere-inner-glow {
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(139, 92, 246, 0.8), 
+                rgba(139, 92, 246, 0.4));
+            filter: blur(10px);
+            transition: all 0.8s ease;
+        }
+
+        .loader-particles-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            pointer-events: none;
+        }
+
+        .loader-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gojo-purple);
+            opacity: 0;
+            transform-origin: center;
+            box-shadow: 
+                0 0 15px var(--gojo-purple),
+                0 0 30px rgba(139, 92, 246, 0.7);
+            transition: all 0.6s ease;
+        }
+
+        .explosion {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(139, 92, 246, 0.9) 0%, 
+                rgba(139, 92, 246, 0.7) 15%, 
+                rgba(139, 92, 246, 0.5) 30%, 
+                rgba(139, 92, 246, 0.3) 45%, 
+                rgba(139, 92, 246, 0.1) 60%,
+                transparent 80%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10002;
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Загрузка -->
+    <div class="loader" id="loader">
+        <div class="loader-particles-container" id="particles-container"></div>
+        <div class="loader-center-sphere" id="loader-center-sphere">
+            <div class="sphere-inner-glow"></div>
+        </div>
+        <div class="explosion" id="explosion"></div>
+    </div>
+
+    <!-- Частицы -->
+    <div id="particles-js"></div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo"></a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#about" class="nav-link active">О персонаже</a></li>
+                <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
+                <li class="nav-item"><a href="#biography" class="nav-link">Биография</a></li>
+                <li class="nav-item"><a href="#infinity" class="nav-link">Бесконечность</a></li>
+                <li class="nav-item"><a href="#player" class="nav-link nav-cta">СМОТРЕТЬ АНИМЕ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="parallax-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">ГОДЖО САТОРУ</h1>
+            <h2 class="hero-subtitle special-font">СИЛЬНЕЙШИЙ КОЛДУН</h2>
+            
+            <!-- Анимированные глаза Годжо -->
+            <div class="gojo-eyes">
+                <div class="eye">
+                    <div class="iris" id="iris-left">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+                <div class="eye">
+                    <div class="iris" id="iris-right">
+                        <div class="pupil"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="gojo-quote" style="font-size: 1.6rem; max-width: 800px; margin: 40px auto; padding: 25px; border-left: 4px solid var(--gojo-red); background: rgba(30, 64, 175, 0.2); border-radius: 0 15px 15px 0; font-style: italic;">
+                "На протяжении всей истории человечества побеждали одиночки. Так что я всегда один, но я не чувствую себя одиноким. Потому что я сильный."
+            </p>
+        </div>
+    </section>
+
+    <!-- О персонаже -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">КОНЦЕПЦИЯ СИЛЫ</h2>
+            <div style="max-width: 1000px; margin: 0 auto; font-size: 1.3rem; text-align: center;">
+                <p style="margin-bottom: 30px; background: rgba(30, 64, 175, 0.1); padding: 30px; border-radius: 15px; border-left: 5px solid var(--gojo-light-blue);">
+                    Годжо Сатору — уникальное явление в мире магии. Обладая наследственной техникой <span style="color: var(--gojo-light-blue); font-weight: 700;">"Бесконечность"</span> и <span style="color: var(--gojo-cyan); font-weight: 700;">"Шесть глаз"</span>, он стоит на вершине иерархии колдунов. Его сила настолько велика, что изменила баланс сил во всем мире магии.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px;">
+                    <div style="background: rgba(96, 165, 250, 0.1); padding: 25px; border-radius: 15px; border: 1px solid rgba(96, 165, 250, 0.2);">
+                        <h3 style="color: var(--gojo-light-blue); margin-bottom: 15px; font-size: 1.8rem;">Ранг</h3>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--gojo-cyan);">Особый уровень</p>
+                        <p>Единственный колдун, получивший эту классификацию</p>
+                    </div>
+                    
+                    <div style="background: rgba(124, 58, 237, 0.1); padding: 25px; border-radius: 15px; border: 1px solid rgba(124, 58, 237, 0.2);">
+                        <h3 style="color: var(--gojo-purple); margin-bottom: 15px; font-size: 1.8rem;">Клан</h3>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--gojo-purple);">Годжо</p>
+                        <p>Один из трех великих магических кланов</p>
+                    </div>
+                    
+                    <div style="background: rgba(239, 68, 68, 0.1); padding: 25px; border-radius: 15px; border: 1px solid rgba(239, 68, 68, 0.2);">
+                        <h3 style="color: var(--gojo-red); margin-bottom: 15px; font-size: 1.8rem;">Статус</h3>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--gojo-red);">Преподаватель</p>
+                        <p>Токийский техникум магии 1-го курса</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Способности -->
+   <section id="abilities" class="section" style="background: rgba(15, 23, 42, 0.7);">
+    <div class="container">
+        <h2 class="section-title">ТЕХНИКИ И СПОСОБНОСТИ</h2>
+        <div class="abilities-grid">
+            <!-- Карточки способностей -->
+            <div class="ability-card">
+                <div class="ability-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div style="margin-top: -1px;">
+                    <h3 class="ability-title">ШЕСТЬ ГЛАЗ</h3>
+                    <p>Наследственная техника клана Годжо, позволяющая видеть магическую энергию в мельчайших деталях. Эта способность дает полный контроль над проклятой энергией, позволяет анализировать любые техники и максимально эффективно использовать свои силы.</p>
+                    <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
+                        <span style="color: var(--gojo-cyan); font-weight: 700;">Уникальность:</span> Только у одного члена клана Годжо за поколение
+                    </p>
+                </div>
+            </div>
+
+            <div class="ability-card">
+                <div class="ability-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <div style="margin-top: -1px;">
+                    <h3 class="ability-title">БЕСКОНЕЧНОСТЬ</h3>
+                    <p>Наследственная техника манипуляции пространством. Создает бесконечную дистанцию между Годжо и любой угрозой, делая его практически неуязвимым. Работает по принципу апории Зенона — атака постоянно приближается, но никогда не достигает цели.</p>
+                    <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
+                        <span style="color: var(--gojo-cyan); font-weight: 700;">Активация:</span> Автоматическая, 24/7
+                    </p>
+                </div>
+            </div>
+
+            <div class="ability-card">
+                <div class="ability-icon">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </div>
+                <div style="margin-top: -1px;">
+                    <h3 class="ability-title">ТЕХНИКА РАСШИРЕНИЯ</h3>
+                    <div>
+                        <p style="margin-bottom: 10px;"><span style="color: var(--gojo-red); font-weight: 700;">КРАСНЫЙ:</span> Обратный проклятый прием, сила отталкивания</p>
+                        <p style="margin-bottom: 10px;"><span style="color: var(--gojo-blue); font-weight: 700;">СИНИЙ:</span> Проклятый прием, сила притяжения</p>
+                        <p><span style="color: var(--gojo-purple); font-weight: 700;">ФИОЛЕТОВЫЙ:</span> Воображаемая масса, стирающая пространство</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ability-card">
+                <div class="ability-icon">
+                    <i class="fas fa-dharmachakra"></i>
+                </div>
+                <div style="margin-top: -1px;">
+                    <h3 class="ability-title">ДОМЕН БЕСКОНЕЧНОЙ ПУСТОТЫ</h3>
+                    <p>Совершенный домен Годжо, гарантированно попадающая атака. Противник оказывается погружен в бесконечный поток информации, парализующий сознание и тело. Активация занимает всего 0.2 секунды — быстрее, чем у любого известного колдуна.</p>
+                    <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
+                        <span style="color: var(--gojo-cyan); font-weight: 700;">Радиус:</span> Около 200 метров
+                    </p>
+                </div>
+            </div>
+
+            <div class="ability-card">
+                <div class="ability-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div style="margin-top: -1px;">
+                    <h3 class="ability-title">ОГРАНИЧЕНИЕ БЕЗ ОГРАНИЧЕНИЙ</h3>
+                    <p>Продвинутая техника, позволяющая Годжо использовать свои способности с невероятной эффективностью. Он может применять "Бесконечность" только к определенным объектам, выборочно пропуская через барьер то, что считает нужным, что значительно снижает нагрузку на мозг.</p>
+                </div>
+            </div>
+
+            <div class="ability-card">
+                <div class="ability-icon">
+                    <i class="fas fa-fist-raised"></i>
+                </div>
+                <div style="margin-top: -1px;">
+                    <h3 class="ability-title">ФИЗИЧЕСКОЕ ПРЕВОСХОДСТВО</h3>
+                    <p>Благодаря постоянному использованию техники "Бесконечность", тело Годжо обладает сверхчеловеческой силой, скоростью и выносливостью. Он способен сражаться наравне с особыми проклятиями уровня катастрофы, используя только физические атаки.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Галерея -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">МОМЕНТЫ МОГУЩЕСТВА</h2>
+            <div class="gallery-container">
+                <!-- Галерея изображений и видео -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо Сатору">
+                    <div class="gallery-overlay">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">СИЛЬНЕЙШИЙ КОЛДУН</h3>
+                        <p>Годжо с характерной повязкой на глазах</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1639322537502-9e1a6b8b1b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Шесть глаз">
+                    <div class="gallery-overlay">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ШЕСТЬ ГЛАЗ</h3>
+                        <p>Активация уникальной наследственной способности</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-blue-energy-swirl-33413-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-overlay">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ЭНЕРГИЯ БЕСКОНЕЧНОСТИ</h3>
+                        <p>Визуализация манипуляции пространством</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1639322537196-3b3d01a88a0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Техника расширения">
+                    <div class="gallery-overlay">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ТЕХНИКА РАСШИРЕНИЯ</h3>
+                        <p>Применение силы притяжения и отталкивания</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-geometric-shapes-rotating-33416-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="gallery-overlay">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ДОМЕН БЕСКОНЕЧНОЙ ПУСТОТЫ</h3>
+                        <p>Абсолютная техника гарантированного попадания</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1639322537478-3c92e9c34b7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо в бою">
+                    <div class="gallery-overlay">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">В БОЮ</h3>
+                        <p>Годжо против особых проклятий уровня катастрофы</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Биография -->
+    <section id="biography" class="section" style="background: rgba(15, 23, 42, 0.7);">
+        <div class="container">
+            <h2 class="section-title">ХРОНОЛОГИЯ СИЛЫ</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1989</div>
+                        <p>Рождение в клане Годжо. С самого рождения обладал техникой «Бесконечность» и «Шесть глаз». Его рождение изменило баланс сил в мире магии.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2006</div>
+                        <p>Поступление в Токийский техникум магии. Во время учебы знакомится с Сугуру Гэтo, своим будущим лучшим другом и самым сильным соперником.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2009</div>
+                        <p>Миссия по защите носительницы Звездного религиозного культа Рико Аманаи. Во время этой миссии Годжо впервые использует свою технику на полную мощность и осознает свою истинную силу.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017</div>
+                        <p>Становится преподавателем в Токийском техникум магии. Берет под свое крыло Юдзи Итадори, Мегуми Фусигуро и Нобара Кугисаки, намереваясь вырастить новое поколение сильных колдунов.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018</div>
+                        <p>Ключевые события сюжета «Магической битвы». Годжо противостоит организации «Маги», особому проклятию Махито и другим угрозам, демонстрируя свою абсолютную силу.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Бесконечность -->
+    <section id="infinity" class="infinity-section">
+        <div class="container">
+            <h2 class="infinity-title">КОНЦЕПЦИЯ БЕСКОНЕЧНОСТИ</h2>
+            <div class="infinity-container">
+                <div class="infinity-animation">
+                    <div class="infinity-ring ring-1"></div>
+                    <div class="infinity-ring ring-2"></div>
+                    <div class="infinity-ring ring-3"></div>
+                    <div class="infinity-ring ring-4"></div>
+                    <div class="infinity-center"></div>
+                </div>
+            </div>
+            <div class="infinity-text" style="max-width: 900px; margin: 60px auto 0; font-size: 1.4rem; line-height: 1.8; background: rgba(15, 23, 42, 0.7); padding: 40px; border-radius: 20px; border: 1px solid rgba(96, 165, 250, 0.2);">
+                <p style="margin-bottom: 25px;">
+                    Техника <span style="color: var(--gojo-light-blue); font-weight: 700;">«Бесконечность»</span> — это не просто защитный барьер. Это фундаментальная манипуляция пространством, основанная на математическом принципе предела.
+                </p>
+                <p style="margin-bottom: 25px;">
+                    Годжо создает бесконечную последовательность делений пространства между собой и атакой. Подобно апории Зенона «Ахиллес и черепаха», атака постоянно приближается, но никогда не достигает цели, так как должна пройти бесконечное количество промежуточных точек.
+                </p>
+                <p>
+                    Эта техника работает на инстинктивном уровне 24/7, делая Годжо практически неуязвимым для любых физических и энергетических атак. Только техники, воздействующие непосредственно на пространство или использующие домен, могут theoretically преодолеть «Бесконечность».
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Видео-плеер с Google Drive -->
+    <section id="player" class="video-player-section">
+        <div class="container">
+            <h2 class="section-title">СМОТРЕТЬ МАГИЧЕСКУЮ БИТВУ</h2>
+            <div class="video-player-container">
+                <div class="player-header">
+                    <div class="player-title">
+                        <i class="fas fa-play-circle"></i>
+                        Магическая Битва (Jujutsu Kaisen)
+                    </div>
+                    <div class="player-controls">
+                        <div class="player-status">
+                            <span style="color: var(--gojo-light-blue); font-weight: 600;">Текущая серия: </span>
+                            <span style="color: var(--gojo-white);" id="current-episode-info">Сезон 1, Серия 1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="player-main">
+                    <div>
+                        <div class="video-container">
+                            <!-- Контейнер для Google Drive iframe -->
+                            <div class="video-wrapper" id="video-wrapper">
+                                <!-- Google Drive iframe будет вставлен здесь -->
+                            </div>
+                            
+                            <div class="video-overlay" id="video-overlay">
+                                <div class="play-button" id="play-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <p style="font-size: 1.2rem; color: var(--gojo-white);">Нажмите для воспроизведения</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Информация о серии под видео -->
+                        <div class="episode-info">
+                            <h4>
+                                <i class="fas fa-info-circle"></i>
+                                Информация о серии
+                            </h4>
+                            <div class="episode-details">
+                                <div class="episode-detail">
+                                    <strong>Название:</strong>
+                                    <span id="episode-title">"Рюмен Сукуна"</span>
+                                </div>
+                                <div class="episode-detail">
+                                    <strong>Длительность:</strong>
+                                    <span id="episode-duration">23:45</span>
+                                </div>
+                                <div class="episode-detail">
+                                    <strong>Сезон:</strong>
+                                    <span id="episode-season">1</span>
+                                </div>
+                                <div class="episode-detail">
+                                    <strong>Серия:</strong>
+                                    <span id="episode-number">1</span>
+                                </div>
+                            </div>
+                            <div class="episode-description" id="episode-description">
+                                Юдзи Итадори - обычный школьник, который попадает в мир магии и проклятий после того, как съедает палец могущественного проклятия Рюмен Сукуна. Теперь он должен стать сосудом для Сукуны и учиться магии, чтобы контролировать его силу.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="player-sidebar">
+                        <!-- Сезоны -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">
+                                <i class="fas fa-layer-group"></i>
+                                Сезоны
+                            </h3>
+                            <div class="season-selector" id="season-selector">
+                                <div class="season-tab active" data-season="1">
+                                    Сезон 1
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Серии -->
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-title">
+                                <i class="fas fa-list-ol"></i>
+                                Серии 1 сезона (1-24)
+                            </h3>
+                            <div class="selection-grid" id="episode-selector">
+                                <!-- Серии будут добавлены через JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Озвучка -->
+                        <div class="sidebar-section" style="background: rgba(96, 165, 250, 0.1); border-radius: 10px; padding: 20px;">
+                            <h3 class="sidebar-title" style="color: var(--gojo-cyan);">
+                                <i class="fas fa-volume-up"></i>
+                                Озвучка
+                            </h3>
+                            <div style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(30, 64, 175, 0.2); border-radius: 10px;">
+                                <div style="width: 40px; height: 40px; background: rgba(96, 165, 250, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-tv" style="color: var(--gojo-light-blue);"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 1.1rem;">AniLibria.TV</div>
+                                    <div style="font-size: 0.9rem; opacity: 0.8;">Официальная русская озвучка</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; color: rgba(255, 255, 255, 0.7);">
+                <p>Сайт посвящен Годжо Сатору из аниме и манги «Магическая битва» (Jujutsu Kaisen). Все права принадлежат автору манги Гэгэ Акутами и студии MAPPA.</p>
+                <p style="margin-top: 20px;">Сайт создан для фанатов и не является официальным продуктом.</p>
+            </div>
+            
+            <p class="copyright" style="margin-top: 30px; color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; letter-spacing: 1px;">
+                © 2025 Годжо Сатору | СИЛА БЕСКОНЕЧНОСТИ | ВСЕ ПРАВА НА ПЕРСОНАЖА ПРИНАДЛЕЖАТ ГЭГЭ АКУТАМИ
+            </p>
+        </div>
+    </footer>
+
+    <!-- Форма обратной связи -->
+    <div class="feedback-modal" id="feedback-modal">
+        <div class="feedback-container">
+            <h2 style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 30px; background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; text-align: center;">
+                <i class="fas fa-comment-alt" style="margin-right: 15px;"></i>
+                ОБРАТНАЯ СВЯЗЬ
+            </h2>
+            
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem; color: rgba(255, 255, 255, 0.8);">
+                Есть предложения или вопросы по сайту? Напишите нам!
+            </p>
+            
+            <form id="feedback-form" action="https://formspree.io/f/xanrplny" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="display: flex; gap: 20px;">
+                    <div style="flex: 1;">
+                        <label style="display: block; margin-bottom: 8px; color: var(--gojo-light-blue); font-weight: 600;">Имя *</label>
+                        <input type="text" name="name" id="feedback-name" required 
+                               style="width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 10px; color: white; font-size: 1rem; transition: all 0.3s ease;" 
+                               placeholder="Ваше имя">
+                        <span class="error-message" id="name-error"></span>
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; margin-bottom: 8px; color: var(--gojo-light-blue); font-weight: 600;">Email *</label>
+                        <input type="email" name="email" id="feedback-email" required 
+                               style="width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 10px; color: white; font-size: 1rem; transition: all 0.3s ease;" 
+                               placeholder="your@email.com">
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 8px; color: var(--gojo-light-blue); font-weight: 600;">Тема *</label>
+                    <input type="text" name="subject" id="feedback-subject" required 
+                           style="width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 10px; color: white; font-size: 1rem; transition: all 0.3s ease;" 
+                           placeholder="Тема сообщения">
+                    <span class="error-message" id="subject-error"></span>
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 8px; color: var(--gojo-light-blue); font-weight: 600;">Сообщение *</label>
+                    <textarea name="message" id="feedback-message" required rows="5" 
+                              style="width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 10px; color: white; font-size: 1rem; resize: vertical; transition: all 0.3s ease;" 
+                              placeholder="Ваше сообщение..."></textarea>
+                    <span class="error-message" id="message-error"></span>
+                </div>
+                
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <button type="submit" style="flex: 1; padding: 18px; background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple)); border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <i class="fas fa-paper-plane"></i>
+                        Отправить
+                    </button>
+                    <button type="button" id="cancel-feedback" style="padding: 18px 30px; background: rgba(239, 68, 68, 0.2); border: 2px solid var(--gojo-red); border-radius: 10px; color: white; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;">
+                        Отмена
+                    </button>
+                </div>
+                
+                <input type="hidden" name="_subject" value="Новое сообщение с сайта Годжо Сатору">
+                <input type="text" name="_gotcha" style="display:none">
+            </form>
+        </div>
+    </div>
+
+    <!-- Плавающая кнопка обратной связи -->
+    <button id="feedback-button">
+        <i class="fas fa-comment-alt"></i>
+        <span id="feedback-badge" style="display: none;">!</span>
+    </button>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // === ССЫЛКИ НА GOOGLE DRIVE ДЛЯ ВСЕХ СЕРИЙ ===
+        const googleDriveLinks = {
+    1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3", // ID файла для серии 1
+    2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX", // ID файла для серии 2
+    3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg", // ID файла для серии 3
+    4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n", // ID файла для серии 4
+    5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0", // ID файла для серии 5
+    6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI", // ID файла для серии 6
+    7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e", // ID файла для серии 7
+    8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-", // ID файла для серии 8
+    9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka", // ID файла для серии 9
+    10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J", // ID файла для серии 10
+    11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb", // ID файла для серии 11
+    12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL", // ID файла для серии 12
+    13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z", // ID файла для серии 13
+    14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6", // ID файла для серии 14
+    15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3", // ID файла для серии 15
+    16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D", // ID файла для серии 16
+    17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_", // ID файла для серии 17
+    18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI", // ID файла для серии 18
+    19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj", // ID файла для серии 19
+    20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl", // ID файла для серии 20
+    21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm", // ID файла для серии 21
+    22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy", // ID файла для серии 22
+    23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk", // ID файла для серии 23
+    24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"  // ID файла для серии 24
+};
+
+        // Информация о всех сериях
+        const episodeInfo = {
+            1: { 
+                title: "Рюмен Сукуна", 
+                duration: "23:45", 
+                description: "Юдзи Итадори - обычный школьник, который попадает в мир магии и проклятий после того, как съедает палец могущественного проклятия Рюмен Сукуна. Теперь он должен стать сосудом для Сукуны и учиться магии, чтобы контролировать его силу." 
+            },
+            2: { 
+                title: "Для себя", 
+                duration: "23:40", 
+                description: "Юдзи начинает обучение в Токийском техникуме магии под руководством Годжо Сатору. Он знакомится с другими студентами и начинает постигать основы магии." 
+            },
+            3: { 
+                title: "Железная воля", 
+                duration: "23:50", 
+                description: "Первая миссия Юдзи и его друзей. Они сталкиваются с реальными проклятиями и применяют свои новые навыки в бою." 
+            },
+            4: { 
+                title: "Умирающая воля", 
+                duration: "23:55", 
+                description: "Юдзи сталкивается с первыми серьезными испытаниями, которые проверяют его решимость." 
+            },
+            5: { 
+                title: "Рождение", 
+                duration: "23:50", 
+                description: "Новые угрозы появляются в техникуме магии." 
+            },
+            6: { 
+                title: "После дождя", 
+                duration: "23:45", 
+                description: "Студенты отрабатывают полученные навыки в новых условиях." 
+            },
+            7: { 
+                title: "Нападение", 
+                duration: "24:00", 
+                description: "Техникум магии подвергается неожиданному нападению." 
+            },
+            8: { 
+                title: "Скука", 
+                duration: "23:55", 
+                description: "Годжо демонстрирует свою силу в реальном бою." 
+            },
+            9: { 
+                title: "Маленькая сестра и старший брат", 
+                duration: "23:50", 
+                description: "Новые персонажи вступают в сюжет." 
+            },
+            10: { 
+                title: "Бессмысленный", 
+                duration: "24:05", 
+                description: "Главные герои сталкиваются с моральными дилеммами." 
+            },
+            11: { 
+                title: "Ограниченный", 
+                duration: "23:58", 
+                description: "Бой с особым проклятием выходит на новый уровень." 
+            },
+            12: { 
+                title: "К вашему сведению", 
+                duration: "24:10", 
+                description: "Раскрываются новые детали о мире магии." 
+            },
+            13: { 
+                title: "Завтра", 
+                duration: "23:52", 
+                description: "Подготовка к решающей битве." 
+            },
+            14: { 
+                title: "Экзамен на обмен", 
+                duration: "24:15", 
+                description: "Студенты сдают важные экзамены." 
+            },
+            15: { 
+                title: "Всеобщий экзамен", 
+                duration: "24:08", 
+                description: "Продолжение экзаменационных испытаний." 
+            },
+            16: { 
+                title: "Кюто-Ситиский техникум", 
+                duration: "23:55", 
+                description: "Действие переносится в новый город." 
+            },
+            17: { 
+                title: "Игра", 
+                duration: "24:12", 
+                description: "Начинается игра между техниками." 
+            },
+            18: { 
+                title: "Мудрая речь", 
+                duration: "24:05", 
+                description: "Годжо делится мудростью с учениками." 
+            },
+            19: { 
+                title: "Черная вспышка", 
+                duration: "24:20", 
+                description: "Юдзи открывает в себе новую технику." 
+            },
+            20: { 
+                title: "Ненормальный", 
+                duration: "24:15", 
+                description: "Сюжет принимает неожиданный поворот." 
+            },
+            21: { 
+                title: "Искусственный проклятие", 
+                duration: "24:18", 
+                description: "Появляются новые типы проклятий." 
+            },
+            22: { 
+                title: "Исток", 
+                duration: "24:22", 
+                description: "Раскрывается происхождение некоторых событий." 
+            },
+            23: { 
+                title: "Заключение", 
+                duration: "24:30", 
+                description: "Подготовка к финальной битве сезона." 
+            },
+            24: { 
+                title: "Согласие", 
+                duration: "24:35", 
+                description: "Финальная серия первого сезона." 
+            }
+        };
+
+        // Текущая серия
+        let currentEpisode = 1;
+        let videoWrapper = null;
+        let videoOverlay = null;
+        let playButton = null;
+
+        // Инициализация видео-плеера
+        function initVideoPlayer() {
+            videoWrapper = document.getElementById('video-wrapper');
+            videoOverlay = document.getElementById('video-overlay');
+            playButton = document.getElementById('play-button');
+            const episodeSelector = document.getElementById('episode-selector');
+            
+            // Обработчик клика по оверлею
+            videoOverlay.addEventListener('click', function() {
+                loadAndPlayVideo(currentEpisode);
+            });
+            
+            // Обработчик клика по кнопке play
+            playButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                loadAndPlayVideo(currentEpisode);
+            });
+            
+            // Создаем кнопки для всех 24 серий
+            for (let i = 1; i <= 24; i++) {
+                const button = document.createElement('button');
+                button.className = 'selection-btn';
+                button.textContent = i;
+                button.dataset.episode = i;
+                
+                // Отключаем кнопки без ссылок
+                if (!googleDriveLinks[i] || googleDriveLinks[i] === '') {
+                    button.classList.add('disabled');
+                    button.title = 'Ссылка на видео отсутствует';
+                }
+                
+                if (i === currentEpisode) {
+                    button.classList.add('active');
+                }
+                
+                button.addEventListener('click', () => {
+                    if (!button.classList.contains('disabled')) {
+                        switchToEpisode(i);
+                    }
+                });
+                
+                episodeSelector.appendChild(button);
+            }
+            
+            // Загружаем первую серию
+            loadVideo(currentEpisode);
+            updateEpisodeInfo(currentEpisode);
+        }
+        
+        // Переключение на серию
+        function switchToEpisode(episodeNumber) {
+            // Убираем активный класс у всех кнопок
+            document.querySelectorAll('#episode-selector .selection-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Добавляем активный класс текущей кнопке
+            const activeButton = document.querySelector(`#episode-selector .selection-btn[data-episode="${episodeNumber}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Обновляем текущую серию
+            currentEpisode = episodeNumber;
+            
+            // Загружаем видео
+            loadVideo(episodeNumber);
+            
+            // Обновляем информацию
+            updateEpisodeInfo(episodeNumber);
+            
+            // Показываем оверлей
+            videoOverlay.classList.remove('hidden');
+        }
+        
+        // Загрузка видео
+        function loadVideo(episodeNumber) {
+            const currentEpisodeInfo = document.getElementById('current-episode-info');
+            
+            // Обновляем статус текущей серии
+            currentEpisodeInfo.textContent = `Сезон 1, Серия ${episodeNumber}`;
+            
+            // Проверяем есть ли ссылка для этой серии
+            const fileId = googleDriveLinks[episodeNumber];
+            
+            // Очищаем контейнер
+            videoWrapper.innerHTML = '';
+            
+            if (fileId && fileId !== '') {
+                // Создаем iframe с Google Drive плеером
+                const iframe = document.createElement('iframe');
+                iframe.className = 'google-drive-player';
+                
+                // Используем правильный URL для превью
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
+                iframe.frameBorder = "0";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+                iframe.allowFullscreen = true;
+                iframe.title = `Серия ${episodeNumber}`;
+                
+                videoWrapper.appendChild(iframe);
+                
+                console.log(`Загружена серия ${episodeNumber} через Google Drive`);
+                
+                // Обновляем информацию
+                updateEpisodeInfo(episodeNumber);
+                
+                // Добавляем обработчик загрузки
+                iframe.onload = function() {
+                    console.log(`Google Drive плеер для серии ${episodeNumber} загружен`);
+                    
+                    // Принудительно устанавливаем размеры iframe после загрузки
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                };
+            } else {
+                console.warn(`Ссылка для серии ${episodeNumber} не найдена`);
+                showNoVideoMessage(episodeNumber);
+            }
+        }
+        
+        // Загрузка и воспроизведение видео
+        function loadAndPlayVideo(episodeNumber) {
+            const fileId = googleDriveLinks[episodeNumber];
+            
+            if (fileId && fileId !== '') {
+                // Очищаем контейнер
+                videoWrapper.innerHTML = '';
+                
+                // Создаем новый iframe для воспроизведения с автоплеем
+                const iframe = document.createElement('iframe');
+                iframe.className = 'google-drive-player';
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
+                iframe.frameBorder = "0";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+                iframe.allowFullscreen = true;
+                iframe.title = `Серия ${episodeNumber}`;
+                
+                videoWrapper.appendChild(iframe);
+                
+                // Скрываем оверлей
+                videoOverlay.classList.add('hidden');
+                
+                console.log(`Воспроизведение серии ${episodeNumber}`);
+                
+                // Устанавливаем размеры iframe
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+            } else {
+                showNoVideoMessage(episodeNumber);
+            }
+        }
+        
+        // Показать сообщение об отсутствии видео
+        function showNoVideoMessage(episodeNumber) {
+            const episodeDesc = document.getElementById('episode-description');
+            const info = episodeInfo[episodeNumber] || { 
+                description: `Серия ${episodeNumber} первого сезона "Магической битвы".` 
+            };
+            
+            episodeDesc.innerHTML = `
+                ${info.description}<br><br>
+                <div style="color: var(--gojo-cyan); background: rgba(34, 211, 238, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--gojo-cyan);">
+                    <strong><i class="fas fa-video-slash"></i> Видео недоступно</strong><br>
+                    <span style="font-size: 0.9rem;">
+                        Для просмотра этой серии добавьте ID файла Google Drive в объект googleDriveLinks.<br>
+                        Пример для серии ${episodeNumber}:<br>
+                        <code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 4px; display: inline-block; margin-top: 5px;">
+                            ${episodeNumber}: "ID_ВАШЕГО_ФАЙЛА"
+                        </code>
+                    </span>
+                </div>
+            `;
+            
+            // Обновляем информацию о длительности
+            document.getElementById('episode-duration').textContent = "--:--";
+            
+            // Показываем оверлей
+            videoOverlay.classList.remove('hidden');
+        }
+        
+        // Обновление информации о серии
+        function updateEpisodeInfo(episodeNumber) {
+            const info = episodeInfo[episodeNumber] || { 
+                title: `Серия ${episodeNumber}`, 
+                duration: "23:45", 
+                description: `Серия ${episodeNumber} первого сезона "Магической битвы".` 
+            };
+            
+            document.getElementById('episode-title').textContent = `"${info.title}"`;
+            document.getElementById('episode-season').textContent = "1";
+            document.getElementById('episode-number').textContent = episodeNumber;
+            document.getElementById('episode-duration').textContent = info.duration;
+            document.getElementById('episode-description').textContent = info.description;
+            
+            // Проверяем, есть ли ссылка на видео
+            if (!googleDriveLinks[episodeNumber] || googleDriveLinks[episodeNumber] === '') {
+                // Показываем сообщение об отсутствии видео только если это не первая серия
+                if (episodeNumber !== 1) {
+                    setTimeout(() => {
+                        showNoVideoMessage(episodeNumber);
+                    }, 100);
+                }
+            }
+        }
+
+        // Новая анимация загрузки
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('loader');
+            const particlesContainer = document.getElementById('particles-container');
+            const loaderCenterSphere = document.getElementById('loader-center-sphere');
+            const explosion = document.getElementById('explosion');
+            
+            // Создаем частицы
+            const particleCount = 150;
+            const particles = [];
+            
+            function createParticle(index) {
+                const particle = document.createElement('div');
+                particle.className = 'loader-particle';
+                
+                const size = 4 + Math.random() * 10;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                let startX, startY;
+                const side = Math.floor(Math.random() * 4);
+                
+                switch(side) {
+                    case 0:
+                        startX = Math.random() * 100;
+                        startY = -10;
+                        break;
+                    case 1:
+                        startX = 110;
+                        startY = Math.random() * 100;
+                        break;
+                    case 2:
+                        startX = Math.random() * 100;
+                        startY = 110;
+                        break;
+                    case 3:
+                        startX = -10;
+                        startY = Math.random() * 100;
+                        break;
+                }
+                
+                particle.style.left = `${startX}%`;
+                particle.style.top = `${startY}%`;
+                particle.style.opacity = '0';
+                
+                particlesContainer.appendChild(particle);
+                particles.push({
+                    element: particle,
+                    startX: startX,
+                    startY: startY,
+                    delay: index * 20,
+                    duration: 1200 + Math.random() * 600,
+                    size: size
+                });
+            }
+            
+            for (let i = 0; i < particleCount; i++) {
+                createParticle(i);
+            }
+            
+            function animateParticlesToCenter() {
+                let particlesArrived = 0;
+                const centerX = 50;
+                const centerY = 50;
+                
+                let currentSphereSize = 0;
+                const targetSize = 300;
+                
+                loaderCenterSphere.style.opacity = '0.3';
+                
+                particles.forEach((particle, index) => {
+                    setTimeout(() => {
+                        particle.element.style.opacity = '0.9';
+                        particle.element.style.transition = `all ${particle.duration}ms cubic-bezier(0.2, 0.8, 0.2, 1)`;
+                        
+                        particle.element.style.left = `${centerX}%`;
+                        particle.element.style.top = `${centerY}%`;
+                        
+                        setTimeout(() => {
+                            particle.element.style.opacity = '0';
+                            particle.element.style.transform = 'scale(0)';
+                            
+                            particlesArrived++;
+                            
+                            const progress = particlesArrived / particleCount;
+                            const easeProgress = progress * progress * progress;
+                            
+                            currentSphereSize = easeProgress * targetSize;
+                            
+                            loaderCenterSphere.style.width = `${currentSphereSize}px`;
+                            loaderCenterSphere.style.height = `${currentSphereSize}px`;
+                            loaderCenterSphere.style.opacity = `${0.3 + (easeProgress * 0.7)}`;
+                            
+                            if (currentSphereSize > 100) {
+                                loaderCenterSphere.style.boxShadow = 
+                                    `0 0 ${Math.min(50, currentSphereSize/6)}px var(--gojo-purple), 
+                                     0 0 ${Math.min(100, currentSphereSize/3)}px rgba(139, 92, 246, 0.5)`;
+                            }
+                            
+                            if (particlesArrived === particleCount) {
+                                setTimeout(() => {
+                                    loaderCenterSphere.style.transition = 'all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                                    loaderCenterSphere.style.width = '300px';
+                                    loaderCenterSphere.style.height = '300px';
+                                    loaderCenterSphere.style.opacity = '1';
+                                    loaderCenterSphere.style.boxShadow = 
+                                        '0 0 50px var(--gojo-purple), ' +
+                                        '0 0 100px rgba(139, 92, 246, 0.7)';
+                                    
+                                    setTimeout(animateExplosion, 1000);
+                                }, 300);
+                            }
+                        }, particle.duration);
+                    }, particle.delay);
+                });
+            }
+            
+            function animateExplosion() {
+                loaderCenterSphere.style.opacity = '0';
+                loaderCenterSphere.style.transition = 'opacity 0.5s ease';
+                
+                explosion.style.opacity = '1';
+                explosion.style.transition = 'all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                explosion.style.width = '2000px';
+                explosion.style.height = '2000px';
+                
+                setTimeout(() => {
+                    explosion.style.opacity = '0';
+                    explosion.style.transition = 'opacity 0.8s ease';
+                    
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                        initBackgroundParticles();
+                        initVideoPlayer();
+                        initFeedbackForm();
+                    }, 800);
+                }, 1200);
+            }
+            
+            setTimeout(() => {
+                animateParticlesToCenter();
+            }, 500);
+        });
+        
+        // Инициализация фоновых частиц
+        function initBackgroundParticles() {
+            particlesJS("particles-js", {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: ["#60a5fa", "#7c3aed", "#ef4444", "#22d3ee"] },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#60a5fa",
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Инициализация формы обратной связи с валидацией
+        function initFeedbackForm() {
+            const feedbackButton = document.getElementById('feedback-button');
+            const feedbackModal = document.getElementById('feedback-modal');
+            const cancelFeedback = document.getElementById('cancel-feedback');
+            const feedbackForm = document.getElementById('feedback-form');
+            
+            // Получаем элементы формы для валидации
+            const nameInput = document.getElementById('feedback-name');
+            const emailInput = document.getElementById('feedback-email');
+            const subjectInput = document.getElementById('feedback-subject');
+            const messageInput = document.getElementById('feedback-message');
+            
+            // Элементы для отображения ошибок
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const subjectError = document.getElementById('subject-error');
+            const messageError = document.getElementById('message-error');
+            
+            // Открыть модальное окно
+            feedbackButton.addEventListener('click', function() {
+                feedbackModal.style.display = 'flex';
+                setTimeout(() => {
+                    feedbackModal.style.opacity = '1';
+                    feedbackModal.classList.add('show');
+                }, 10);
+            });
+            
+            // Закрыть модальное окно
+            function closeFeedbackModal() {
+                feedbackModal.style.opacity = '0';
+                feedbackModal.classList.remove('show');
+                setTimeout(() => {
+                    feedbackModal.style.display = 'none';
+                    clearValidationErrors();
+                }, 300);
+            }
+            
+            cancelFeedback.addEventListener('click', closeFeedbackModal);
+            
+            // Закрыть по клику на фон
+            feedbackModal.addEventListener('click', function(e) {
+                if (e.target === feedbackModal) {
+                    closeFeedbackModal();
+                }
+            });
+            
+            // Очистить ошибки валидации
+            function clearValidationErrors() {
+                nameInput.classList.remove('input-error');
+                emailInput.classList.remove('input-error');
+                subjectInput.classList.remove('input-error');
+                messageInput.classList.remove('input-error');
+                
+                nameError.textContent = '';
+                emailError.textContent = '';
+                subjectError.textContent = '';
+                messageError.textContent = '';
+            }
+            
+            // Валидация имени - ТОЛЬКО БУКВЫ
+            function validateName(name) {
+                if (!name.trim()) {
+                    return 'Имя обязательно для заполнения';
+                }
+                
+                // Проверка на минимальную длину
+                if (name.trim().length < 2) {
+                    return 'Имя должно содержать минимум 2 символа';
+                }
+                
+                // Проверка на максимальную длину
+                if (name.trim().length > 50) {
+                    return 'Имя должно содержать не более 50 символов';
+                }
+                
+                // Проверка на допустимые символы - ТОЛЬКО БУКВЫ
+                const nameRegex = /^[A-Za-zА-Яа-яЁё]+$/;
+                if (!nameRegex.test(name.trim())) {
+                    return 'Имя может содержать только буквы';
+                }
+                
+                return '';
+            }
+            
+            // Валидация email
+            function validateEmail(email) {
+                if (!email.trim()) {
+                    return 'Email обязателен для заполнения';
+                }
+                
+                // Базовая проверка формата email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    return 'Введите корректный email адрес';
+                }
+                
+                // Проверка разрешенных доменов
+                const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.com'];
+                const domain = email.split('@')[1].toLowerCase();
+                
+                if (!allowedDomains.includes(domain)) {
+                    return 'Разрешены только email с доменами: gmail.com, mail.ru, yandex.com';
+                }
+                
+                return '';
+            }
+            
+            // Валидация темы
+            function validateSubject(subject) {
+                if (!subject.trim()) {
+                    return 'Тема обязательна для заполнения';
+                }
+                
+                if (subject.trim().length < 5) {
+                    return 'Тема должна содержать минимум 5 символов';
+                }
+                
+                if (subject.trim().length > 100) {
+                    return 'Тема должна содержать не более 100 символов';
+                }
+                
+                return '';
+            }
+            
+            // Валидация сообщения
+            function validateMessage(message) {
+                if (!message.trim()) {
+                    return 'Сообщение обязательно для заполнения';
+                }
+                
+                if (message.trim().length < 10) {
+                    return 'Сообщение должно содержать минимум 10 символов';
+                }
+                
+                if (message.trim().length > 1000) {
+                    return 'Сообщение должно содержать не более 1000 символов';
+                }
+                
+                return '';
+            }
+            
+            // Показать ошибку
+            function showError(inputElement, errorElement, message) {
+                inputElement.classList.add('input-error');
+                errorElement.textContent = message;
+            }
+            
+            // Скрыть ошибку
+            function hideError(inputElement, errorElement) {
+                inputElement.classList.remove('input-error');
+                errorElement.textContent = '';
+            }
+            
+            // Реальная проверка при вводе
+            nameInput.addEventListener('input', function() {
+                // Убираем все не-буквенные символы
+                const cleanValue = this.value.replace(/[^A-Za-zА-Яа-яЁё]/g, '');
+                if (cleanValue !== this.value) {
+                    this.value = cleanValue;
+                }
+                
+                const error = validateName(this.value);
+                if (error) {
+                    showError(this, nameError, error);
+                } else {
+                    hideError(this, nameError);
+                }
+            });
+            
+            emailInput.addEventListener('input', function() {
+                const error = validateEmail(this.value);
+                if (error) {
+                    showError(this, emailError, error);
+                } else {
+                    hideError(this, emailError);
+                }
+            });
+            
+            subjectInput.addEventListener('input', function() {
+                const error = validateSubject(this.value);
+                if (error) {
+                    showError(this, subjectError, error);
+                } else {
+                    hideError(this, subjectError);
+                }
+            });
+            
+            messageInput.addEventListener('input', function() {
+                const error = validateMessage(this.value);
+                if (error) {
+                    showError(this, messageError, error);
+                } else {
+                    hideError(this, messageError);
+                }
+            });
+            
+            // Обработка отправки формы
+            feedbackForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Валидация всех полей
+                const nameErrorMsg = validateName(nameInput.value);
+                const emailErrorMsg = validateEmail(emailInput.value);
+                const subjectErrorMsg = validateSubject(subjectInput.value);
+                const messageErrorMsg = validateMessage(messageInput.value);
+                
+                let hasErrors = false;
+                
+                if (nameErrorMsg) {
+                    showError(nameInput, nameError, nameErrorMsg);
+                    hasErrors = true;
+                }
+                
+                if (emailErrorMsg) {
+                    showError(emailInput, emailError, emailErrorMsg);
+                    hasErrors = true;
+                }
+                
+                if (subjectErrorMsg) {
+                    showError(subjectInput, subjectError, subjectErrorMsg);
+                    hasErrors = true;
+                }
+                
+                if (messageErrorMsg) {
+                    showError(messageInput, messageError, messageErrorMsg);
+                    hasErrors = true;
+                }
+                
+                if (hasErrors) {
+                    // Прокрутить к первой ошибке
+                    feedbackForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                }
+                
+                const submitButton = feedbackForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerHTML;
+                
+                // Показать индикатор загрузки
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+                submitButton.disabled = true;
+                
+                try {
+                    const formData = new FormData(feedbackForm);
+                    const response = await fetch(feedbackForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Показать сообщение об успехе
+                        submitButton.innerHTML = '<i class="fas fa-check"></i> Отправлено!';
+                        submitButton.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+                        
+                        // Очистить форму
+                        feedbackForm.reset();
+                        
+                        // Закрыть модальное окно через 2 секунды
+                        setTimeout(() => {
+                            closeFeedbackModal();
+                            // Восстановить кнопку через 1 секунду
+                            setTimeout(() => {
+                                submitButton.innerHTML = originalText;
+                                submitButton.disabled = false;
+                                submitButton.style.background = 'linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple))';
+                            }, 1000);
+                        }, 2000);
+                    } else {
+                        throw new Error('Ошибка отправки');
+                    }
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    submitButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ошибка';
+                    submitButton.style.background = 'linear-gradient(45deg, var(--gojo-red), #dc2626)';
+                    
+                    setTimeout(() => {
+                        submitButton.innerHTML = originalText;
+                        submitButton.disabled = false;
+                        submitButton.style.background = 'linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple))';
+                    }, 2000);
+                }
+            });
+            
+            // Анимация для кнопки обратной связи
+            let animationFrameId;
+            
+            function animateButton() {
+                const now = Date.now();
+                const scale = 1 + 0.1 * Math.sin(now / 1000);
+                
+                feedbackButton.style.transform = `scale(${scale})`;
+                animationFrameId = requestAnimationFrame(animateButton);
+            }
+            
+            // Запустить анимацию через 3 секунды после загрузки
+            setTimeout(() => {
+                animateButton();
+            }, 3000);
+            
+            // Остановить анимацию при наведении
+            feedbackButton.addEventListener('mouseenter', function() {
+                cancelAnimationFrame(animationFrameId);
+                this.style.transform = 'scale(1.1) rotate(5deg)';
+                this.style.boxShadow = '0 15px 40px rgba(96, 165, 250, 0.6)';
+            });
+            
+            feedbackButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.boxShadow = '0 10px 30px rgba(96, 165, 250, 0.4)';
+                animateButton();
+            });
+        }
+
+        // Навигация при прокрутке
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Анимация временной шкалы
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (itemTop < windowHeight * 0.8) {
+                    item.classList.add('visible');
+                }
+            });
+        });
+
+        // Анимация глаз Годжо
+        document.addEventListener('mousemove', function(e) {
+            const eyes = document.querySelectorAll('.iris');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            eyes.forEach(eye => {
+                const eyeRect = eye.getBoundingClientRect();
+                const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+                const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+                
+                const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
+                const distance = Math.min(15, Math.sqrt(Math.pow(mouseX - eyeCenterX, 2) + Math.pow(mouseY - eyeCenterY, 2)) / 20);
+                
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                
+                eye.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Магнитный эффект для карточек
+        const cards = document.querySelectorAll('.ability-card, .gallery-item');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angleY = (x - centerX) / 25;
+                const angleX = (centerY - y) / 25;
+                
+                this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Эффект набора текста для цитаты
+        const quote = document.querySelector('.gojo-quote');
+        if (quote) {
+            const originalText = quote.textContent;
+            quote.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    quote.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30);
+                }
+            }
+            
+            setTimeout(typeWriter, 2000);
+        }
+    </script>
+</body>
+</html>
