@@ -668,7 +668,7 @@
             box-shadow: 0 0 30px rgba(96, 165, 250, 0.8);
         }
 
-        /* Видео-плеер с Google Drive */
+        /* Видео-плеер */
         .video-player-section {
             background: rgba(15, 23, 42, 0.9);
             padding: 80px 0;
@@ -736,19 +736,19 @@
             padding: 30px;
         }
 
-        /* ИСПРАВЛЕННЫЙ ВИДЕО-КОНТЕЙНЕР */
+        /* ВИДЕО-КОНТЕЙНЕР */
         .video-container {
             position: relative;
             background: #000;
             border-radius: 15px;
             overflow: hidden;
-            aspect-ratio: 16/9; /* Стандартное соотношение для видео */
+            aspect-ratio: 16/9;
             margin-bottom: 20px;
             min-height: 400px;
             width: 100%;
         }
 
-        /* ИСПРАВЛЕННЫЙ ВРАППЕР ДЛЯ IFRAME */
+        /* ВРАППЕР ДЛЯ IFRAME */
         .video-wrapper {
             position: absolute;
             top: 0;
@@ -761,7 +761,7 @@
             justify-content: center;
         }
 
-        /* ИСПРАВЛЕННЫЙ GOOGLE DRIVE ПЛЕЕР */
+        /* GOOGLE DRIVE ПЛЕЕР */
         .google-drive-player {
             width: 100%;
             height: 100%;
@@ -962,7 +962,7 @@
             box-shadow: 0 5px 15px rgba(96, 165, 250, 0.4);
         }
 
-        /* Футер с анимированным градиентом */
+        /* Футер */
         footer {
             background: linear-gradient(to top, rgba(2, 7, 23, 0.95), rgba(15, 23, 42, 0.8));
             padding: 70px 0 30px;
@@ -981,7 +981,7 @@
             background: linear-gradient(90deg, var(--gojo-light-blue), var(--gojo-purple), var(--gojo-red));
         }
 
-        /* Стили для формы обратной связи */
+        /* Форма обратной связи */
         .feedback-modal {
             display: none;
             position: fixed;
@@ -1601,7 +1601,7 @@
         </div>
     </section>
 
-    <!-- Видео-плеер с Google Drive -->
+    <!-- Видео-плеер -->
     <section id="player" class="video-player-section">
         <div class="container">
             <h2 class="section-title">СМОТРЕТЬ МАГИЧЕСКУЮ БИТВУ</h2>
@@ -1797,33 +1797,33 @@
     <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // === ССЫЛКИ НА GOOGLE DRIVE ДЛЯ ВСЕХ СЕРИЙ ===
+        // ССЫЛКИ НА GOOGLE DRIVE (ваши ссылки)
         const googleDriveLinks = {
-    1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3", // ID файла для серии 1
-    2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX", // ID файла для серии 2
-    3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg", // ID файла для серии 3
-    4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n", // ID файла для серии 4
-    5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0", // ID файла для серии 5
-    6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI", // ID файла для серии 6
-    7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e", // ID файла для серии 7
-    8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-", // ID файла для серии 8
-    9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka", // ID файла для серии 9
-    10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J", // ID файла для серии 10
-    11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb", // ID файла для серии 11
-    12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL", // ID файла для серии 12
-    13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z", // ID файла для серии 13
-    14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6", // ID файла для серии 14
-    15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3", // ID файла для серии 15
-    16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D", // ID файла для серии 16
-    17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_", // ID файла для серии 17
-    18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI", // ID файла для серии 18
-    19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj", // ID файла для серии 19
-    20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl", // ID файла для серии 20
-    21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm", // ID файла для серии 21
-    22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy", // ID файла для серии 22
-    23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk", // ID файла для серии 23
-    24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"  // ID файла для серии 24
-};
+            1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3",
+            2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX",
+            3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg",
+            4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n",
+            5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0",
+            6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI",
+            7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e",
+            8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-",
+            9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka",
+            10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J",
+            11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb",
+            12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL",
+            13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z",
+            14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6",
+            15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3",
+            16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D",
+            17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_",
+            18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI",
+            19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj",
+            20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl",
+            21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm",
+            22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy",
+            23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk",
+            24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"
+        };
 
         // Информация о всех сериях
         const episodeInfo = {
@@ -2342,7 +2342,7 @@
             });
         }
 
-        // Инициализация формы обратной связи с валидацией
+        // Инициализация формы обратной связи
         function initFeedbackForm() {
             const feedbackButton = document.getElementById('feedback-button');
             const feedbackModal = document.getElementById('feedback-modal');
@@ -2402,7 +2402,7 @@
                 messageError.textContent = '';
             }
             
-            // Валидация имени - ТОЛЬКО БУКВЫ
+            // Валидация имени
             function validateName(name) {
                 if (!name.trim()) {
                     return 'Имя обязательно для заполнения';
@@ -2418,7 +2418,7 @@
                     return 'Имя должно содержать не более 50 символов';
                 }
                 
-                // Проверка на допустимые символы - ТОЛЬКО БУКВЫ
+                // Проверка на допустимые символы
                 const nameRegex = /^[A-Za-zА-Яа-яЁё]+$/;
                 if (!nameRegex.test(name.trim())) {
                     return 'Имя может содержать только буквы';
@@ -2440,11 +2440,11 @@
                 }
                 
                 // Проверка разрешенных доменов
-                const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.com'];
+                const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.ru', 'yandex.com'];
                 const domain = email.split('@')[1].toLowerCase();
                 
                 if (!allowedDomains.includes(domain)) {
-                    return 'Разрешены только email с доменами: gmail.com, mail.ru, yandex.com';
+                    return 'Разрешены только email с доменами: gmail.com, mail.ru, yandex.ru';
                 }
                 
                 return '';
@@ -2498,12 +2498,6 @@
             
             // Реальная проверка при вводе
             nameInput.addEventListener('input', function() {
-                // Убираем все не-буквенные символы
-                const cleanValue = this.value.replace(/[^A-Za-zА-Яа-яЁё]/g, '');
-                if (cleanValue !== this.value) {
-                    this.value = cleanValue;
-                }
-                
                 const error = validateName(this.value);
                 if (error) {
                     showError(this, nameError, error);
@@ -2572,7 +2566,6 @@
                 }
                 
                 if (hasErrors) {
-                    // Прокрутить к первой ошибке
                     feedbackForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return;
                 }
