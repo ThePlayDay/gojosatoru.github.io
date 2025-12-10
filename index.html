@@ -1798,32 +1798,33 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // === ССЫЛКИ НА GOOGLE DRIVE ДЛЯ ВСЕХ СЕРИЙ ===
+        // Используем те же самые ID файлов, что были в оригинальном коде
         const googleDriveLinks = {
-    1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3", // ID файла для серии 1
-    2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX", // ID файла для серии 2
-    3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg", // ID файла для серии 3
-    4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n", // ID файла для серии 4
-    5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0", // ID файла для серии 5
-    6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI", // ID файла для серии 6
-    7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e", // ID файла для серии 7
-    8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-", // ID файла для серии 8
-    9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka", // ID файла для серии 9
-    10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J", // ID файла для серии 10
-    11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb", // ID файла для серии 11
-    12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL", // ID файла для серии 12
-    13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z", // ID файла для серии 13
-    14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6", // ID файла для серии 14
-    15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3", // ID файла для серии 15
-    16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D", // ID файла для серии 16
-    17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_", // ID файла для серии 17
-    18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI", // ID файла для серии 18
-    19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj", // ID файла для серии 19
-    20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl", // ID файла для серии 20
-    21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm", // ID файла для серии 21
-    22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy", // ID файла для серии 22
-    23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk", // ID файла для серии 23
-    24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"  // ID файла для серии 24
-};
+            1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3",
+            2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX",
+            3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg",
+            4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n",
+            5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0",
+            6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI",
+            7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e",
+            8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-",
+            9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka",
+            10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J",
+            11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb",
+            12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL",
+            13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z",
+            14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6",
+            15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3",
+            16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D",
+            17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_",
+            18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI",
+            19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj",
+            20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl",
+            21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm",
+            22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy",
+            23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk",
+            24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"
+        };
 
         // Информация о всех сериях
         const episodeInfo = {
@@ -2004,6 +2005,12 @@
             updateEpisodeInfo(currentEpisode);
         }
         
+        // Функция для получения правильного URL для Google Drive
+        function getGoogleDriveEmbedUrl(fileId, autoplay = false) {
+            // Правильный формат URL для Google Drive embed
+            return `https://drive.google.com/file/d/${fileId}/preview?${autoplay ? 'autoplay=1&' : ''}embedded=true`;
+        }
+        
         // Переключение на серию
         function switchToEpisode(episodeNumber) {
             // Убираем активный класс у всех кнопок
@@ -2048,12 +2055,18 @@
                 const iframe = document.createElement('iframe');
                 iframe.className = 'google-drive-player';
                 
-                // Используем правильный URL для превью
-                iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
+                // Используем правильный URL для Google Drive
+                iframe.src = getGoogleDriveEmbedUrl(fileId);
                 iframe.frameBorder = "0";
                 iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
                 iframe.allowFullscreen = true;
                 iframe.title = `Серия ${episodeNumber}`;
+                iframe.style.border = "none";
+                
+                // Важные атрибуты для работы на GitHub Pages
+                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
+                iframe.setAttribute('referrerpolicy', 'no-referrer');
+                iframe.setAttribute('crossorigin', 'anonymous');
                 
                 videoWrapper.appendChild(iframe);
                 
@@ -2069,6 +2082,12 @@
                     // Принудительно устанавливаем размеры iframe после загрузки
                     iframe.style.width = '100%';
                     iframe.style.height = '100%';
+                };
+                
+                // Обработчик ошибок
+                iframe.onerror = function() {
+                    console.error(`Ошибка загрузки серии ${episodeNumber}`);
+                    showNoVideoMessage(episodeNumber);
                 };
             } else {
                 console.warn(`Ссылка для серии ${episodeNumber} не найдена`);
@@ -2087,11 +2106,17 @@
                 // Создаем новый iframe для воспроизведения с автоплеем
                 const iframe = document.createElement('iframe');
                 iframe.className = 'google-drive-player';
-                iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
+                iframe.src = getGoogleDriveEmbedUrl(fileId, true);
                 iframe.frameBorder = "0";
                 iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
                 iframe.allowFullscreen = true;
                 iframe.title = `Серия ${episodeNumber}`;
+                iframe.style.border = "none";
+                
+                // Важные атрибуты для работы на GitHub Pages
+                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
+                iframe.setAttribute('referrerpolicy', 'no-referrer');
+                iframe.setAttribute('crossorigin', 'anonymous');
                 
                 videoWrapper.appendChild(iframe);
                 
@@ -2103,6 +2128,13 @@
                 // Устанавливаем размеры iframe
                 iframe.style.width = '100%';
                 iframe.style.height = '100%';
+                
+                // Обработчик ошибок
+                iframe.onerror = function() {
+                    console.error(`Ошибка воспроизведения серии ${episodeNumber}`);
+                    videoOverlay.classList.remove('hidden');
+                    alert('Не удалось загрузить видео. Проверьте настройки доступа к файлу на Google Drive.');
+                };
             } else {
                 showNoVideoMessage(episodeNumber);
             }
@@ -2149,16 +2181,6 @@
             document.getElementById('episode-number').textContent = episodeNumber;
             document.getElementById('episode-duration').textContent = info.duration;
             document.getElementById('episode-description').textContent = info.description;
-            
-            // Проверяем, есть ли ссылка на видео
-            if (!googleDriveLinks[episodeNumber] || googleDriveLinks[episodeNumber] === '') {
-                // Показываем сообщение об отсутствии видео только если это не первая серия
-                if (episodeNumber !== 1) {
-                    setTimeout(() => {
-                        showNoVideoMessage(episodeNumber);
-                    }, 100);
-                }
-            }
         }
 
         // Новая анимация загрузки
