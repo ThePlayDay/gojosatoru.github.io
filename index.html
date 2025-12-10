@@ -736,18 +736,19 @@
             padding: 30px;
         }
 
-        /* ВИДЕО-КОНТЕЙНЕР С ПОПЫТКОЙ РЕШЕНИЯ ПРОБЛЕМЫ */
+        /* ИСПРАВЛЕННЫЙ ВИДЕО-КОНТЕЙНЕР */
         .video-container {
             position: relative;
             background: #000;
             border-radius: 15px;
             overflow: hidden;
-            aspect-ratio: 16/9;
+            aspect-ratio: 16/9; /* Стандартное соотношение для видео */
             margin-bottom: 20px;
             min-height: 400px;
             width: 100%;
         }
 
+        /* ИСПРАВЛЕННЫЙ ВРАППЕР ДЛЯ IFRAME */
         .video-wrapper {
             position: absolute;
             top: 0;
@@ -760,12 +761,14 @@
             justify-content: center;
         }
 
-        /* АЛЬТЕРНАТИВНЫЙ ПЛЕЕР */
-        .alternative-player {
+        /* ИСПРАВЛЕННЫЙ GOOGLE DRIVE ПЛЕЕР */
+        .google-drive-player {
             width: 100%;
             height: 100%;
             border: none;
             background: #000;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .video-overlay {
@@ -1176,6 +1179,7 @@
                 font-size: 2rem;
             }
             
+            /* Корректировка для мобильных */
             .video-container {
                 aspect-ratio: 16/9;
                 min-height: 250px;
@@ -1618,9 +1622,9 @@
                 <div class="player-main">
                     <div>
                         <div class="video-container">
-                            <!-- Контейнер для видео -->
+                            <!-- Контейнер для Google Drive iframe -->
                             <div class="video-wrapper" id="video-wrapper">
-                                <!-- Видео будет загружено здесь -->
+                                <!-- Google Drive iframe будет вставлен здесь -->
                             </div>
                             
                             <div class="video-overlay" id="video-overlay">
@@ -1793,35 +1797,33 @@
     <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // АЛЬТЕРНАТИВНЫЙ СПОСОБ: Используем прямой поток с Google Drive
-        // Для этого нужно преобразовать ссылки на видео
-        
-        const videoSources = {
-            1: "https://drive.google.com/uc?export=download&id=1jAMwV2L656MFlaydATjtxbtU-5DWU_c3",
-            2: "https://drive.google.com/uc?export=download&id=1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX",
-            3: "https://drive.google.com/uc?export=download&id=1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg",
-            4: "https://drive.google.com/uc?export=download&id=1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n",
-            5: "https://drive.google.com/uc?export=download&id=1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0",
-            6: "https://drive.google.com/uc?export=download&id=1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI",
-            7: "https://drive.google.com/uc?export=download&id=1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e",
-            8: "https://drive.google.com/uc?export=download&id=123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-",
-            9: "https://drive.google.com/uc?export=download&id=191ZGQTpEAB6KMvJekIymlS97xmGue5Ka",
-            10: "https://drive.google.com/uc?export=download&id=11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J",
-            11: "https://drive.google.com/uc?export=download&id=1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb",
-            12: "https://drive.google.com/uc?export=download&id=1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL",
-            13: "https://drive.google.com/uc?export=download&id=1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z",
-            14: "https://drive.google.com/uc?export=download&id=1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6",
-            15: "https://drive.google.com/uc?export=download&id=1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3",
-            16: "https://drive.google.com/uc?export=download&id=1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D",
-            17: "https://drive.google.com/uc?export=download&id=1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_",
-            18: "https://drive.google.com/uc?export=download&id=1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI",
-            19: "https://drive.google.com/uc?export=download&id=18HidqojSVnR0lQUCLDHlqY9IgOt18ANj",
-            20: "https://drive.google.com/uc?export=download&id=1CV_yCOFboOLQkXzGAmR4450J9UolCfnl",
-            21: "https://drive.google.com/uc?export=download&id=1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm",
-            22: "https://drive.google.com/uc?export=download&id=1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy",
-            23: "https://drive.google.com/uc?export=download&id=1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk",
-            24: "https://drive.google.com/uc?export=download&id=1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"
-        };
+        // === ССЫЛКИ НА GOOGLE DRIVE ДЛЯ ВСЕХ СЕРИЙ ===
+        const googleDriveLinks = {
+    1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3", // ID файла для серии 1
+    2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX", // ID файла для серии 2
+    3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg", // ID файла для серии 3
+    4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n", // ID файла для серии 4
+    5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0", // ID файла для серии 5
+    6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI", // ID файла для серии 6
+    7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e", // ID файла для серии 7
+    8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-", // ID файла для серии 8
+    9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka", // ID файла для серии 9
+    10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J", // ID файла для серии 10
+    11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb", // ID файла для серии 11
+    12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL", // ID файла для серии 12
+    13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z", // ID файла для серии 13
+    14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6", // ID файла для серии 14
+    15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3", // ID файла для серии 15
+    16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D", // ID файла для серии 16
+    17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_", // ID файла для серии 17
+    18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI", // ID файла для серии 18
+    19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj", // ID файла для серии 19
+    20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl", // ID файла для серии 20
+    21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm", // ID файла для серии 21
+    22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy", // ID файла для серии 22
+    23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk", // ID файла для серии 23
+    24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"  // ID файла для серии 24
+};
 
         // Информация о всех сериях
         const episodeInfo = {
@@ -1952,7 +1954,6 @@
         let videoWrapper = null;
         let videoOverlay = null;
         let playButton = null;
-        let currentVideoElement = null;
 
         // Инициализация видео-плеера
         function initVideoPlayer() {
@@ -1960,6 +1961,17 @@
             videoOverlay = document.getElementById('video-overlay');
             playButton = document.getElementById('play-button');
             const episodeSelector = document.getElementById('episode-selector');
+            
+            // Обработчик клика по оверлею
+            videoOverlay.addEventListener('click', function() {
+                loadAndPlayVideo(currentEpisode);
+            });
+            
+            // Обработчик клика по кнопке play
+            playButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                loadAndPlayVideo(currentEpisode);
+            });
             
             // Создаем кнопки для всех 24 серий
             for (let i = 1; i <= 24; i++) {
@@ -1969,7 +1981,7 @@
                 button.dataset.episode = i;
                 
                 // Отключаем кнопки без ссылок
-                if (!videoSources[i] || videoSources[i] === '') {
+                if (!googleDriveLinks[i] || googleDriveLinks[i] === '') {
                     button.classList.add('disabled');
                     button.title = 'Ссылка на видео отсутствует';
                 }
@@ -1986,16 +1998,6 @@
                 
                 episodeSelector.appendChild(button);
             }
-            
-            // Обработчик кнопки воспроизведения
-            playButton.addEventListener('click', function(e) {
-                e.stopPropagation();
-                playVideo();
-            });
-            
-            videoOverlay.addEventListener('click', function() {
-                playVideo();
-            });
             
             // Загружаем первую серию
             loadVideo(currentEpisode);
@@ -2028,7 +2030,7 @@
             videoOverlay.classList.remove('hidden');
         }
         
-        // Загрузить видео
+        // Загрузка видео
         function loadVideo(episodeNumber) {
             const currentEpisodeInfo = document.getElementById('current-episode-info');
             
@@ -2036,81 +2038,73 @@
             currentEpisodeInfo.textContent = `Сезон 1, Серия ${episodeNumber}`;
             
             // Проверяем есть ли ссылка для этой серии
-            const videoUrl = videoSources[episodeNumber];
+            const fileId = googleDriveLinks[episodeNumber];
             
             // Очищаем контейнер
             videoWrapper.innerHTML = '';
             
-            if (videoUrl && videoUrl !== '') {
-                // Используем альтернативный способ через video элемент
-                const videoElement = document.createElement('video');
-                videoElement.className = 'alternative-player';
-                videoElement.poster = 'https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'; // Постер
-                videoElement.preload = 'metadata';
-                videoElement.controls = true;
-                videoElement.playsInline = true;
+            if (fileId && fileId !== '') {
+                // Создаем iframe с Google Drive плеером
+                const iframe = document.createElement('iframe');
+                iframe.className = 'google-drive-player';
                 
-                // Создаем источник видео
-                const sourceElement = document.createElement('source');
-                sourceElement.src = videoUrl;
-                sourceElement.type = 'video/mp4';
+                // Используем правильный URL для превью
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
+                iframe.frameBorder = "0";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+                iframe.allowFullscreen = true;
+                iframe.title = `Серия ${episodeNumber}`;
                 
-                videoElement.appendChild(sourceElement);
+                videoWrapper.appendChild(iframe);
                 
-                // Добавляем сообщение об ошибке
-                const errorMessage = document.createElement('p');
-                errorMessage.textContent = 'Ваш браузер не поддерживает видео.';
-                errorMessage.style.color = 'white';
-                errorMessage.style.textAlign = 'center';
-                errorMessage.style.padding = '20px';
-                
-                videoElement.appendChild(errorMessage);
-                
-                videoWrapper.appendChild(videoElement);
-                currentVideoElement = videoElement;
-                
-                console.log(`Загружена серия ${episodeNumber} через прямой поток`);
+                console.log(`Загружена серия ${episodeNumber} через Google Drive`);
                 
                 // Обновляем информацию
                 updateEpisodeInfo(episodeNumber);
                 
                 // Добавляем обработчик загрузки
-                videoElement.addEventListener('loadedmetadata', function() {
-                    console.log(`Метаданные видео загружены для серии ${episodeNumber}`);
-                });
-                
-                // Добавляем обработчик ошибок
-                videoElement.addEventListener('error', function(e) {
-                    console.error(`Ошибка загрузки видео для серии ${episodeNumber}:`, e);
-                    showAlternativeMessage(episodeNumber);
-                });
-                
-                // Настраиваем автопаузу при переключении
-                videoElement.pause();
-                
+                iframe.onload = function() {
+                    console.log(`Google Drive плеер для серии ${episodeNumber} загружен`);
+                    
+                    // Принудительно устанавливаем размеры iframe после загрузки
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                };
             } else {
                 console.warn(`Ссылка для серии ${episodeNumber} не найдена`);
                 showNoVideoMessage(episodeNumber);
             }
         }
         
-        // Воспроизвести видео
-        function playVideo() {
-            if (currentVideoElement) {
-                // Показываем контролы
-                currentVideoElement.controls = true;
+        // Загрузка и воспроизведение видео
+        function loadAndPlayVideo(episodeNumber) {
+            const fileId = googleDriveLinks[episodeNumber];
+            
+            if (fileId && fileId !== '') {
+                // Очищаем контейнер
+                videoWrapper.innerHTML = '';
                 
-                // Пытаемся воспроизвести
-                currentVideoElement.play().then(() => {
-                    // Скрываем оверлей если воспроизведение началось
-                    videoOverlay.classList.add('hidden');
-                    console.log(`Воспроизведение серии ${currentEpisode} начато`);
-                }).catch(error => {
-                    console.error(`Ошибка воспроизведения:`, error);
-                    
-                    // Если не удалось воспроизвести, показываем альтернативный вариант
-                    showAlternativeMessage(currentEpisode);
-                });
+                // Создаем новый iframe для воспроизведения с автоплеем
+                const iframe = document.createElement('iframe');
+                iframe.className = 'google-drive-player';
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
+                iframe.frameBorder = "0";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+                iframe.allowFullscreen = true;
+                iframe.title = `Серия ${episodeNumber}`;
+                
+                videoWrapper.appendChild(iframe);
+                
+                // Скрываем оверлей
+                videoOverlay.classList.add('hidden');
+                
+                console.log(`Воспроизведение серии ${episodeNumber}`);
+                
+                // Устанавливаем размеры iframe
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+            } else {
+                showNoVideoMessage(episodeNumber);
             }
         }
         
@@ -2126,7 +2120,11 @@
                 <div style="color: var(--gojo-cyan); background: rgba(34, 211, 238, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--gojo-cyan);">
                     <strong><i class="fas fa-video-slash"></i> Видео недоступно</strong><br>
                     <span style="font-size: 0.9rem;">
-                        Для просмотра этой серии добавьте правильную ссылку.
+                        Для просмотра этой серии добавьте ID файла Google Drive в объект googleDriveLinks.<br>
+                        Пример для серии ${episodeNumber}:<br>
+                        <code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 4px; display: inline-block; margin-top: 5px;">
+                            ${episodeNumber}: "ID_ВАШЕГО_ФАЙЛА"
+                        </code>
                     </span>
                 </div>
             `;
@@ -2135,24 +2133,6 @@
             document.getElementById('episode-duration').textContent = "--:--";
             
             // Показываем оверлей
-            videoOverlay.classList.remove('hidden');
-        }
-        
-        // Показать альтернативное сообщение
-        function showAlternativeMessage(episodeNumber) {
-            videoWrapper.innerHTML = `
-                <div style="color: white; text-align: center; padding: 50px;">
-                    <h3><i class="fas fa-exclamation-triangle"></i> Проблема с воспроизведением</h3>
-                    <p>Попробуйте посмотреть видео напрямую:</p>
-                    <a href="${videoSources[episodeNumber]}" target="_blank" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: var(--gojo-blue); color: white; text-decoration: none; border-radius: 5px;">
-                        <i class="fas fa-external-link-alt"></i> Открыть видео напрямую
-                    </a>
-                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
-                        Или попробуйте другую серию
-                    </p>
-                </div>
-            `;
-            
             videoOverlay.classList.remove('hidden');
         }
         
@@ -2169,6 +2149,16 @@
             document.getElementById('episode-number').textContent = episodeNumber;
             document.getElementById('episode-duration').textContent = info.duration;
             document.getElementById('episode-description').textContent = info.description;
+            
+            // Проверяем, есть ли ссылка на видео
+            if (!googleDriveLinks[episodeNumber] || googleDriveLinks[episodeNumber] === '') {
+                // Показываем сообщение об отсутствии видео только если это не первая серия
+                if (episodeNumber !== 1) {
+                    setTimeout(() => {
+                        showNoVideoMessage(episodeNumber);
+                    }, 100);
+                }
+            }
         }
 
         // Новая анимация загрузки
