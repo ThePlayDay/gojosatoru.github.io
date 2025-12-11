@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Годжо Сатору | Сильнейший колдун</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +31,8 @@
 
         html {
             scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -40,6 +42,7 @@
             overflow-x: hidden;
             line-height: 1.6;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%2360a5fa" opacity="0.7"/></svg>'), auto;
+            touch-action: manipulation;
         }
 
         h1, h2, h3, h4 {
@@ -87,6 +90,7 @@
         /* Герой-секция с параллаксом */
         .hero {
             height: 100vh;
+            min-height: 600px;
             position: relative;
             display: flex;
             align-items: center;
@@ -114,6 +118,7 @@
             z-index: 2;
             padding: 20px;
             transform-style: preserve-3d;
+            width: 100%;
         }
 
         .hero-title {
@@ -126,6 +131,7 @@
             text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
             animation: titleGlow 4s infinite alternate, float 6s infinite ease-in-out;
             position: relative;
+            line-height: 1.1;
         }
 
         @keyframes titleGlow {
@@ -217,6 +223,7 @@
             background: rgba(2, 7, 23, 0.95);
             border-bottom: 1px solid rgba(96, 165, 250, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
         }
 
         .nav-container {
@@ -237,6 +244,7 @@
             position: relative;
             display: flex;
             align-items: center;
+            white-space: nowrap;
         }
 
         .nav-logo::before {
@@ -275,6 +283,8 @@
             min-width: 120px;
             background: rgba(30, 64, 175, 0.1);
             border: 1px solid rgba(96, 165, 250, 0.2);
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .nav-link::before {
@@ -322,6 +332,71 @@
             box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
         }
 
+        /* Мобильное меню */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gojo-white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--gojo-light-blue);
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 7, 23, 0.95);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(2, 7, 23, 0.98), rgba(15, 23, 42, 0.95));
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+            border-left: 2px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu .nav-menu {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mobile-menu .nav-link {
+            min-width: 100%;
+            text-align: left;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
         /* Разделы */
         .section {
             padding: 120px 0;
@@ -339,6 +414,7 @@
             color: transparent;
             text-transform: uppercase;
             letter-spacing: 2px;
+            line-height: 1.2;
         }
 
         .section-title::after {
@@ -581,6 +657,7 @@
             color: transparent;
             text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
             animation: infinityTitle 5s infinite alternate;
+            line-height: 1.2;
         }
 
         @keyframes infinityTitle {
@@ -703,6 +780,8 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .player-title {
@@ -712,6 +791,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .player-title i {
@@ -727,6 +807,7 @@
         .player-controls {
             display: flex;
             gap: 15px;
+            align-items: center;
         }
 
         .player-main {
@@ -742,7 +823,7 @@
             background: #000;
             border-radius: 15px;
             overflow: hidden;
-            aspect-ratio: 16/9; /* Стандартное соотношение для видео */
+            aspect-ratio: 16/9;
             margin-bottom: 20px;
             min-height: 400px;
             width: 100%;
@@ -807,6 +888,9 @@
             color: white;
             box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
             transition: transform 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .play-button:hover {
@@ -889,6 +973,7 @@
             max-height: 200px;
             overflow-y: auto;
             padding-right: 5px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .selection-grid::-webkit-scrollbar {
@@ -910,6 +995,9 @@
             transition: all 0.3s ease;
             text-align: center;
             font-weight: 600;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
         }
 
         .selection-btn:hover {
@@ -948,6 +1036,9 @@
             text-align: center;
             font-weight: 600;
             font-size: 1.1rem;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
         }
 
         .season-tab:hover {
@@ -995,12 +1086,13 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            padding: 20px;
         }
 
         .feedback-container {
             background: linear-gradient(145deg, rgba(30, 64, 175, 0.9), rgba(15, 23, 42, 0.95));
             max-width: 600px;
-            width: 90%;
+            width: 100%;
             padding: 40px;
             border-radius: 20px;
             border: 2px solid rgba(96, 165, 250, 0.3);
@@ -1008,6 +1100,9 @@
             position: relative;
             transform: translateY(20px);
             transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .feedback-modal.show .feedback-container {
@@ -1045,6 +1140,9 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
         }
 
         #feedback-button:hover {
@@ -1068,58 +1166,197 @@
             font-weight: 700;
         }
 
-        /* Мобильная адаптация */
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
+        
+        /* Большие планшеты и маленькие ноутбуки */
+        @media (max-width: 1400px) {
+            .hero-title {
+                font-size: 5rem;
+            }
+            
+            .section-title {
+                font-size: 3.5rem;
+            }
+            
+            .infinity-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        /* Планшеты и маленькие экраны */
         @media (max-width: 1200px) {
             .hero-title {
-                font-size: 4.5rem;
+                font-size: 4rem;
             }
             
             .section-title {
                 font-size: 3rem;
             }
             
-            .player-main {
-                grid-template-columns: 1fr;
-            }
-            
-            .episode-details {
-                grid-template-columns: 1fr;
-            }
-            
-            .video-container {
-                min-height: 400px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
-            
-            .nav-menu {
-                display: none;
+            .infinity-title {
+                font-size: 4rem;
             }
             
             .player-main {
-                padding: 20px;
+                grid-template-columns: 1fr 300px;
             }
             
             .video-container {
                 min-height: 350px;
             }
+            
+            .abilities-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
         }
 
-        @media (max-width: 768px) {
+        /* Большие телефоны и планшеты в портретной ориентации */
+        @media (max-width: 992px) {
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 3.5rem;
             }
             
             .hero-subtitle {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             
             .section {
                 padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+                margin-bottom: 50px;
+            }
+            
+            .infinity-title {
+                font-size: 3.5rem;
+            }
+            
+            /* Навигация для планшетов */
+            .nav-menu {
+                gap: 3px;
+            }
+            
+            .nav-link {
+                min-width: 100px;
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+            
+            /* Видео-плеер для планшетов */
+            .player-main {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .player-header {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .player-title {
+                font-size: 1.8rem;
+                justify-content: center;
+            }
+            
+            .selection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            }
+            
+            /* Биография для планшетов */
+            .timeline-content {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-marker {
+                left: 30px;
+            }
+            
+            /* Анимация глаз */
+            .gojo-eyes {
+                width: 180px;
+                gap: 35px;
+            }
+            
+            .eye {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .iris {
+                width: 35px;
+                height: 35px;
+                top: 17.5px;
+                left: 17.5px;
+            }
+            
+            .pupil {
+                width: 17px;
+                height: 17px;
+                top: 8.5px;
+                left: 8.5px;
+            }
+            
+            .infinity-container {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .infinity-animation {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .ring-1 {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .ring-2 {
+                width: 200px;
+                height: 200px;
+                top: 25px;
+                left: 25px;
+            }
+            
+            .ring-3 {
+                width: 150px;
+                height: 150px;
+                top: 50px;
+                left: 50px;
+            }
+            
+            .ring-4 {
+                width: 100px;
+                height: 100px;
+                top: 75px;
+                left: 75px;
+            }
+        }
+
+        /* Телефоны в альбомной ориентации */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
             }
             
             .section-title {
@@ -1130,28 +1367,98 @@
                 font-size: 3rem;
             }
             
+            /* Навигация для телефонов */
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .nav-logo {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .nav-logo::before {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
                 margin-right: 10px;
             }
             
-            .player-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+            .nav-logo::after {
+                font-size: 2rem;
+            }
+            
+            /* Способности для телефонов */
+            .abilities-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .ability-card {
+                padding: 30px 20px;
+            }
+            
+            .ability-icon {
+                font-size: 3rem;
+            }
+            
+            .ability-title {
+                font-size: 1.8rem;
+            }
+            
+            /* Галерея для телефонов */
+            .gallery-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .gallery-item {
+                height: 300px;
+            }
+            
+            /* Видео-плеер для телефонов */
+            .player-main {
+                padding: 20px;
+            }
+            
+            .video-container {
+                min-height: 250px;
+                aspect-ratio: 16/9;
             }
             
             .selection-grid {
-                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
             }
             
+            .selection-btn {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .episode-details {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Биография для телефонов */
+            .timeline-content {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-marker {
+                left: 20px;
+            }
+            
+            /* Анимация глаз для телефонов */
             .gojo-eyes {
                 width: 150px;
                 gap: 30px;
+                margin: 30px auto;
             }
             
             .eye {
@@ -1173,18 +1480,54 @@
                 left: 7.5px;
             }
             
-            .play-button {
-                width: 60px;
-                height: 60px;
-                font-size: 2rem;
+            /* Бесконечность для телефонов */
+            .infinity-container {
+                width: 300px;
+                height: 300px;
             }
             
-            /* Корректировка для мобильных */
-            .video-container {
-                aspect-ratio: 16/9;
-                min-height: 250px;
+            .infinity-animation {
+                width: 200px;
+                height: 200px;
             }
-
+            
+            .ring-1 {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .ring-2 {
+                width: 160px;
+                height: 160px;
+                top: 20px;
+                left: 20px;
+            }
+            
+            .ring-3 {
+                width: 120px;
+                height: 120px;
+                top: 40px;
+                left: 40px;
+            }
+            
+            .ring-4 {
+                width: 80px;
+                height: 80px;
+                top: 60px;
+                left: 60px;
+            }
+            
+            .infinity-center {
+                width: 50px;
+                height: 50px;
+            }
+            
+            /* Футер для телефонов */
+            footer {
+                padding: 50px 0 20px;
+            }
+            
+            /* Форма обратной связи для телефонов */
             #feedback-button {
                 width: 60px;
                 height: 60px;
@@ -1195,6 +1538,292 @@
 
             .feedback-container {
                 padding: 30px 20px;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+        }
+
+        /* Маленькие телефоны */
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .infinity-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                min-height: 500px;
+                padding-top: 80px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            /* Способности для маленьких телефонов */
+            .ability-card {
+                padding: 25px 15px;
+            }
+            
+            .ability-icon {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .ability-title {
+                font-size: 1.6rem;
+            }
+            
+            /* Видео-плеер для маленьких телефонов */
+            .player-title {
+                font-size: 1.5rem;
+            }
+            
+            .player-header {
+                padding: 15px;
+            }
+            
+            .selection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+            }
+            
+            .selection-btn {
+                padding: 8px;
+                font-size: 0.8rem;
+            }
+            
+            .season-tab {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            
+            .video-container {
+                min-height: 200px;
+            }
+            
+            /* Анимация глаз для маленьких телефонов */
+            .gojo-eyes {
+                width: 120px;
+                gap: 25px;
+                margin: 20px auto;
+            }
+            
+            .eye {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .iris {
+                width: 25px;
+                height: 25px;
+                top: 12.5px;
+                left: 12.5px;
+            }
+            
+            .pupil {
+                width: 12px;
+                height: 12px;
+                top: 6.5px;
+                left: 6.5px;
+            }
+            
+            /* Бесконечность для маленьких телефонов */
+            .infinity-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .infinity-animation {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .ring-1 {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .ring-2 {
+                width: 120px;
+                height: 120px;
+                top: 15px;
+                left: 15px;
+            }
+            
+            .ring-3 {
+                width: 90px;
+                height: 90px;
+                top: 30px;
+                left: 30px;
+            }
+            
+            .ring-4 {
+                width: 60px;
+                height: 60px;
+                top: 45px;
+                left: 45px;
+            }
+            
+            .infinity-center {
+                width: 40px;
+                height: 40px;
+            }
+            
+            /* Мобильное меню для маленьких экранов */
+            .mobile-menu {
+                width: 100%;
+                right: -100%;
+                padding: 70px 20px 20px;
+            }
+            
+            .mobile-menu.active {
+                right: 0;
+            }
+            
+            .nav-logo {
+                font-size: 1.8rem;
+            }
+            
+            .nav-logo::before {
+                font-size: 1.6rem;
+                margin-right: 8px;
+            }
+            
+            .nav-logo::after {
+                font-size: 1.8rem;
+            }
+            
+            /* Гоё-цитата для маленьких экранов */
+            .gojo-quote {
+                font-size: 1.2rem !important;
+                padding: 15px !important;
+                margin: 20px auto !important;
+            }
+            
+            /* Оформление секций */
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Очень маленькие телефоны */
+        @media (max-width: 375px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .infinity-title {
+                font-size: 2rem;
+            }
+            
+            .selection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+                gap: 8px;
+            }
+            
+            .selection-btn {
+                padding: 6px;
+                font-size: 0.75rem;
+            }
+            
+            .nav-logo {
+                font-size: 1.6rem;
+            }
+            
+            .nav-logo::before {
+                font-size: 1.4rem;
+            }
+            
+            .nav-logo::after {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Портретная ориентация для телефонов */
+        @media (max-height: 600px) and (orientation: portrait) {
+            .hero {
+                min-height: 400px;
+                padding-top: 70px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+                margin-bottom: 5px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .gojo-eyes {
+                width: 100px;
+                margin: 20px auto;
+            }
+            
+            .eye {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .iris {
+                width: 20px;
+                height: 20px;
+                top: 10px;
+                left: 10px;
+            }
+            
+            .pupil {
+                width: 10px;
+                height: 10px;
+                top: 5px;
+                left: 5px;
+            }
+        }
+
+        /* Ландшафтная ориентация для телефонов */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: 300px;
+                padding-top: 60px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+                margin-bottom: 5px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+            
+            .gojo-eyes {
+                width: 120px;
+                margin: 15px auto;
             }
         }
 
@@ -1311,7 +1940,29 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="nav-logo"></a>
-            <ul class="nav-menu">
+            
+            <!-- Кнопка мобильного меню -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Оверлей для мобильного меню -->
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+            
+            <!-- Мобильное меню -->
+            <div class="mobile-menu" id="mobile-menu">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#about" class="nav-link active">О персонаже</a></li>
+                    <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
+                    <li class="nav-item"><a href="#biography" class="nav-link">Биография</a></li>
+                    <li class="nav-item"><a href="#infinity" class="nav-link">Бесконечность</a></li>
+                    <li class="nav-item"><a href="#player" class="nav-link nav-cta">СМОТРЕТЬ АНИМЕ</a></li>
+                </ul>
+            </div>
+            
+            <!-- Десктопное меню -->
+            <ul class="nav-menu" id="desktop-menu">
                 <li class="nav-item"><a href="#about" class="nav-link active">О персонаже</a></li>
                 <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
                 <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
@@ -1470,7 +2121,7 @@
             <div class="gallery-container">
                 <!-- Галерея изображений и видео -->
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо Сатору">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо Сатору" loading="lazy">
                     <div class="gallery-overlay">
                         <h3 style="font-size: 1.5rem; margin-bottom: 10px;">СИЛЬНЕЙШИЙ КОЛДУН</h3>
                         <p>Годжо с характерной повязкой на глазах</p>
@@ -1478,7 +2129,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537502-9e1a6b8b1b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Шесть глаз">
+                    <img src="https://images.unsplash.com/photo-1639322537502-9e1a6b8b1b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Шесть глаз" loading="lazy">
                     <div class="gallery-overlay">
                         <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ШЕСТЬ ГЛАЗ</h3>
                         <p>Активация уникальной наследственной способности</p>
@@ -1486,7 +2137,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <video autoplay muted loop playsinline>
+                    <video autoplay muted loop playsinline preload="none">
                         <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-blue-energy-swirl-33413-large.mp4" type="video/mp4">
                     </video>
                     <div class="gallery-overlay">
@@ -1496,7 +2147,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537196-3b3d01a88a0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Техника расширения">
+                    <img src="https://images.unsplash.com/photo-1639322537196-3b3d01a88a0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Техника расширения" loading="lazy">
                     <div class="gallery-overlay">
                         <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ТЕХНИКА РАСШИРЕНИЯ</h3>
                         <p>Применение силы притяжения и отталкивания</p>
@@ -1504,7 +2155,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <video autoplay muted loop playsinline>
+                    <video autoplay muted loop playsinline preload="none">
                         <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-geometric-shapes-rotating-33416-large.mp4" type="video/mp4">
                     </video>
                     <div class="gallery-overlay">
@@ -1514,7 +2165,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537478-3c92e9c34b7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо в бою">
+                    <img src="https://images.unsplash.com/photo-1639322537478-3c92e9c34b7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо в бою" loading="lazy">
                     <div class="gallery-overlay">
                         <h3 style="font-size: 1.5rem; margin-bottom: 10px;">В БОЮ</h3>
                         <p>Годжо против особых проклятий уровня катастрофы</p>
@@ -1535,7 +2186,7 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">1989</div>
-                        <p>Рождение в клане Годжо. С самого рождения обладал техникой «Бесконечность» и «Шесть глаз». Его рождение изменило баланс сил в мире магии.</p>
+                        <p>Рождение в клане Годжо. С самого рождения обладал техникой «Бесконечность» и «Шесть глаз». Его рождение изменило баланс сил во всем мире магии.</p>
                     </div>
                 </div>
                 
@@ -1798,7 +2449,6 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // === ССЫЛКИ НА GOOGLE DRIVE ДЛЯ ВСЕХ СЕРИЙ ===
-        // Используем те же самые ID файлов, что были в оригинальном коде
         const googleDriveLinks = {
             1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3",
             2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX",
@@ -2068,6 +2718,10 @@
                 iframe.setAttribute('referrerpolicy', 'no-referrer');
                 iframe.setAttribute('crossorigin', 'anonymous');
                 
+                // Атрибуты для мобильных устройств
+                iframe.setAttribute('playsinline', '1');
+                iframe.setAttribute('webkit-playsinline', '1');
+                
                 videoWrapper.appendChild(iframe);
                 
                 console.log(`Загружена серия ${episodeNumber} через Google Drive`);
@@ -2117,6 +2771,10 @@
                 iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
                 iframe.setAttribute('referrerpolicy', 'no-referrer');
                 iframe.setAttribute('crossorigin', 'anonymous');
+                
+                // Атрибуты для мобильных устройств
+                iframe.setAttribute('playsinline', '1');
+                iframe.setAttribute('webkit-playsinline', '1');
                 
                 videoWrapper.appendChild(iframe);
                 
@@ -2181,6 +2839,45 @@
             document.getElementById('episode-number').textContent = episodeNumber;
             document.getElementById('episode-duration').textContent = info.duration;
             document.getElementById('episode-description').textContent = info.description;
+        }
+
+        // Инициализация мобильного меню
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Открытие мобильного меню
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mobileMenuOverlay.style.display = 'block';
+                mobileMenuOverlay.classList.add('active');
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Закрытие мобильного меню
+            function closeMobileMenu() {
+                mobileMenuOverlay.style.display = 'none';
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Закрытие по клику на оверлей
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            
+            // Закрытие по клику на ссылку в меню
+            mobileMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Закрытие по нажатию ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
         }
 
         // Новая анимация загрузки
@@ -2318,6 +3015,7 @@
                         initBackgroundParticles();
                         initVideoPlayer();
                         initFeedbackForm();
+                        initMobileMenu();
                     }, 800);
                 }, 1200);
             }
@@ -2331,13 +3029,16 @@
         function initBackgroundParticles() {
             particlesJS("particles-js", {
                 particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    number: { 
+                        value: window.innerWidth < 768 ? 40 : 80, 
+                        density: { enable: true, value_area: 800 } 
+                    },
                     color: { value: ["#60a5fa", "#7c3aed", "#ef4444", "#22d3ee"] },
                     shape: { type: "circle" },
                     opacity: { value: 0.5, random: true },
                     size: { value: 3, random: true },
                     line_linked: {
-                        enable: true,
+                        enable: window.innerWidth < 768 ? false : true,
                         distance: 150,
                         color: "#60a5fa",
                         opacity: 0.2,
@@ -2356,7 +3057,10 @@
                 interactivity: {
                     detect_on: "canvas",
                     events: {
-                        onhover: { enable: true, mode: "repulse" },
+                        onhover: { 
+                            enable: window.innerWidth > 768, 
+                            mode: "repulse" 
+                        },
                         onclick: { enable: true, mode: "push" }
                     }
                 },
@@ -2797,6 +3501,36 @@
             
             setTimeout(typeWriter, 2000);
         }
+
+        // Оптимизация для мобильных устройств
+        function optimizeForMobile() {
+            // Уменьшаем количество частиц на мобильных
+            if (window.innerWidth < 768) {
+                const particlesContainer = document.getElementById('particles-js');
+                if (particlesContainer && particlesContainer.pJSDom) {
+                    particlesContainer.pJSDom[0].pJS.particles.number.value = 40;
+                    particlesContainer.pJSDom[0].pJS.fn.vendors.destroy();
+                    particlesContainer.pJSDom[0].pJS.fn.vendors.refresh();
+                }
+            }
+            
+            // Отключаем сложные эффекты на мобильных
+            if (window.innerWidth < 768) {
+                const cards = document.querySelectorAll('.ability-card, .gallery-item');
+                cards.forEach(card => {
+                    card.style.transition = 'transform 0.3s ease';
+                    card.style.transformStyle = 'flat';
+                });
+            }
+        }
+
+        // Оптимизация при изменении размера окна
+        window.addEventListener('resize', function() {
+            optimizeForMobile();
+        });
+
+        // Инициализация оптимизации
+        optimizeForMobile();
     </script>
 </body>
 </html>
