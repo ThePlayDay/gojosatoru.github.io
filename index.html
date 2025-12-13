@@ -454,7 +454,7 @@
             border-radius: 5px;
         }
 
-        /* Карточки способностей с 3D эффектом - ВОССТАНОВЛЕН НА ВСЕХ ВЕРСИЯХ */
+        /* Карточки способностей с 3D эффектом - КАК В ЗАКРЕПЛЕННОЙ ВЕРСИИ */
         .abilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -472,12 +472,21 @@
             overflow: hidden;
             transform-style: preserve-3d;
             transform: perspective(1000px) rotateY(0deg);
+            /* Эффекты из закрепленной версии */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
+        /* ВОССТАНОВЛЕН ЭФФЕКТ ПРИ НАВЕДЕНИИ ДЛЯ ВСЕХ УСТРОЙСТВ */
         .ability-card:hover {
-            transform: perspective(1000px) rotateY(10deg) translateY(-15px);
-            box-shadow: 0 25px 50px rgba(96, 165, 250, 0.3);
+            transform: perspective(1000px) rotateY(10deg) translateY(-15px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(96, 165, 250, 0.3),
+                0 0 30px rgba(96, 165, 250, 0.1),
+                0 0 60px rgba(96, 165, 250, 0.05);
             border-color: var(--gojo-light-blue);
+            z-index: 10;
         }
 
         .ability-card::before {
@@ -1207,7 +1216,7 @@
             font-weight: 700;
         }
 
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ - ИСПРАВЛЕНА ТОЛЬКО ПРОБЛЕМНЫЕ МЕСТА */
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
 
         /* Большие планшеты и маленькие ноутбуки */
         @media (max-width: 1400px) {
@@ -1280,19 +1289,19 @@
                 font-size: 3rem;
             }
             
-            /* Навигация для планшетов - ИСПРАВЛЕНО: добавлен отступ справа для кнопки */
+            /* Навигация для планшетов */
             .nav-menu {
                 display: none;
             }
             
             .mobile-menu-btn {
                 display: flex;
-                margin-right: 15px; /* Добавлен отступ справа */
+                margin-right: 15px;
             }
             
             .nav-logo {
                 font-size: 2rem;
-                margin-left: 15px; /* Добавлен отступ слева */
+                margin-left: 15px;
             }
             
             .nav-logo::before {
@@ -1327,7 +1336,7 @@
                 font-size: 1.6rem;
             }
             
-            /* ИСПРАВЛЕНИЕ: Видео контейнер должен сохранять пропорции */
+            /* Видео контейнер */
             .video-container {
                 min-height: 300px;
                 aspect-ratio: 16/9;
@@ -1345,7 +1354,7 @@
                 min-height: 35px;
             }
             
-            /* Биография для планшетов - ИСПРАВЛЕНО */
+            /* Биография для планшетов */
             .timeline-content {
                 width: 85%;
                 margin-left: auto;
@@ -1440,15 +1449,15 @@
             }
         }
 
-        /* Телефоны в альбомной ориентации - ИСПРАВЛЕНО ПАДДИНГ ДЛЯ НАВИГАЦИИ */
+        /* Телефоны в альбомной ориентации */
         @media (max-width: 768px) {
             body {
-                padding-top: 70px; /* Убедимся что отступ правильный */
+                padding-top: 70px;
             }
             
             .navbar {
-                height: 70px; /* Фиксированная высота */
-                padding: 15px 0; /* Увеличен паддинг для лучшего вида */
+                height: 70px;
+                padding: 15px 0;
             }
             
             .nav-logo {
@@ -1494,7 +1503,7 @@
                 font-size: 2.5rem;
             }
             
-            /* Способности для телефонов - 3D ЭФФЕКТ ВОССТАНОВЛЕН */
+            /* Способности для телефонов - 3D ЭФФЕКТ СОХРАНЕН */
             .abilities-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
@@ -1522,7 +1531,7 @@
                 height: 280px;
             }
             
-            /* Видео-плеер для телефонов - ИСПРАВЛЕНО: правильные пропорции */
+            /* Видео-плеер для телефонов */
             .player-main {
                 padding: 15px;
             }
@@ -1578,7 +1587,7 @@
                 padding: 20px;
             }
             
-            /* Биография для телефонов - ИСПРАВЛЕНО */
+            /* Биография для телефонов */
             .timeline-content {
                 width: 90%;
                 padding: 20px;
@@ -1704,10 +1713,10 @@
             }
         }
 
-        /* Маленькие телефоны - ИСПРАВЛЕНО */
+        /* Маленькие телефоны */
         @media (max-width: 576px) {
             body {
-                padding-top: 70px; /* Сохраняем правильный отступ */
+                padding-top: 70px;
             }
             
             .navbar {
@@ -1762,7 +1771,7 @@
                 padding: 0 15px;
             }
             
-            /* Способности для маленьких телефонов - 3D ЭФФЕКТ ВОССТАНОВЛЕН */
+            /* Способности для маленьких телефонов - 3D ЭФФЕКТ СОХРАНЕН */
             .ability-card {
                 padding: 20px 15px;
             }
@@ -1776,7 +1785,7 @@
                 font-size: 1.4rem;
             }
             
-            /* Видео-плеер для маленьких телефонов - ИСПРАВЛЕНО */
+            /* Видео-плеер для маленьких телефонов */
             .player-title {
                 font-size: 1.2rem;
             }
@@ -2172,7 +2181,7 @@
     <!-- Частицы -->
     <div id="particles-js"></div>
 
-    <!-- Навигация - ИСПРАВЛЕНА ДЛЯ МОБИЛЬНОЙ ВЕРСИИ -->
+    <!-- Навигация -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="nav-logo"></a>
@@ -2411,7 +2420,7 @@
         </div>
     </section>
 
-    <!-- Биография - ИСПРАВЛЕНА -->
+    <!-- Биография -->
     <section id="biography" class="section" style="background: rgba(15, 23, 42, 0.7);">
         <div class="container">
             <h2 class="section-title">ХРОНОЛОГИЯ СИЛЫ</h2>
@@ -2488,7 +2497,7 @@
         </div>
     </section>
 
-    <!-- Видео-плеер с Google Drive - ИСПРАВЛЕН -->
+    <!-- Видео-плеер с Google Drive -->
     <section id="player" class="video-player-section">
         <div class="container">
             <h2 class="section-title">СМОТРЕТЬ МАГИЧЕСКУЮ БИТВУ</h2>
@@ -2842,7 +2851,7 @@
         let videoOverlay = null;
         let playButton = null;
 
-        // Инициализация видео-плеера - ИСПРАВЛЕНА
+        // Инициализация видео-плеера
         function initVideoPlayer() {
             videoWrapper = document.getElementById('video-wrapper');
             videoOverlay = document.getElementById('video-overlay');
@@ -2931,7 +2940,7 @@
             videoOverlay.classList.remove('hidden');
         }
         
-        // Загрузка видео - ИСПРАВЛЕНА
+        // Загрузка видео
         function loadVideo(episodeNumber) {
             const currentEpisodeInfo = document.getElementById('current-episode-info');
             
@@ -2996,7 +3005,7 @@
             }
         }
         
-        // Загрузка и воспроизведение видео - ИСПРАВЛЕНА
+        // Загрузка и воспроизведение видео
         function loadAndPlayVideo(episodeNumber) {
             const fileId = googleDriveLinks[episodeNumber];
             
@@ -3091,7 +3100,7 @@
             document.getElementById('episode-description').textContent = info.description;
         }
 
-        // Инициализация мобильного меню - ИСПРАВЛЕНА
+        // Инициализация мобильного меню
         function initMobileMenu() {
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
@@ -3408,7 +3417,7 @@
             });
         }
 
-        // Инициализация формы обратной связи - ДОБАВЛЕНА ВАЛИДАЦИЯ
+        // Инициализация формы обратной связи - ИСПРАВЛЕНА ВАЛИДАЦИЯ ИМЕНИ
         function initFeedbackForm() {
             const feedbackButton = document.getElementById('feedback-button');
             const feedbackModal = document.getElementById('feedback-modal');
@@ -3469,7 +3478,7 @@
                 messageError.textContent = '';
             }
             
-            // Валидация имени - ТОЛЬКО БУКВЫ
+            // Валидация имени - ТОЛЬКО БУКВЫ (включая русские, английские, пробелы и дефисы)
             function validateName(name) {
                 if (!name.trim()) {
                     return 'Имя обязательно для заполнения';
@@ -3483,7 +3492,8 @@
                     return 'Имя должно содержать не более 50 символов';
                 }
                 
-                // Проверка на только буквы (включая русские, английские и дефис)
+                // Проверка на только буквы (русские, английские, пробелы и дефисы)
+                // Регулярное выражение разрешает: буквы a-z, A-Z, а-я, А-Я, Ёё, пробелы и дефисы
                 const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-]+$/;
                 if (!nameRegex.test(name.trim())) {
                     return 'Имя должно содержать только буквы, пробелы и дефисы';
@@ -3492,7 +3502,7 @@
                 return '';
             }
             
-            // Валидация email - СПЕЦИФИЧЕСКИЕ ДОМЕНЫ
+            // Валидация email
             function validateEmail(email) {
                 if (!email.trim()) {
                     return 'Email обязателен для заполнения';
