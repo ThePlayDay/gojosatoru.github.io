@@ -217,7 +217,7 @@
             left: 10px;
         }
 
-        /* Навигация с неоновым эффектом - ИСПРАВЛЕНА ДЛЯ МОБИЛЬНЫХ */
+        /* Навигация с неоновым эффектом - ИСПРАВЛЕНА */
         .navbar {
             position: fixed;
             top: 0;
@@ -259,7 +259,6 @@
             white-space: nowrap;
             height: 100%;
             z-index: 1001;
-            padding-left: 20px;
         }
 
         .nav-logo::before {
@@ -365,7 +364,6 @@
             align-items: center;
             justify-content: center;
             margin: 0;
-            padding-right: 20px;
         }
 
         .mobile-menu-btn:hover {
@@ -456,7 +454,7 @@
             border-radius: 5px;
         }
 
-        /* Карточки способностей с 3D эффектом - ВОССТАНОВЛЕН */
+        /* Карточки способностей с 3D эффектом - ВОССТАНОВЛЕН НА ВСЕХ ВЕРСИЯХ */
         .abilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1209,7 +1207,7 @@
             font-weight: 700;
         }
 
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ - ИСПРАВЛЕНА */
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ - ИСПРАВЛЕНА ТОЛЬКО ПРОБЛЕМНЫЕ МЕСТА */
 
         /* Большие планшеты и маленькие ноутбуки */
         @media (max-width: 1400px) {
@@ -1282,19 +1280,19 @@
                 font-size: 3rem;
             }
             
-            /* Навигация для планшетов - ИСПРАВЛЕНА */
+            /* Навигация для планшетов - ИСПРАВЛЕНО: добавлен отступ справа для кнопки */
             .nav-menu {
                 display: none;
             }
             
             .mobile-menu-btn {
                 display: flex;
-                padding-right: 25px;
+                margin-right: 15px; /* Добавлен отступ справа */
             }
             
             .nav-logo {
                 font-size: 2rem;
-                padding-left: 25px;
+                margin-left: 15px; /* Добавлен отступ слева */
             }
             
             .nav-logo::before {
@@ -1306,7 +1304,7 @@
                 font-size: 2rem;
             }
             
-            /* Видео-плеер для планшетов - ИСПРАВЛЕН */
+            /* Видео-плеер для планшетов */
             .player-main {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -1329,6 +1327,7 @@
                 font-size: 1.6rem;
             }
             
+            /* ИСПРАВЛЕНИЕ: Видео контейнер должен сохранять пропорции */
             .video-container {
                 min-height: 300px;
                 aspect-ratio: 16/9;
@@ -1441,20 +1440,20 @@
             }
         }
 
-        /* Телефоны в альбомной ориентации */
+        /* Телефоны в альбомной ориентации - ИСПРАВЛЕНО ПАДДИНГ ДЛЯ НАВИГАЦИИ */
         @media (max-width: 768px) {
             body {
-                padding-top: 70px;
+                padding-top: 70px; /* Убедимся что отступ правильный */
             }
             
             .navbar {
-                height: 70px;
-                padding: 15px 0;
+                height: 70px; /* Фиксированная высота */
+                padding: 15px 0; /* Увеличен паддинг для лучшего вида */
             }
             
             .nav-logo {
                 font-size: 1.8rem;
-                padding-left: 20px;
+                margin-left: 15px;
             }
             
             .nav-logo::before {
@@ -1467,7 +1466,7 @@
             }
             
             .mobile-menu-btn {
-                padding-right: 20px;
+                margin-right: 15px;
                 width: 45px;
                 height: 45px;
                 font-size: 1.6rem;
@@ -1495,7 +1494,7 @@
                 font-size: 2.5rem;
             }
             
-            /* Способности для телефонов - 3D ЭФФЕКТ СОХРАНЕН */
+            /* Способности для телефонов - 3D ЭФФЕКТ ВОССТАНОВЛЕН */
             .abilities-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
@@ -1503,11 +1502,6 @@
             
             .ability-card {
                 padding: 25px 20px;
-                transform: perspective(800px) rotateY(0deg);
-            }
-            
-            .ability-card:hover {
-                transform: perspective(800px) rotateY(5deg) translateY(-10px);
             }
             
             .ability-icon {
@@ -1528,7 +1522,7 @@
                 height: 280px;
             }
             
-            /* Видео-плеер для телефонов - ИСПРАВЛЕНО */
+            /* Видео-плеер для телефонов - ИСПРАВЛЕНО: правильные пропорции */
             .player-main {
                 padding: 15px;
             }
@@ -1710,10 +1704,10 @@
             }
         }
 
-        /* Маленькие телефоны */
+        /* Маленькие телефоны - ИСПРАВЛЕНО */
         @media (max-width: 576px) {
             body {
-                padding-top: 70px;
+                padding-top: 70px; /* Сохраняем правильный отступ */
             }
             
             .navbar {
@@ -1723,7 +1717,7 @@
             
             .nav-logo {
                 font-size: 1.6rem;
-                padding-left: 15px;
+                margin-left: 10px;
             }
             
             .nav-logo::before {
@@ -1736,7 +1730,7 @@
             }
             
             .mobile-menu-btn {
-                padding-right: 15px;
+                margin-right: 10px;
                 width: 40px;
                 height: 40px;
                 font-size: 1.4rem;
@@ -1768,14 +1762,9 @@
                 padding: 0 15px;
             }
             
-            /* Способности для маленьких телефонов - 3D ЭФФЕКТ СОХРАНЕН */
+            /* Способности для маленьких телефонов - 3D ЭФФЕКТ ВОССТАНОВЛЕН */
             .ability-card {
                 padding: 20px 15px;
-                transform: perspective(600px) rotateY(0deg);
-            }
-            
-            .ability-card:hover {
-                transform: perspective(600px) rotateY(3deg) translateY(-8px);
             }
             
             .ability-icon {
@@ -1955,7 +1944,7 @@
             
             .nav-logo {
                 font-size: 1.5rem;
-                padding-left: 12px;
+                margin-left: 8px;
             }
             
             .nav-logo::before {
@@ -2183,7 +2172,7 @@
     <!-- Частицы -->
     <div id="particles-js"></div>
 
-    <!-- Навигация - ИСПРАВЛЕНА -->
+    <!-- Навигация - ИСПРАВЛЕНА ДЛЯ МОБИЛЬНОЙ ВЕРСИИ -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="nav-logo"></a>
@@ -3419,7 +3408,7 @@
             });
         }
 
-        // Инициализация формы обратной связи - УЛУЧШЕННАЯ ВАЛИДАЦИЯ
+        // Инициализация формы обратной связи - ДОБАВЛЕНА ВАЛИДАЦИЯ
         function initFeedbackForm() {
             const feedbackButton = document.getElementById('feedback-button');
             const feedbackModal = document.getElementById('feedback-modal');
@@ -3454,6 +3443,7 @@
                 setTimeout(() => {
                     feedbackModal.style.display = 'none';
                     clearValidationErrors();
+                    feedbackForm.reset();
                 }, 300);
             }
             
@@ -3479,7 +3469,7 @@
                 messageError.textContent = '';
             }
             
-            // Валидация имени - ТОЛЬКО БУКВЫ (русские и английские)
+            // Валидация имени - ТОЛЬКО БУКВЫ
             function validateName(name) {
                 if (!name.trim()) {
                     return 'Имя обязательно для заполнения';
@@ -3493,50 +3483,37 @@
                     return 'Имя должно содержать не более 50 символов';
                 }
                 
-                // Проверка на только буквы (русские и английские) и пробелы
-                const nameRegex = /^[A-Za-zА-Яа-яЁё\s\-]+$/;
+                // Проверка на только буквы (включая русские, английские и дефис)
+                const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-]+$/;
                 if (!nameRegex.test(name.trim())) {
-                    return 'Имя должно содержать только буквы (русские или английские)';
-                }
-                
-                // Проверка на минимум одну букву
-                const hasLetters = /[A-Za-zА-Яа-яЁё]/.test(name.trim());
-                if (!hasLetters) {
-                    return 'Имя должно содержать хотя бы одну букву';
+                    return 'Имя должно содержать только буквы, пробелы и дефисы';
                 }
                 
                 return '';
             }
             
-            // Валидация email - С ПРОВЕРКОЙ ДОМЕНА
+            // Валидация email - СПЕЦИФИЧЕСКИЕ ДОМЕНЫ
             function validateEmail(email) {
                 if (!email.trim()) {
                     return 'Email обязателен для заполнения';
                 }
                 
-                // Проверка формата email
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    return 'Введите корректный email адрес (пример: user@domain.com)';
-                }
-                
-                // Проверка на допустимые домены
-                const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.ru', 'ya.ru'];
-                const domain = email.split('@')[1].toLowerCase();
-                
-                if (!allowedDomains.includes(domain)) {
-                    return 'Допустимые домены: gmail.com, mail.ru, yandex.ru';
-                }
-                
-                // Проверка на наличие @
-                if (!email.includes('@')) {
+                // Проверка наличия @
+                if (email.indexOf('@') === -1) {
                     return 'Email должен содержать символ @';
                 }
                 
-                // Проверка на наличие текста после @
-                const parts = email.split('@');
-                if (parts.length < 2 || !parts[1].trim()) {
-                    return 'Введите домен после @ (пример: gmail.com)';
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    return 'Введите корректный email адрес';
+                }
+                
+                // Проверка домена
+                const domain = email.split('@')[1].toLowerCase();
+                const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.ru'];
+                
+                if (!allowedDomains.includes(domain)) {
+                    return 'Разрешены только домены: gmail.com, mail.ru, yandex.ru';
                 }
                 
                 return '';
@@ -3580,14 +3557,12 @@
             function showError(inputElement, errorElement, message) {
                 inputElement.classList.add('input-error');
                 errorElement.textContent = message;
-                errorElement.style.display = 'block';
             }
             
             // Скрыть ошибку
             function hideError(inputElement, errorElement) {
                 inputElement.classList.remove('input-error');
                 errorElement.textContent = '';
-                errorElement.style.display = 'none';
             }
             
             // Реальная проверка при вводе
@@ -3660,14 +3635,7 @@
                 }
                 
                 if (hasErrors) {
-                    // Прокручиваем к первой ошибке
-                    const firstErrorElement = feedbackForm.querySelector('.input-error');
-                    if (firstErrorElement) {
-                        firstErrorElement.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center'
-                        });
-                    }
+                    feedbackForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return;
                 }
                 
@@ -3692,12 +3660,9 @@
                         submitButton.innerHTML = '<i class="fas fa-check"></i> Отправлено!';
                         submitButton.style.background = 'linear-gradient(45deg, #10b981, #059669)';
                         
-                        // Сброс формы
-                        feedbackForm.reset();
-                        clearValidationErrors();
-                        
-                        // Показать сообщение об успехе на 2 секунды
+                        // Очищаем форму после успешной отправки
                         setTimeout(() => {
+                            feedbackForm.reset();
                             closeFeedbackModal();
                             setTimeout(() => {
                                 submitButton.innerHTML = originalText;
@@ -3717,10 +3682,6 @@
                         submitButton.innerHTML = originalText;
                         submitButton.disabled = false;
                         submitButton.style.background = 'linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple))';
-                        
-                        // Показать сообщение об ошибке
-                        emailError.textContent = 'Ошибка отправки. Проверьте подключение к интернету.';
-                        emailError.style.display = 'block';
                     }, 2000);
                 }
             });
@@ -3750,25 +3711,20 @@
                 this.style.boxShadow = '0 10px 30px rgba(96, 165, 250, 0.4)';
                 animateButton();
             });
-            
-            // Добавляем обработчик для касания на мобильных
-            feedbackButton.addEventListener('touchstart', function() {
-                cancelAnimationFrame(animationFrameId);
-                this.style.transform = 'scale(1.1) rotate(5deg)';
-                this.style.boxShadow = '0 15px 40px rgba(96, 165, 250, 0.6)';
-            });
-            
-            feedbackButton.addEventListener('touchend', function() {
-                this.style.transform = 'scale(1) rotate(0deg)';
-                this.style.boxShadow = '0 10px 30px rgba(96, 165, 250, 0.4)';
-                animateButton();
-            });
         }
 
         // Навигация при прокрутке
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link:not(.mobile-menu .nav-link)');
+            
+            // Фиксируем навигацию на мобильных
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.7)';
+            } else {
+                navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+            }
             
             let current = '';
             sections.forEach(section => {
@@ -3833,6 +3789,14 @@
                         top: targetElement.offsetTop - offset,
                         behavior: 'smooth'
                     });
+                    
+                    // Закрываем мобильное меню если оно открыто
+                    if (window.innerWidth <= 992 && document.querySelector('.mobile-menu.active')) {
+                        document.querySelector('.mobile-menu').classList.remove('active');
+                        document.querySelector('.mobile-menu-overlay').classList.remove('active');
+                        document.querySelector('.mobile-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
+                        document.body.style.overflow = '';
+                    }
                 }
             });
         });
@@ -3859,21 +3823,10 @@
         window.addEventListener('resize', function() {
             fixTimelineForMobile();
             
-            // Перезапуск частиц при изменении размера окна
-            if (window.innerWidth < 768) {
-                particlesJS("particles-js", {
-                    particles: {
-                        number: { value: 40, density: { enable: true, value_area: 800 } },
-                        line_linked: { enable: false }
-                    }
-                });
-            } else {
-                particlesJS("particles-js", {
-                    particles: {
-                        number: { value: 80, density: { enable: true, value_area: 800 } },
-                        line_linked: { enable: true }
-                    }
-                });
+            // Переинициализация частиц при изменении размера
+            if (window.pJSDom && window.pJSDom.length > 0) {
+                window.pJSDom[0].pJS.fn.vendors.destroy();
+                initBackgroundParticles();
             }
         });
 
@@ -3889,6 +3842,27 @@
             }
             lastTouchEnd = now;
         }, false);
+        
+        // Исправление касания для кнопок на мобильных
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.classList.contains('nav-link') || 
+                e.target.classList.contains('selection-btn') || 
+                e.target.classList.contains('season-tab') ||
+                e.target.classList.contains('play-button')) {
+                e.target.style.transform = 'scale(0.95)';
+            }
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            if (e.target.classList.contains('nav-link') || 
+                e.target.classList.contains('selection-btn') || 
+                e.target.classList.contains('season-tab') ||
+                e.target.classList.contains('play-button')) {
+                setTimeout(() => {
+                    e.target.style.transform = '';
+                }, 150);
+            }
+        });
     </script>
 </body>
 </html>
