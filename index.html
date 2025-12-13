@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Годжо Сатору | Сильнейший колдун</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,8 +31,6 @@
 
         html {
             scroll-behavior: smooth;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -42,8 +40,6 @@
             overflow-x: hidden;
             line-height: 1.6;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%2360a5fa" opacity="0.7"/></svg>'), auto;
-            touch-action: manipulation;
-            padding-top: 70px; /* Фиксированный отступ для навигации */
         }
 
         h1, h2, h3, h4 {
@@ -68,13 +64,11 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            top: 0;
-            left: 0;
         }
 
         /* Стилизованный скроллбар */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
 
         ::-webkit-scrollbar-track {
@@ -92,15 +86,13 @@
 
         /* Герой-секция с параллаксом */
         .hero {
-            height: calc(100vh - 70px);
-            min-height: 500px;
+            height: 100vh;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             perspective: 1000px;
-            margin-top: 0;
         }
 
         .parallax-bg {
@@ -122,8 +114,6 @@
             z-index: 2;
             padding: 20px;
             transform-style: preserve-3d;
-            width: 100%;
-            margin-top: 0;
         }
 
         .hero-title {
@@ -136,7 +126,6 @@
             text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
             animation: titleGlow 4s infinite alternate, float 6s infinite ease-in-out;
             position: relative;
-            line-height: 1.1;
         }
 
         @keyframes titleGlow {
@@ -217,31 +206,23 @@
             left: 10px;
         }
 
-        /* Навигация с неоновым эффектом - ИСПРАВЛЕНА */
+        /* Навигация с неоновым эффектом */
         .navbar {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
             z-index: 1000;
             padding: 15px 0;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(2, 7, 23, 0.98) !important;
+            background: rgba(2, 7, 23, 0.95);
             border-bottom: 1px solid rgba(96, 165, 250, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            height: 70px;
-            display: flex;
-            align-items: center;
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
-            height: 100%;
         }
 
         .nav-logo {
@@ -256,9 +237,6 @@
             position: relative;
             display: flex;
             align-items: center;
-            white-space: nowrap;
-            height: 100%;
-            z-index: 1001;
         }
 
         .nav-logo::before {
@@ -276,8 +254,6 @@
             display: flex;
             list-style: none;
             gap: 5px;
-            margin: 0;
-            padding: 0;
         }
 
         .nav-item {
@@ -299,8 +275,6 @@
             min-width: 120px;
             background: rgba(30, 64, 175, 0.1);
             border: 1px solid rgba(96, 165, 250, 0.2);
-            user-select: none;
-            -webkit-user-select: none;
         }
 
         .nav-link::before {
@@ -348,80 +322,6 @@
             box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
         }
 
-        /* Мобильное меню - ИСПРАВЛЕНО */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--gojo-white);
-            font-size: 1.8rem;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1001;
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-        }
-
-        .mobile-menu-btn:hover {
-            color: var(--gojo-light-blue);
-        }
-
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(2, 7, 23, 0.95);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(2, 7, 23, 0.98), rgba(15, 23, 42, 0.95));
-            z-index: 1000;
-            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            padding: 80px 20px 30px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            border-left: 2px solid rgba(96, 165, 250, 0.3);
-            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu .nav-menu {
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .mobile-menu .nav-link {
-            min-width: 100%;
-            text-align: left;
-            padding: 15px 20px;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            background: rgba(30, 64, 175, 0.15);
-        }
-
         /* Разделы */
         .section {
             padding: 120px 0;
@@ -439,7 +339,6 @@
             color: transparent;
             text-transform: uppercase;
             letter-spacing: 2px;
-            line-height: 1.2;
         }
 
         .section-title::after {
@@ -587,7 +486,7 @@
             transform: translateY(0);
         }
 
-        /* Биография с интерактивной временной шкалой - ИСПРАВЛЕНА */
+        /* Биография с интерактивной временной шкалой */
         .timeline-container {
             position: relative;
             max-width: 1000px;
@@ -691,7 +590,6 @@
             color: transparent;
             text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
             animation: infinityTitle 5s infinite alternate;
-            line-height: 1.2;
         }
 
         @keyframes infinityTitle {
@@ -779,7 +677,7 @@
             box-shadow: 0 0 30px rgba(96, 165, 250, 0.8);
         }
 
-        /* Видео-плеер с Google Drive - ИСПРАВЛЕН ДЛЯ МОБИЛЬНЫХ */
+        /* Видео-плеер с Google Drive */
         .video-player-section {
             background: rgba(15, 23, 42, 0.9);
             padding: 80px 0;
@@ -805,37 +703,29 @@
             overflow: hidden;
             border: 1px solid rgba(96, 165, 250, 0.3);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
         }
 
         .player-header {
             background: linear-gradient(90deg, var(--gojo-blue), var(--gojo-purple));
-            padding: 20px 25px;
+            padding: 25px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            min-height: 80px;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
         .player-title {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--gojo-white);
             display: flex;
             align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            line-height: 1.3;
+            gap: 15px;
         }
 
         .player-title i {
             color: var(--gojo-red);
             animation: pulse 2s infinite;
-            font-size: 1.8rem;
         }
 
         @keyframes pulse {
@@ -846,33 +736,28 @@
         .player-controls {
             display: flex;
             gap: 15px;
-            align-items: center;
         }
 
         .player-main {
             display: grid;
             grid-template-columns: 1fr 350px;
-            gap: 25px;
-            padding: 25px;
+            gap: 30px;
+            padding: 30px;
         }
 
-        .player-main-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* ВИДЕО КОНТЕЙНЕР - ИСПРАВЛЕН ДЛЯ МОБИЛЬНЫХ */
+        /* ИСПРАВЛЕННЫЙ ВИДЕО-КОНТЕЙНЕР */
         .video-container {
             position: relative;
             background: #000;
             border-radius: 15px;
             overflow: hidden;
+            aspect-ratio: 16/9; /* Стандартное соотношение для видео */
             margin-bottom: 20px;
-            width: 100%;
             min-height: 400px;
-            aspect-ratio: 16/9;
+            width: 100%;
         }
 
+        /* ИСПРАВЛЕННЫЙ ВРАППЕР ДЛЯ IFRAME */
         .video-wrapper {
             position: absolute;
             top: 0;
@@ -885,31 +770,33 @@
             justify-content: center;
         }
 
+        /* ИСПРАВЛЕННЫЙ GOOGLE DRIVE ПЛЕЕР */
         .google-drive-player {
-            width: 100% !important;
-            height: 100% !important;
+            width: 100%;
+            height: 100%;
             border: none;
             background: #000;
-            position: absolute;
-            top: 0;
-            left: 0;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             background: rgba(0, 0, 0, 0.85);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 20px;
-            z-index: 10;
-            cursor: pointer;
+            opacity: 1;
             transition: opacity 0.3s ease;
+            pointer-events: all;
+            cursor: pointer;
+            z-index: 10;
         }
 
         .video-overlay.hidden {
@@ -918,20 +805,17 @@
         }
 
         .play-button {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(45deg, var(--gojo-red), var(--gojo-pink));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: white;
             box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
             transition: transform 0.3s ease;
-            cursor: pointer;
-            user-select: none;
-            -webkit-user-select: none;
         }
 
         .play-button:hover {
@@ -945,13 +829,12 @@
             padding: 25px;
             border: 1px solid rgba(96, 165, 250, 0.2);
             margin-top: 20px;
-            flex: 1;
         }
 
         .episode-info h4 {
             color: var(--gojo-cyan);
             margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             border-bottom: 2px solid rgba(96, 165, 250, 0.3);
             padding-bottom: 10px;
             display: flex;
@@ -977,13 +860,13 @@
             color: var(--gojo-light-blue);
             display: block;
             margin-bottom: 5px;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .episode-description {
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .player-sidebar {
@@ -991,17 +874,14 @@
             border-radius: 15px;
             padding: 25px;
             border: 1px solid rgba(96, 165, 250, 0.2);
-            display: flex;
-            flex-direction: column;
         }
 
         .sidebar-section {
-            margin-bottom: 25px;
-            flex: 0 0 auto;
+            margin-bottom: 30px;
         }
 
         .sidebar-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--gojo-light-blue);
             margin-bottom: 15px;
             padding-bottom: 10px;
@@ -1013,12 +893,11 @@
 
         .selection-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
             gap: 10px;
             max-height: 200px;
             overflow-y: auto;
             padding-right: 5px;
-            -webkit-overflow-scrolling: touch;
         }
 
         .selection-grid::-webkit-scrollbar {
@@ -1034,20 +913,12 @@
             background: rgba(30, 64, 175, 0.2);
             border: 1px solid rgba(96, 165, 250, 0.3);
             color: var(--gojo-white);
-            padding: 10px 5px;
+            padding: 12px;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             font-weight: 600;
-            font-size: 0.9rem;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
         }
 
         .selection-btn:hover {
@@ -1079,16 +950,13 @@
             background: rgba(30, 64, 175, 0.2);
             border: 1px solid rgba(96, 165, 250, 0.3);
             color: var(--gojo-white);
-            padding: 12px;
+            padding: 15px;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             font-weight: 600;
-            font-size: 1rem;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
+            font-size: 1.1rem;
         }
 
         .season-tab:hover {
@@ -1136,23 +1004,19 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            padding: 20px;
         }
 
         .feedback-container {
             background: linear-gradient(145deg, rgba(30, 64, 175, 0.9), rgba(15, 23, 42, 0.95));
             max-width: 600px;
-            width: 100%;
-            padding: 35px;
+            width: 90%;
+            padding: 40px;
             border-radius: 20px;
             border: 2px solid rgba(96, 165, 250, 0.3);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
             position: relative;
             transform: translateY(20px);
             transition: transform 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
         }
 
         .feedback-modal.show .feedback-container {
@@ -1174,15 +1038,15 @@
 
         #feedback-button {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 65px;
-            height: 65px;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple));
             border: none;
             border-radius: 50%;
             color: white;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(96, 165, 250, 0.4);
             z-index: 9998;
@@ -1190,9 +1054,6 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
         }
 
         #feedback-button:hover {
@@ -1216,64 +1077,54 @@
             font-weight: 700;
         }
 
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
-
-        /* Большие планшеты и маленькие ноутбуки */
-        @media (max-width: 1400px) {
-            .hero-title {
-                font-size: 5rem;
-            }
-            
-            .section-title {
-                font-size: 3.5rem;
-            }
-            
-            .infinity-title {
-                font-size: 4.5rem;
-            }
-        }
-
-        /* Планшеты и маленькие экраны */
+        /* Мобильная адаптация */
         @media (max-width: 1200px) {
             .hero-title {
-                font-size: 4rem;
+                font-size: 4.5rem;
             }
             
             .section-title {
                 font-size: 3rem;
             }
             
-            .infinity-title {
-                font-size: 4rem;
+            .player-main {
+                grid-template-columns: 1fr;
+            }
+            
+            .episode-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-container {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
             }
             
             .player-main {
-                grid-template-columns: 1fr 280px;
-                gap: 20px;
                 padding: 20px;
             }
             
             .video-container {
                 min-height: 350px;
             }
-            
-            .abilities-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            
-            .player-title {
-                font-size: 1.6rem;
-            }
         }
 
-        /* Большие телефоны и планшеты в портретной ориентации */
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .hero-title {
-                font-size: 3.2rem;
+                font-size: 2.8rem;
             }
             
             .hero-subtitle {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
             
             .section {
@@ -1282,103 +1133,33 @@
             
             .section-title {
                 font-size: 2.5rem;
-                margin-bottom: 50px;
             }
             
             .infinity-title {
                 font-size: 3rem;
             }
             
-            /* Навигация для планшетов */
-            .nav-menu {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: flex;
-                margin-right: 15px;
-            }
-            
             .nav-logo {
-                font-size: 2rem;
-                margin-left: 15px;
+                font-size: 1.8rem;
             }
             
             .nav-logo::before {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 margin-right: 10px;
             }
             
-            .nav-logo::after {
-                font-size: 2rem;
-            }
-            
-            /* Видео-плеер для планшетов */
-            .player-main {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
             .player-header {
-                padding: 15px 20px;
                 flex-direction: column;
+                gap: 15px;
                 text-align: center;
-                gap: 10px;
-                min-height: auto;
-            }
-            
-            .player-title {
-                font-size: 1.4rem;
-                justify-content: center;
-            }
-            
-            .player-title i {
-                font-size: 1.6rem;
-            }
-            
-            /* Видео контейнер */
-            .video-container {
-                min-height: 300px;
-                aspect-ratio: 16/9;
-                width: 100%;
             }
             
             .selection-grid {
-                grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
-                gap: 8px;
+                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
             }
             
-            .selection-btn {
-                padding: 8px 4px;
-                font-size: 0.85rem;
-                min-height: 35px;
-            }
-            
-            /* Биография для планшетов */
-            .timeline-content {
-                width: 85%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .timeline-item:nth-child(odd),
-            .timeline-item {
-                flex-direction: column;
-            }
-            
-            .timeline-line {
-                left: 50% !important;
-                transform: translateX(-50%);
-            }
-            
-            .timeline-marker {
-                left: 50% !important;
-                transform: translateX(-50%);
-            }
-            
-            /* Анимация глаз */
             .gojo-eyes {
-                width: 160px;
+                width: 150px;
                 gap: 30px;
             }
             
@@ -1401,106 +1182,28 @@
                 left: 7.5px;
             }
             
-            .infinity-container {
-                width: 300px;
-                height: 300px;
-            }
-            
-            .infinity-animation {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .ring-1 {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .ring-2 {
-                width: 160px;
-                height: 160px;
-                top: 20px;
-                left: 20px;
-            }
-            
-            .ring-3 {
-                width: 120px;
-                height: 120px;
-                top: 40px;
-                left: 40px;
-            }
-            
-            .ring-4 {
-                width: 80px;
-                height: 80px;
-                top: 60px;
-                left: 60px;
-            }
-            
-            .infinity-center {
-                width: 50px;
-                height: 50px;
-            }
-            
             .play-button {
                 width: 60px;
                 height: 60px;
                 font-size: 2rem;
             }
-        }
+            
+            /* Корректировка для мобильных */
+            .video-container {
+                aspect-ratio: 16/9;
+                min-height: 250px;
+            }
 
-        /* Телефоны в альбомной ориентации */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
+            #feedback-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
             }
-            
-            .navbar {
-                height: 70px;
-                padding: 15px 0;
-            }
-            
-            .nav-logo {
-                font-size: 1.8rem;
-                margin-left: 15px;
-            }
-            
-            .nav-logo::before {
-                font-size: 1.6rem;
-                margin-right: 8px;
-            }
-            
-            .nav-logo::after {
-                font-size: 1.8rem;
-            }
-            
-            .mobile-menu-btn {
-                margin-right: 15px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.6rem;
-            }
-            
-            .hero {
-                height: calc(100vh - 70px);
-                min-height: 400px;
-            }
-            
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.3rem;
-                letter-spacing: 2px;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .infinity-title {
-                font-size: 2.5rem;
+
+            .feedback-container {
+                padding: 30px 20px;
             }
             
             /* Способности для телефонов - 3D ЭФФЕКТ СОХРАНЕН */
@@ -1513,6 +1216,10 @@
                 padding: 25px 20px;
             }
             
+            .ability-card:hover {
+                transform: perspective(1000px) rotateY(10deg) translateY(-10px) scale(1.03);
+            }
+            
             .ability-icon {
                 font-size: 2.8rem;
             }
@@ -1520,243 +1227,15 @@
             .ability-title {
                 font-size: 1.6rem;
             }
-            
-            /* Галерея для телефонов */
-            .gallery-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .gallery-item {
-                height: 280px;
-            }
-            
-            /* Видео-плеер для телефонов */
-            .player-main {
-                padding: 15px;
-            }
-            
-            .video-container {
-                min-height: 250px;
-                margin-bottom: 15px;
-                aspect-ratio: 16/9;
-                width: 100%;
-            }
-            
-            .video-wrapper {
-                width: 100%;
-                height: 100%;
-            }
-            
-            .google-drive-player {
-                width: 100% !important;
-                height: 100% !important;
-            }
-            
-            .video-overlay p {
-                font-size: 1rem;
-                text-align: center;
-                padding: 0 10px;
-            }
-            
-            .selection-grid {
-                grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
-                gap: 6px;
-            }
-            
-            .selection-btn {
-                padding: 6px 3px;
-                font-size: 0.8rem;
-                min-height: 30px;
-            }
-            
-            .episode-info {
-                padding: 20px;
-            }
-            
-            .episode-details {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
-            .episode-detail {
-                padding: 12px;
-            }
-            
-            .player-sidebar {
-                padding: 20px;
-            }
-            
-            /* Биография для телефонов */
-            .timeline-content {
-                width: 90%;
-                padding: 20px;
-            }
-            
-            .timeline-line {
-                left: 50% !important;
-            }
-            
-            .timeline-marker {
-                left: 50% !important;
-            }
-            
-            .timeline-year {
-                font-size: 1.5rem;
-            }
-            
-            /* Анимация глаз для телефонов */
-            .gojo-eyes {
-                width: 140px;
-                gap: 25px;
-                margin: 25px auto;
-            }
-            
-            .eye {
-                width: 55px;
-                height: 55px;
-            }
-            
-            .iris {
-                width: 27px;
-                height: 27px;
-                top: 14px;
-                left: 14px;
-            }
-            
-            .pupil {
-                width: 13px;
-                height: 13px;
-                top: 7px;
-                left: 7px;
-            }
-            
-            /* Бесконечность для телефонов */
-            .infinity-container {
-                width: 250px;
-                height: 250px;
-            }
-            
-            .infinity-animation {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .ring-1 {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .ring-2 {
-                width: 140px;
-                height: 140px;
-                top: 20px;
-                left: 20px;
-            }
-            
-            .ring-3 {
-                width: 100px;
-                height: 100px;
-                top: 40px;
-                left: 40px;
-            }
-            
-            .ring-4 {
-                width: 60px;
-                height: 60px;
-                top: 60px;
-                left: 60px;
-            }
-            
-            .infinity-center {
-                width: 40px;
-                height: 40px;
-            }
-            
-            /* Футер для телефонов */
-            footer {
-                padding: 40px 0 20px;
-            }
-            
-            /* Форма обратной связи для телефонов */
-            #feedback-button {
-                width: 55px;
-                height: 55px;
-                font-size: 1.4rem;
-                bottom: 15px;
-                right: 15px;
-            }
-
-            .feedback-container {
-                padding: 25px 15px;
-            }
-            
-            .mobile-menu {
-                width: 280px;
-                padding: 70px 15px 20px;
-            }
-            
-            /* Гоё-цитата для маленьких экранов */
-            .gojo-quote {
-                font-size: 1.1rem !important;
-                padding: 15px !important;
-                margin: 20px auto !important;
-            }
-            
-            /* Оформление секций */
-            .section {
-                padding: 60px 0;
-            }
-            
-            .player-title {
-                font-size: 1.3rem;
-            }
         }
 
-        /* Маленькие телефоны */
         @media (max-width: 576px) {
-            body {
-                padding-top: 70px;
-            }
-            
-            .navbar {
-                height: 70px;
-                padding: 15px 0;
-            }
-            
-            .nav-logo {
-                font-size: 1.6rem;
-                margin-left: 10px;
-            }
-            
-            .nav-logo::before {
-                font-size: 1.4rem;
-                margin-right: 6px;
-            }
-            
-            .nav-logo::after {
-                font-size: 1.6rem;
-            }
-            
-            .mobile-menu-btn {
-                margin-right: 10px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.4rem;
-            }
-            
-            .hero {
-                height: calc(100vh - 70px);
-                min-height: 350px;
-            }
-            
             .hero-title {
                 font-size: 2.2rem;
             }
             
             .hero-subtitle {
                 font-size: 1.1rem;
-                letter-spacing: 1px;
             }
             
             .section-title {
@@ -1785,61 +1264,6 @@
                 font-size: 1.4rem;
             }
             
-            /* Видео-плеер для маленьких телефонов */
-            .player-title {
-                font-size: 1.2rem;
-            }
-            
-            .player-header {
-                padding: 12px 15px;
-            }
-            
-            .selection-grid {
-                grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-                gap: 5px;
-            }
-            
-            .selection-btn {
-                padding: 5px 2px;
-                font-size: 0.75rem;
-                min-height: 28px;
-            }
-            
-            .season-tab {
-                padding: 10px;
-                font-size: 0.9rem;
-            }
-            
-            .video-container {
-                min-height: 200px;
-                border-radius: 10px;
-                aspect-ratio: 16/9;
-            }
-            
-            .play-button {
-                width: 50px;
-                height: 50px;
-                font-size: 1.8rem;
-            }
-            
-            .episode-info {
-                padding: 15px;
-                border-radius: 10px;
-            }
-            
-            .episode-info h4 {
-                font-size: 1.2rem;
-            }
-            
-            .player-sidebar {
-                padding: 15px;
-                border-radius: 10px;
-            }
-            
-            .sidebar-title {
-                font-size: 1.2rem;
-            }
-            
             /* Анимация глаз для маленьких телефонов */
             .gojo-eyes {
                 width: 120px;
@@ -1866,63 +1290,27 @@
                 left: 6.5px;
             }
             
-            /* Бесконечность для маленьких телефонов */
-            .infinity-container {
-                width: 200px;
-                height: 200px;
+            .selection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+                gap: 6px;
             }
             
-            .infinity-animation {
-                width: 150px;
-                height: 150px;
+            .selection-btn {
+                padding: 8px 4px;
+                font-size: 0.9rem;
             }
             
-            .ring-1 {
-                width: 150px;
-                height: 150px;
+            .video-container {
+                min-height: 200px;
             }
             
-            .ring-2 {
-                width: 120px;
-                height: 120px;
-                top: 15px;
-                left: 15px;
-            }
-            
-            .ring-3 {
-                width: 90px;
-                height: 90px;
-                top: 30px;
-                left: 30px;
-            }
-            
-            .ring-4 {
-                width: 60px;
-                height: 60px;
-                top: 45px;
-                left: 45px;
-            }
-            
-            .infinity-center {
-                width: 35px;
-                height: 35px;
-            }
-            
-            /* Мобильное меню для маленьких экранов */
-            .mobile-menu {
-                width: 85%;
-                max-width: 280px;
-                right: -100%;
-                padding: 60px 15px 15px;
-            }
-            
-            .mobile-menu .nav-link {
-                padding: 12px 15px;
-                font-size: 1.1rem;
+            .play-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
             }
         }
 
-        /* Очень маленькие телефоны */
         @media (max-width: 375px) {
             .hero-title {
                 font-size: 1.9rem;
@@ -1941,28 +1329,22 @@
             }
             
             .selection-grid {
-                grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
-                gap: 4px;
+                grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+                gap: 5px;
             }
             
             .selection-btn {
-                padding: 4px 1px;
-                font-size: 0.7rem;
-                min-height: 25px;
+                padding: 6px 2px;
+                font-size: 0.8rem;
             }
             
             .nav-logo {
                 font-size: 1.5rem;
-                margin-left: 8px;
             }
             
             .nav-logo::before {
                 font-size: 1.3rem;
                 margin-right: 5px;
-            }
-            
-            .nav-logo::after {
-                font-size: 1.5rem;
             }
             
             .video-container {
@@ -1973,102 +1355,6 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1.6rem;
-            }
-        }
-
-        /* Портретная ориентация для телефонов */
-        @media (max-height: 600px) and (orientation: portrait) {
-            .hero {
-                min-height: 350px;
-                padding-top: 0;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-                margin-bottom: 5px;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-                margin-bottom: 15px;
-            }
-            
-            .gojo-eyes {
-                width: 100px;
-                margin: 15px auto;
-            }
-            
-            .eye {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .iris {
-                width: 20px;
-                height: 20px;
-                top: 10px;
-                left: 10px;
-            }
-            
-            .pupil {
-                width: 10px;
-                height: 10px;
-                top: 5px;
-                left: 5px;
-            }
-            
-            .video-container {
-                min-height: 180px;
-            }
-        }
-
-        /* Ландшафтная ориентация для телефонов */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .hero {
-                min-height: 280px;
-                padding-top: 0;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-                margin-bottom: 5px;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-                margin-bottom: 10px;
-            }
-            
-            .gojo-eyes {
-                width: 100px;
-                margin: 10px auto;
-            }
-            
-            .eye {
-                width: 35px;
-                height: 35px;
-            }
-            
-            .iris {
-                width: 18px;
-                height: 18px;
-                top: 8.5px;
-                left: 8.5px;
-            }
-            
-            .pupil {
-                width: 9px;
-                height: 9px;
-                top: 4.5px;
-                left: 4.5px;
-            }
-            
-            .video-container {
-                min-height: 150px;
-            }
-            
-            .player-main {
-                padding: 10px;
             }
         }
 
@@ -2185,30 +1471,8 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="nav-logo"></a>
-            
-            <!-- Кнопка мобильного меню -->
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <!-- Оверлей для мобильного меню -->
-            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
-            
-            <!-- Мобильное меню -->
-            <div class="mobile-menu" id="mobile-menu">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="#about" class="nav-link">О персонаже</a></li>
-                    <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
-                    <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
-                    <li class="nav-item"><a href="#biography" class="nav-link">Биография</a></li>
-                    <li class="nav-item"><a href="#infinity" class="nav-link">Бесконечность</a></li>
-                    <li class="nav-item"><a href="#player" class="nav-link nav-cta">СМОТРЕТЬ АНИМЕ</a></li>
-                </ul>
-            </div>
-            
-            <!-- Десктопное меню -->
-            <ul class="nav-menu" id="desktop-menu">
-                <li class="nav-item"><a href="#about" class="nav-link">О персонаже</a></li>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#about" class="nav-link active">О персонаже</a></li>
                 <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
                 <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
                 <li class="nav-item"><a href="#biography" class="nav-link">Биография</a></li>
@@ -2366,7 +1630,7 @@
             <div class="gallery-container">
                 <!-- Галерея изображений и видео -->
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо Сатору" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо Сатору">
                     <div class="gallery-overlay">
                         <h3 style="font-size: 1.5rem; margin-bottom: 10px;">СИЛЬНЕЙШИЙ КОЛДУН</h3>
                         <p>Годжо с характерной повязкой на глазах</p>
@@ -2374,7 +1638,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537502-9e1a6b8b1b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Шесть глаз" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1639322537502-9e1a6b8b1b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Шесть глаз">
                     <div class="gallery-overlay">
                         <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ШЕСТЬ ГЛАЗ</h3>
                         <p>Активация уникальной наследственной способности</p>
@@ -2382,7 +1646,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <video autoplay muted loop playsinline preload="none">
+                    <video autoplay muted loop playsinline>
                         <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-blue-energy-swirl-33413-large.mp4" type="video/mp4">
                     </video>
                     <div class="gallery-overlay">
@@ -2392,7 +1656,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537196-3b3d01a88a0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Техника расширения" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1639322537196-3b3d01a88a0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Техника расширения">
                     <div class="gallery-overlay">
                         <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ТЕХНИКА РАСШИРЕНИЯ</h3>
                         <p>Применение силы притяжения и отталкивания</p>
@@ -2400,7 +1664,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <video autoplay muted loop playsinline preload="none">
+                    <video autoplay muted loop playsinline>
                         <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-geometric-shapes-rotating-33416-large.mp4" type="video/mp4">
                     </video>
                     <div class="gallery-overlay">
@@ -2410,7 +1674,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537478-3c92e9c34b7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо в бою" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1639322537478-3c92e9c34b7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо в бою">
                     <div class="gallery-overlay">
                         <h3 style="font-size: 1.5rem; margin-bottom: 10px;">В БОЮ</h3>
                         <p>Годжо против особых проклятий уровня катастрофы</p>
@@ -2431,7 +1695,7 @@
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">1989</div>
-                        <p>Рождение в клане Годжо. С самого рождения обладал техникой «Бесконечность» и «Шесть глаз». Его рождение изменило баланс сил во всем мире магии.</p>
+                        <p>Рождение в клане Годжо. С самого рождения обладал техникой «Бесконечность» и «Шесть глаз». Его рождение изменило баланс сил в мире магии.</p>
                     </div>
                 </div>
                 
@@ -2516,7 +1780,7 @@
                 </div>
                 
                 <div class="player-main">
-                    <div class="player-main-content">
+                    <div>
                         <div class="video-container">
                             <!-- Контейнер для Google Drive iframe -->
                             <div class="video-wrapper" id="video-wrapper">
@@ -2527,7 +1791,7 @@
                                 <div class="play-button" id="play-button">
                                     <i class="fas fa-play"></i>
                                 </div>
-                                <p style="font-size: 1.2rem; color: var(--gojo-white); text-align: center;">Нажмите для воспроизведения</p>
+                                <p style="font-size: 1.2rem; color: var(--gojo-white);">Нажмите для воспроизведения</p>
                             </div>
                         </div>
                         
@@ -2587,18 +1851,18 @@
                         </div>
                         
                         <!-- Озвучка -->
-                        <div class="sidebar-section" style="background: rgba(96, 165, 250, 0.1); border-radius: 10px; padding: 15px;">
-                            <h3 class="sidebar-title" style="color: var(--gojo-cyan); margin-bottom: 10px;">
+                        <div class="sidebar-section" style="background: rgba(96, 165, 250, 0.1); border-radius: 10px; padding: 20px;">
+                            <h3 class="sidebar-title" style="color: var(--gojo-cyan);">
                                 <i class="fas fa-volume-up"></i>
                                 Озвучка
                             </h3>
-                            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(30, 64, 175, 0.2); border-radius: 8px;">
-                                <div style="width: 35px; height: 35px; background: rgba(96, 165, 250, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-tv" style="color: var(--gojo-light-blue); font-size: 0.9rem;"></i>
+                            <div style="display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(30, 64, 175, 0.2); border-radius: 10px;">
+                                <div style="width: 40px; height: 40px; background: rgba(96, 165, 250, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-tv" style="color: var(--gojo-light-blue);"></i>
                                 </div>
                                 <div>
-                                    <div style="font-weight: 600; font-size: 1rem;">AniLibria.TV</div>
-                                    <div style="font-size: 0.85rem; opacity: 0.8;">Официальная русская озвучка</div>
+                                    <div style="font-weight: 600; font-size: 1.1rem;">AniLibria.TV</div>
+                                    <div style="font-size: 0.9rem; opacity: 0.8;">Официальная русская озвучка</div>
                                 </div>
                             </div>
                         </div>
@@ -2695,31 +1959,31 @@
     <script>
         // === ССЫЛКИ НА GOOGLE DRIVE ДЛЯ ВСЕХ СЕРИЙ ===
         const googleDriveLinks = {
-            1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3",
-            2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX",
-            3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg",
-            4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n",
-            5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0",
-            6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI",
-            7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e",
-            8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-",
-            9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka",
-            10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J",
-            11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb",
-            12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL",
-            13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z",
-            14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6",
-            15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3",
-            16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D",
-            17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_",
-            18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI",
-            19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj",
-            20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl",
-            21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm",
-            22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy",
-            23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk",
-            24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"
-        };
+    1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3", // ID файла для серии 1
+    2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX", // ID файла для серии 2
+    3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg", // ID файла для серии 3
+    4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n", // ID файла для серии 4
+    5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0", // ID файла для серии 5
+    6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI", // ID файла для серии 6
+    7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e", // ID файла для серии 7
+    8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-", // ID файла для серии 8
+    9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka", // ID файла для серии 9
+    10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J", // ID файла для серии 10
+    11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb", // ID файла для серии 11
+    12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL", // ID файла для серии 12
+    13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z", // ID файла для серии 13
+    14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6", // ID файла для серии 14
+    15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3", // ID файла для серии 15
+    16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D", // ID файла для серии 16
+    17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_", // ID файла для серии 17
+    18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI", // ID файла для серии 18
+    19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj", // ID файла для серии 19
+    20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl", // ID файла для серии 20
+    21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm", // ID файла для серии 21
+    22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy", // ID файла для серии 22
+    23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk", // ID файла для серии 23
+    24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"  // ID файла для серии 24
+};
 
         // Информация о всех сериях
         const episodeInfo = {
@@ -2892,26 +2156,12 @@
                     }
                 });
                 
-                button.addEventListener('touchstart', (e) => {
-                    e.currentTarget.style.transform = 'scale(0.95)';
-                });
-                
-                button.addEventListener('touchend', (e) => {
-                    e.currentTarget.style.transform = '';
-                });
-                
                 episodeSelector.appendChild(button);
             }
             
             // Загружаем первую серию
             loadVideo(currentEpisode);
             updateEpisodeInfo(currentEpisode);
-        }
-        
-        // Функция для получения правильного URL для Google Drive
-        function getGoogleDriveEmbedUrl(fileId, autoplay = false) {
-            // Правильный формат URL для Google Drive embed
-            return `https://drive.google.com/file/d/${fileId}/preview?${autoplay ? 'autoplay=1&' : ''}embedded=true`;
         }
         
         // Переключение на серию
@@ -2958,22 +2208,12 @@
                 const iframe = document.createElement('iframe');
                 iframe.className = 'google-drive-player';
                 
-                // Используем правильный URL для Google Drive
-                iframe.src = getGoogleDriveEmbedUrl(fileId);
+                // Используем правильный URL для превью
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
                 iframe.frameBorder = "0";
                 iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
                 iframe.allowFullscreen = true;
                 iframe.title = `Серия ${episodeNumber}`;
-                iframe.style.border = "none";
-                
-                // Важные атрибуты для работы на GitHub Pages
-                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
-                iframe.setAttribute('referrerpolicy', 'no-referrer');
-                iframe.setAttribute('crossorigin', 'anonymous');
-                
-                // Атрибуты для мобильных устройств
-                iframe.setAttribute('playsinline', '1');
-                iframe.setAttribute('webkit-playsinline', '1');
                 
                 videoWrapper.appendChild(iframe);
                 
@@ -2989,15 +2229,6 @@
                     // Принудительно устанавливаем размеры iframe после загрузки
                     iframe.style.width = '100%';
                     iframe.style.height = '100%';
-                    iframe.style.position = 'absolute';
-                    iframe.style.top = '0';
-                    iframe.style.left = '0';
-                };
-                
-                // Обработчик ошибок
-                iframe.onerror = function() {
-                    console.error(`Ошибка загрузки серии ${episodeNumber}`);
-                    showNoVideoMessage(episodeNumber);
                 };
             } else {
                 console.warn(`Ссылка для серии ${episodeNumber} не найдена`);
@@ -3016,21 +2247,11 @@
                 // Создаем новый iframe для воспроизведения с автоплеем
                 const iframe = document.createElement('iframe');
                 iframe.className = 'google-drive-player';
-                iframe.src = getGoogleDriveEmbedUrl(fileId, true);
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
                 iframe.frameBorder = "0";
                 iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
                 iframe.allowFullscreen = true;
                 iframe.title = `Серия ${episodeNumber}`;
-                iframe.style.border = "none";
-                
-                // Важные атрибуты для работы на GitHub Pages
-                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
-                iframe.setAttribute('referrerpolicy', 'no-referrer');
-                iframe.setAttribute('crossorigin', 'anonymous');
-                
-                // Атрибуты для мобильных устройств
-                iframe.setAttribute('playsinline', '1');
-                iframe.setAttribute('webkit-playsinline', '1');
                 
                 videoWrapper.appendChild(iframe);
                 
@@ -3042,16 +2263,6 @@
                 // Устанавливаем размеры iframe
                 iframe.style.width = '100%';
                 iframe.style.height = '100%';
-                iframe.style.position = 'absolute';
-                iframe.style.top = '0';
-                iframe.style.left = '0';
-                
-                // Обработчик ошибок
-                iframe.onerror = function() {
-                    console.error(`Ошибка воспроизведения серии ${episodeNumber}`);
-                    videoOverlay.classList.remove('hidden');
-                    alert('Не удалось загрузить видео. Проверьте настройки доступа к файлу на Google Drive.');
-                };
             } else {
                 showNoVideoMessage(episodeNumber);
             }
@@ -3098,127 +2309,15 @@
             document.getElementById('episode-number').textContent = episodeNumber;
             document.getElementById('episode-duration').textContent = info.duration;
             document.getElementById('episode-description').textContent = info.description;
-        }
-
-        // Инициализация мобильного меню
-        function initMobileMenu() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-            const mobileMenu = document.getElementById('mobile-menu');
             
-            // Открытие мобильного меню
-            mobileMenuBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                mobileMenuOverlay.style.display = 'block';
-                setTimeout(() => {
-                    mobileMenuOverlay.classList.add('active');
-                }, 10);
-                mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
-            });
-            
-            // Закрытие мобильного меню
-            function closeMobileMenu() {
-                mobileMenuOverlay.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                setTimeout(() => {
-                    mobileMenuOverlay.style.display = 'none';
-                }, 300);
-                document.body.style.overflow = '';
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-            
-            // Закрытие по клику на оверлей
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-            
-            // Закрытие по клику на ссылку в меню
-            mobileMenu.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    closeMobileMenu();
-                    
-                    // Плавная прокрутка после закрытия меню
+            // Проверяем, есть ли ссылка на видео
+            if (!googleDriveLinks[episodeNumber] || googleDriveLinks[episodeNumber] === '') {
+                // Показываем сообщение об отсутствии видео только если это не первая серия
+                if (episodeNumber !== 1) {
                     setTimeout(() => {
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 70,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }, 350);
-                });
-            });
-            
-            // Закрытие по нажатию ESC
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeMobileMenu();
+                        showNoVideoMessage(episodeNumber);
+                    }, 100);
                 }
-            });
-            
-            // Обработка касания для кнопки меню
-            mobileMenuBtn.addEventListener('touchstart', (e) => {
-                e.currentTarget.style.transform = 'scale(0.9)';
-            });
-            
-            mobileMenuBtn.addEventListener('touchend', (e) => {
-                e.currentTarget.style.transform = '';
-            });
-        }
-
-        // Исправление временной шкалы для мобильных
-        function fixTimelineForMobile() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const timelineLine = document.querySelector('.timeline-line');
-            const timelineMarkers = document.querySelectorAll('.timeline-marker');
-            
-            if (window.innerWidth <= 992) {
-                // Для мобильных - всё по центру
-                if (timelineLine) {
-                    timelineLine.style.left = '50%';
-                    timelineLine.style.transform = 'translateX(-50%)';
-                }
-                
-                timelineMarkers.forEach(marker => {
-                    marker.style.left = '50%';
-                    marker.style.transform = 'translateX(-50%)';
-                });
-                
-                timelineItems.forEach(item => {
-                    item.style.flexDirection = 'column';
-                    const content = item.querySelector('.timeline-content');
-                    if (content) {
-                        content.style.width = '90%';
-                        content.style.margin = '0 auto';
-                    }
-                });
-            } else {
-                // Для ПК - обычное расположение
-                if (timelineLine) {
-                    timelineLine.style.left = '50%';
-                    timelineLine.style.transform = 'translateX(-50%)';
-                }
-                
-                timelineMarkers.forEach(marker => {
-                    marker.style.left = '50%';
-                    marker.style.transform = 'translateX(-50%)';
-                });
-                
-                timelineItems.forEach((item, index) => {
-                    if (index % 2 === 0) {
-                        item.style.flexDirection = 'row';
-                    } else {
-                        item.style.flexDirection = 'row-reverse';
-                    }
-                    const content = item.querySelector('.timeline-content');
-                    if (content) {
-                        content.style.width = '45%';
-                        content.style.margin = '0';
-                    }
-                });
             }
         }
 
@@ -3357,14 +2456,6 @@
                         initBackgroundParticles();
                         initVideoPlayer();
                         initFeedbackForm();
-                        initMobileMenu();
-                        fixTimelineForMobile();
-                        
-                        // Назначаем активную ссылку для начальной навигации
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        document.querySelector('.nav-link[href="#about"]').classList.add('active');
                     }, 800);
                 }, 1200);
             }
@@ -3378,16 +2469,13 @@
         function initBackgroundParticles() {
             particlesJS("particles-js", {
                 particles: {
-                    number: { 
-                        value: window.innerWidth < 768 ? 40 : 80, 
-                        density: { enable: true, value_area: 800 } 
-                    },
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
                     color: { value: ["#60a5fa", "#7c3aed", "#ef4444", "#22d3ee"] },
                     shape: { type: "circle" },
                     opacity: { value: 0.5, random: true },
                     size: { value: 3, random: true },
                     line_linked: {
-                        enable: window.innerWidth < 768 ? false : true,
+                        enable: true,
                         distance: 150,
                         color: "#60a5fa",
                         opacity: 0.2,
@@ -3406,10 +2494,7 @@
                 interactivity: {
                     detect_on: "canvas",
                     events: {
-                        onhover: { 
-                            enable: window.innerWidth > 768, 
-                            mode: "repulse" 
-                        },
+                        onhover: { enable: true, mode: "repulse" },
                         onclick: { enable: true, mode: "push" }
                     }
                 },
@@ -3417,7 +2502,7 @@
             });
         }
 
-        // Инициализация формы обратной связи - ИСПРАВЛЕНА ВАЛИДАЦИЯ ИМЕНИ
+        // Инициализация формы обратной связи с валидацией - ИСПРАВЛЕНА ВАЛИДАЦИЯ ИМЕНИ
         function initFeedbackForm() {
             const feedbackButton = document.getElementById('feedback-button');
             const feedbackModal = document.getElementById('feedback-modal');
@@ -3702,14 +2787,17 @@
             function animateButton() {
                 const now = Date.now();
                 const scale = 1 + 0.1 * Math.sin(now / 1000);
+                
                 feedbackButton.style.transform = `scale(${scale})`;
                 animationFrameId = requestAnimationFrame(animateButton);
             }
             
+            // Запустить анимацию через 3 секунды после загрузки
             setTimeout(() => {
                 animateButton();
             }, 3000);
             
+            // Остановить анимацию при наведении
             feedbackButton.addEventListener('mouseenter', function() {
                 cancelAnimationFrame(animationFrameId);
                 this.style.transform = 'scale(1.1) rotate(5deg)';
@@ -3725,22 +2813,21 @@
 
         // Навигация при прокрутке
         window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link:not(.mobile-menu .nav-link)');
-            
-            // Фиксируем навигацию на мобильных
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.7)';
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+                navbar.classList.remove('scrolled');
             }
+
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
             
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 150)) {
+                if (scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
             });
@@ -3794,19 +2881,10 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
-                    const offset = window.innerWidth < 768 ? 70 : 100;
                     window.scrollTo({
-                        top: targetElement.offsetTop - offset,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
-                    
-                    // Закрываем мобильное меню если оно открыто
-                    if (window.innerWidth <= 992 && document.querySelector('.mobile-menu.active')) {
-                        document.querySelector('.mobile-menu').classList.remove('active');
-                        document.querySelector('.mobile-menu-overlay').classList.remove('active');
-                        document.querySelector('.mobile-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
-                        document.body.style.overflow = '';
-                    }
                 }
             });
         });
@@ -3828,51 +2906,6 @@
             
             setTimeout(typeWriter, 2000);
         }
-
-        // Исправление при изменении размера окна
-        window.addEventListener('resize', function() {
-            fixTimelineForMobile();
-            
-            // Переинициализация частиц при изменении размера
-            if (window.pJSDom && window.pJSDom.length > 0) {
-                window.pJSDom[0].pJS.fn.vendors.destroy();
-                initBackgroundParticles();
-            }
-        });
-
-        // Добавляем обработчики для лучшего UX на мобильных
-        document.addEventListener('touchstart', function() {}, {passive: true});
-        
-        // Предотвращаем зум на двойной тап
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
-        
-        // Исправление касания для кнопок на мобильных
-        document.addEventListener('touchstart', function(e) {
-            if (e.target.classList.contains('nav-link') || 
-                e.target.classList.contains('selection-btn') || 
-                e.target.classList.contains('season-tab') ||
-                e.target.classList.contains('play-button')) {
-                e.target.style.transform = 'scale(0.95)';
-            }
-        });
-        
-        document.addEventListener('touchend', function(e) {
-            if (e.target.classList.contains('nav-link') || 
-                e.target.classList.contains('selection-btn') || 
-                e.target.classList.contains('season-tab') ||
-                e.target.classList.contains('play-button')) {
-                setTimeout(() => {
-                    e.target.style.transform = '';
-                }, 150);
-            }
-        });
     </script>
 </body>
 </html>
