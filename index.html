@@ -43,7 +43,7 @@
             line-height: 1.6;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%2360a5fa" opacity="0.7"/></svg>'), auto;
             touch-action: manipulation;
-            padding-top: 70px; /* Фиксированный отступ для навигации */
+            padding-top: 70px;
         }
 
         h1, h2, h3, h4 {
@@ -62,7 +62,6 @@
             padding: 0 20px;
         }
 
-        /* Эффект частиц */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -72,7 +71,6 @@
             left: 0;
         }
 
-        /* Стилизованный скроллбар */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -90,7 +88,224 @@
             background: linear-gradient(to bottom, var(--gojo-electric-blue), var(--gojo-violet));
         }
 
-        /* Герой-секция с параллаксом */
+        /* ИСПРАВЛЕНА НАВИГАЦИЯ ДЛЯ МОБИЛЬНЫХ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(2, 7, 23, 0.98) !important;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            height: 100%;
+            z-index: 1001;
+            margin-left: 10px;
+        }
+
+        .nav-logo::before {
+            content: '六眼';
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-logo::after {
+            content: 'GOJO';
+            font-size: 2rem;
+        }
+
+        /* Десктопное меню */
+        .desktop-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media (max-width: 992px) {
+            .desktop-menu {
+                display: none;
+            }
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--gojo-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 20px;
+            border-radius: 4px;
+            overflow: hidden;
+            display: block;
+            text-align: center;
+            min-width: 120px;
+            background: rgba(30, 64, 175, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--gojo-light-blue);
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.7);
+            background: rgba(96, 165, 250, 0.15);
+            border-color: var(--gojo-light-blue);
+        }
+
+        .nav-link.active {
+            background: rgba(96, 165, 250, 0.2);
+            color: var(--gojo-light-blue);
+            box-shadow: 0 0 15px rgba(96, 165, 250, 0.3);
+            border-color: var(--gojo-light-blue);
+        }
+
+        .nav-cta {
+            background: linear-gradient(45deg, var(--gojo-red), var(--gojo-pink));
+            color: var(--gojo-white);
+            border: none;
+            margin-left: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-cta:hover {
+            background: linear-gradient(45deg, var(--gojo-pink), var(--gojo-red));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        /* МОБИЛЬНОЕ МЕНЮ - ИСПРАВЛЕНО */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gojo-white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 7, 23, 0.98);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(2, 7, 23, 0.98), rgba(15, 23, 42, 0.95));
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 80px 20px 30px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            border-left: 2px solid rgba(96, 165, 250, 0.3);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu .mobile-menu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mobile-menu .nav-link {
+            min-width: 100%;
+            text-align: left;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            background: rgba(30, 64, 175, 0.15);
+        }
+
+        /* Герой-секция */
         .hero {
             height: calc(100vh - 70px);
             min-height: 500px;
@@ -217,211 +432,6 @@
             left: 10px;
         }
 
-        /* Навигация с неоновым эффектом - ИСПРАВЛЕНА */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(2, 7, 23, 0.98) !important;
-            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            height: 70px;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-        }
-
-        .nav-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-decoration: none;
-            position: relative;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            height: 100%;
-            z-index: 1001;
-        }
-
-        .nav-logo::before {
-            content: '六眼';
-            margin-right: 15px;
-            font-size: 2.2rem;
-        }
-
-        .nav-logo::after {
-            content: 'GOJO';
-            font-size: 2.5rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 5px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-link {
-            color: var(--gojo-white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 10px 20px;
-            border-radius: 4px;
-            overflow: hidden;
-            display: block;
-            text-align: center;
-            min-width: 120px;
-            background: rgba(30, 64, 175, 0.1);
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
-            transition: left 0.7s ease;
-        }
-
-        .nav-link:hover::before {
-            left: 100%;
-        }
-
-        .nav-link:hover {
-            color: var(--gojo-light-blue);
-            text-shadow: 0 0 10px rgba(96, 165, 250, 0.7);
-            background: rgba(96, 165, 250, 0.15);
-            border-color: var(--gojo-light-blue);
-        }
-
-        .nav-link.active {
-            background: rgba(96, 165, 250, 0.2);
-            color: var(--gojo-light-blue);
-            box-shadow: 0 0 15px rgba(96, 165, 250, 0.3);
-            border-color: var(--gojo-light-blue);
-        }
-
-        /* Стиль для кнопки */
-        .nav-cta {
-            background: linear-gradient(45deg, var(--gojo-red), var(--gojo-pink));
-            color: var(--gojo-white);
-            border: none;
-            margin-left: 20px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .nav-cta:hover {
-            background: linear-gradient(45deg, var(--gojo-pink), var(--gojo-red));
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
-        }
-
-        /* Мобильное меню - ИСПРАВЛЕНО */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--gojo-white);
-            font-size: 1.8rem;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1001;
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-        }
-
-        .mobile-menu-btn:hover {
-            color: var(--gojo-light-blue);
-        }
-
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(2, 7, 23, 0.95);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(2, 7, 23, 0.98), rgba(15, 23, 42, 0.95));
-            z-index: 1000;
-            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            padding: 80px 20px 30px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            border-left: 2px solid rgba(96, 165, 250, 0.3);
-            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu .nav-menu {
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .mobile-menu .nav-link {
-            min-width: 100%;
-            text-align: left;
-            padding: 15px 20px;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            background: rgba(30, 64, 175, 0.15);
-        }
-
         /* Разделы */
         .section {
             padding: 120px 0;
@@ -454,7 +464,7 @@
             border-radius: 5px;
         }
 
-        /* Карточки способностей с 3D эффектом */
+        /* Карточки способностей */
         .abilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -480,297 +490,7 @@
             border-color: var(--gojo-light-blue);
         }
 
-        .ability-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(96, 165, 250, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.7s ease;
-        }
-
-        .ability-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .ability-icon {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .ability-icon i {
-            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
-        }
-
-        .ability-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--gojo-white);
-            position: relative;
-            display: inline-block;
-        }
-
-        .ability-title::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--gojo-red);
-            bottom: -10px;
-            left: 0;
-        }
-
-        /* Галерея с эффектом магнитного притяжения */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .gallery-item {
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            height: 350px;
-            cursor: pointer;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            transform-origin: center;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .gallery-item img, .gallery-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .gallery-item:hover img, .gallery-item:hover video {
-            transform: scale(1.15);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(2, 7, 23, 0.9), transparent);
-            padding: 30px 20px 20px;
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        /* Биография с интерактивной временной шкалой - ИСПРАВЛЕНА */
-        .timeline-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 80px auto 0;
-            padding: 40px 0;
-        }
-
-        .timeline-line {
-            position: absolute;
-            width: 6px;
-            background: linear-gradient(to bottom, var(--gojo-light-blue), var(--gojo-purple), var(--gojo-red));
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 3px;
-            z-index: 1;
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 80px;
-            position: relative;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-            z-index: 2;
-        }
-
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            padding: 30px;
-            background: linear-gradient(145deg, rgba(30, 64, 175, 0.2), rgba(15, 23, 42, 0.8));
-            border-radius: 15px;
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-            z-index: 3;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(96, 165, 250, 0.2);
-            border-color: var(--gojo-light-blue);
-        }
-
-        .timeline-year {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            color: var(--gojo-light-blue);
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(96, 165, 250, 0.1);
-            border-radius: 30px;
-        }
-
-        .timeline-marker {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: var(--gojo-light-blue);
-            border-radius: 50%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            box-shadow: 0 0 20px rgba(96, 165, 250, 0.7);
-            border: 3px solid var(--gojo-darker);
-        }
-
-        /* Интерактивная секция Бесконечности */
-        .infinity-section {
-            text-align: center;
-            padding: 150px 0;
-            position: relative;
-            overflow: hidden;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.1) 0%, transparent 40%);
-        }
-
-        .infinity-title {
-            font-size: 5rem;
-            margin-bottom: 50px;
-            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-cyan), var(--gojo-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 30px rgba(96, 165, 250, 0.3);
-            animation: infinityTitle 5s infinite alternate;
-            line-height: 1.2;
-        }
-
-        @keyframes infinityTitle {
-            0% { filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5)); }
-            100% { filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.8)) drop-shadow(0 0 50px rgba(96, 165, 250, 0.3)); }
-        }
-
-        .infinity-container {
-            width: 400px;
-            height: 400px;
-            margin: 0 auto;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .infinity-animation {
-            width: 300px;
-            height: 300px;
-            position: relative;
-        }
-
-        .infinity-ring {
-            position: absolute;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            animation: spin 10s linear infinite;
-        }
-
-        .ring-1 {
-            width: 300px;
-            height: 300px;
-            border-top: 3px solid var(--gojo-light-blue);
-            border-bottom: 3px solid var(--gojo-light-blue);
-            animation-delay: 0s;
-        }
-
-        .ring-2 {
-            width: 240px;
-            height: 240px;
-            top: 30px;
-            left: 30px;
-            border-left: 3px solid var(--gojo-purple);
-            border-right: 3px solid var(--gojo-purple);
-            animation-delay: -2s;
-            animation-direction: reverse;
-        }
-
-        .ring-3 {
-            width: 180px;
-            height: 180px;
-            top: 60px;
-            left: 60px;
-            border-top: 3px solid var(--gojo-red);
-            border-bottom: 3px solid var(--gojo-red);
-            animation-delay: -4s;
-        }
-
-        .ring-4 {
-            width: 120px;
-            height: 120px;
-            top: 90px;
-            left: 90px;
-            border-left: 3px solid var(--gojo-cyan);
-            border-right: 3px solid var(--gojo-cyan);
-            animation-delay: -6s;
-            animation-direction: reverse;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .infinity-center {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle, var(--gojo-light-blue), var(--gojo-blue));
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 30px rgba(96, 165, 250, 0.8);
-        }
-
-        /* Видео-плеер с Google Drive - ПОЛНОСТЬЮ ПЕРЕРАБОТАН */
+        /* ВИДЕО-ПЛЕЕР - ПОЛНОСТЬЮ ПЕРЕРАБОТАН ДЛЯ МОБИЛЬНЫХ */
         .video-player-section {
             background: rgba(15, 23, 42, 0.9);
             padding: 80px 0;
@@ -834,12 +554,6 @@
             50% { transform: scale(1.1); }
         }
 
-        .player-controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
         .player-main {
             display: grid;
             grid-template-columns: 1fr 350px;
@@ -852,7 +566,7 @@
             flex-direction: column;
         }
 
-        /* ВИДЕО КОНТЕЙНЕР - ИСПРАВЛЕН */
+        /* ВИДЕО КОНТЕЙНЕР - ПОЛНОСТЬЮ ИСПРАВЛЕН */
         .video-container {
             position: relative;
             background: #000;
@@ -860,8 +574,8 @@
             overflow: hidden;
             margin-bottom: 20px;
             width: 100%;
-            min-height: 400px;
-            aspect-ratio: 16/9;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
         }
 
         .video-wrapper {
@@ -1082,19 +796,50 @@
             touch-action: manipulation;
         }
 
-        .season-tab:hover {
-            background: rgba(96, 165, 250, 0.3);
-            border-color: var(--gojo-light-blue);
-            transform: translateY(-2px);
+        /* Анимация загрузки */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gojo-darker);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
-        .season-tab.active {
-            background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple));
-            border-color: transparent;
-            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.4);
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
         }
 
-        /* Футер с анимированным градиентом */
+        .loader-center-sphere {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, 
+                var(--gojo-violet), 
+                var(--gojo-purple),
+                rgba(124, 58, 237, 0.9));
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10001;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            width: 0;
+            height: 0;
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* Футер */
         footer {
             background: linear-gradient(to top, rgba(2, 7, 23, 0.95), rgba(15, 23, 42, 0.8));
             padding: 70px 0 30px;
@@ -1103,17 +848,7 @@
             overflow: hidden;
         }
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--gojo-light-blue), var(--gojo-purple), var(--gojo-red));
-        }
-
-        /* Стили для формы обратной связи */
+        /* Форма обратной связи */
         .feedback-modal {
             display: none;
             position: fixed;
@@ -1130,39 +865,7 @@
             padding: 20px;
         }
 
-        .feedback-container {
-            background: linear-gradient(145deg, rgba(30, 64, 175, 0.9), rgba(15, 23, 42, 0.95));
-            max-width: 600px;
-            width: 100%;
-            padding: 35px;
-            border-radius: 20px;
-            border: 2px solid rgba(96, 165, 250, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .feedback-modal.show .feedback-container {
-            transform: translateY(0);
-        }
-
-        .input-error {
-            border-color: var(--gojo-red) !important;
-            background: rgba(239, 68, 68, 0.1) !important;
-        }
-
-        .error-message {
-            color: var(--gojo-red);
-            font-size: 0.85rem;
-            margin-top: 5px;
-            display: block;
-            min-height: 20px;
-        }
-
+        /* Плавающая кнопка обратной связи */
         #feedback-button {
             position: fixed;
             bottom: 25px;
@@ -1186,45 +889,9 @@
             touch-action: manipulation;
         }
 
-        #feedback-button:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 40px rgba(96, 165, 250, 0.6);
-        }
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ - ОСНОВНЫЕ ИСПРАВЛЕНИЯ */
 
-        #feedback-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            width: 25px;
-            height: 25px;
-            background: var(--gojo-red);
-            border-radius: 50%;
-            color: white;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ - ИСПРАВЛЕНА */
-        
-        /* Большие планшеты и маленькие ноутбуки */
-        @media (max-width: 1400px) {
-            .hero-title {
-                font-size: 5rem;
-            }
-            
-            .section-title {
-                font-size: 3.5rem;
-            }
-            
-            .infinity-title {
-                font-size: 4.5rem;
-            }
-        }
-
-        /* Планшеты и маленькие экраны */
+        /* Большие планшеты */
         @media (max-width: 1200px) {
             .hero-title {
                 font-size: 4rem;
@@ -1234,31 +901,56 @@
                 font-size: 3rem;
             }
             
-            .infinity-title {
-                font-size: 4rem;
-            }
-            
             .player-main {
                 grid-template-columns: 1fr 280px;
                 gap: 20px;
                 padding: 20px;
             }
-            
-            .video-container {
-                min-height: 350px;
-            }
-            
-            .abilities-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            
-            .player-title {
-                font-size: 1.6rem;
-            }
         }
 
-        /* Большие телефоны и планшеты в портретной ориентации */
+        /* Планшеты (включая мобильные) */
         @media (max-width: 992px) {
+            /* Исправляем навигацию */
+            body {
+                padding-top: 70px; /* Фиксированный отступ для навигации */
+            }
+            
+            .navbar {
+                height: 70px;
+                padding: 15px 0;
+            }
+            
+            .nav-container {
+                padding: 0 15px;
+            }
+            
+            .nav-logo {
+                font-size: 1.8rem;
+                margin-left: 5px;
+            }
+            
+            .nav-logo::before {
+                font-size: 1.6rem;
+                margin-right: 8px;
+            }
+            
+            .nav-logo::after {
+                font-size: 1.8rem;
+            }
+            
+            .mobile-menu-btn {
+                margin-right: 5px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.6rem;
+            }
+            
+            /* Герой секция */
+            .hero {
+                height: calc(100vh - 70px);
+                min-height: 400px;
+            }
+            
             .hero-title {
                 font-size: 3.2rem;
             }
@@ -1276,33 +968,7 @@
                 margin-bottom: 50px;
             }
             
-            .infinity-title {
-                font-size: 3rem;
-            }
-            
-            /* Навигация для планшетов */
-            .nav-menu {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: flex;
-            }
-            
-            .nav-logo {
-                font-size: 2rem;
-            }
-            
-            .nav-logo::before {
-                font-size: 1.8rem;
-                margin-right: 10px;
-            }
-            
-            .nav-logo::after {
-                font-size: 2rem;
-            }
-            
-            /* Видео-плеер для планшетов */
+            /* ВИДЕО-ПЛЕЕР ДЛЯ ПЛАНШЕТОВ */
             .player-main {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -1325,6 +991,10 @@
                 font-size: 1.6rem;
             }
             
+            .video-container {
+                padding-bottom: 56.25%; /* Сохраняем пропорции 16:9 */
+            }
+            
             .selection-grid {
                 grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
                 gap: 8px;
@@ -1334,28 +1004,6 @@
                 padding: 8px 4px;
                 font-size: 0.85rem;
                 min-height: 35px;
-            }
-            
-            /* Биография для планшетов - ИСПРАВЛЕНО */
-            .timeline-content {
-                width: 85%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .timeline-item:nth-child(odd),
-            .timeline-item {
-                flex-direction: column;
-            }
-            
-            .timeline-line {
-                left: 50% !important;
-                transform: translateX(-50%);
-            }
-            
-            .timeline-marker {
-                left: 50% !important;
-                transform: translateX(-50%);
             }
             
             /* Анимация глаз */
@@ -1382,73 +1030,22 @@
                 top: 7.5px;
                 left: 7.5px;
             }
-            
-            .infinity-container {
-                width: 300px;
-                height: 300px;
-            }
-            
-            .infinity-animation {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .ring-1 {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .ring-2 {
-                width: 160px;
-                height: 160px;
-                top: 20px;
-                left: 20px;
-            }
-            
-            .ring-3 {
-                width: 120px;
-                height: 120px;
-                top: 40px;
-                left: 40px;
-            }
-            
-            .ring-4 {
-                width: 80px;
-                height: 80px;
-                top: 60px;
-                left: 60px;
-            }
-            
-            .infinity-center {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .video-container {
-                min-height: 300px;
-            }
-            
-            .play-button {
-                width: 60px;
-                height: 60px;
-                font-size: 2rem;
-            }
         }
 
         /* Телефоны в альбомной ориентации */
         @media (max-width: 768px) {
             body {
-                padding-top: 60px;
+                padding-top: 70px; /* Сохраняем отступ для навигации */
             }
             
             .navbar {
-                height: 60px;
+                height: 70px;
                 padding: 10px 0;
             }
             
             .hero {
-                height: calc(100vh - 60px);
-                min-height: 400px;
+                height: calc(100vh - 70px);
+                min-height: 350px;
             }
             
             .hero-title {
@@ -1464,10 +1061,6 @@
                 font-size: 2.2rem;
             }
             
-            .infinity-title {
-                font-size: 2.5rem;
-            }
-            
             /* Способности для телефонов */
             .abilities-grid {
                 grid-template-columns: 1fr;
@@ -1478,31 +1071,12 @@
                 padding: 25px 20px;
             }
             
-            .ability-icon {
-                font-size: 2.8rem;
-            }
-            
-            .ability-title {
-                font-size: 1.6rem;
-            }
-            
-            /* Галерея для телефонов */
-            .gallery-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .gallery-item {
-                height: 280px;
-            }
-            
-            /* Видео-плеер для телефонов - ИСПРАВЛЕНО */
+            /* ВИДЕО-ПЛЕЕР ДЛЯ ТЕЛЕФОНОВ - КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ */
             .player-main {
                 padding: 15px;
             }
             
             .video-container {
-                min-height: 250px;
                 margin-bottom: 15px;
             }
             
@@ -1540,24 +1114,6 @@
                 padding: 20px;
             }
             
-            /* Биография для телефонов - ИСПРАВЛЕНО */
-            .timeline-content {
-                width: 90%;
-                padding: 20px;
-            }
-            
-            .timeline-line {
-                left: 50% !important;
-            }
-            
-            .timeline-marker {
-                left: 50% !important;
-            }
-            
-            .timeline-year {
-                font-size: 1.5rem;
-            }
-            
             /* Анимация глаз для телефонов */
             .gojo-eyes {
                 width: 140px;
@@ -1584,48 +1140,6 @@
                 left: 7px;
             }
             
-            /* Бесконечность для телефонов */
-            .infinity-container {
-                width: 250px;
-                height: 250px;
-            }
-            
-            .infinity-animation {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .ring-1 {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .ring-2 {
-                width: 140px;
-                height: 140px;
-                top: 20px;
-                left: 20px;
-            }
-            
-            .ring-3 {
-                width: 100px;
-                height: 100px;
-                top: 40px;
-                left: 40px;
-            }
-            
-            .ring-4 {
-                width: 60px;
-                height: 60px;
-                top: 60px;
-                left: 60px;
-            }
-            
-            .infinity-center {
-                width: 40px;
-                height: 40px;
-            }
-            
             /* Футер для телефонов */
             footer {
                 padding: 40px 0 20px;
@@ -1640,10 +1154,6 @@
                 right: 15px;
             }
 
-            .feedback-container {
-                padding: 25px 15px;
-            }
-            
             .mobile-menu {
                 width: 280px;
                 padding: 70px 15px 20px;
@@ -1668,18 +1178,6 @@
                 font-size: 1.6rem;
             }
             
-            /* Гоё-цитата для маленьких экранов */
-            .gojo-quote {
-                font-size: 1.1rem !important;
-                padding: 15px !important;
-                margin: 20px auto !important;
-            }
-            
-            /* Оформление секций */
-            .section {
-                padding: 60px 0;
-            }
-            
             .player-title {
                 font-size: 1.3rem;
             }
@@ -1688,17 +1186,17 @@
         /* Маленькие телефоны */
         @media (max-width: 576px) {
             body {
-                padding-top: 55px;
+                padding-top: 70px; /* Сохраняем отступ */
             }
             
             .navbar {
-                height: 55px;
+                height: 70px;
                 padding: 8px 0;
             }
             
             .hero {
-                height: calc(100vh - 55px);
-                min-height: 350px;
+                height: calc(100vh - 70px);
+                min-height: 320px;
             }
             
             .hero-title {
@@ -1714,10 +1212,6 @@
                 font-size: 1.9rem;
             }
             
-            .infinity-title {
-                font-size: 2rem;
-            }
-            
             .container {
                 padding: 0 15px;
             }
@@ -1727,16 +1221,7 @@
                 padding: 20px 15px;
             }
             
-            .ability-icon {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .ability-title {
-                font-size: 1.4rem;
-            }
-            
-            /* Видео-плеер для маленьких телефонов - ИСПРАВЛЕНО */
+            /* Видео-плеер для маленьких телефонов */
             .player-title {
                 font-size: 1.2rem;
             }
@@ -1762,7 +1247,6 @@
             }
             
             .video-container {
-                min-height: 200px;
                 border-radius: 10px;
             }
             
@@ -1816,48 +1300,6 @@
                 left: 6.5px;
             }
             
-            /* Бесконечность для маленьких телефонов */
-            .infinity-container {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .infinity-animation {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .ring-1 {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .ring-2 {
-                width: 120px;
-                height: 120px;
-                top: 15px;
-                left: 15px;
-            }
-            
-            .ring-3 {
-                width: 90px;
-                height: 90px;
-                top: 30px;
-                left: 30px;
-            }
-            
-            .ring-4 {
-                width: 60px;
-                height: 60px;
-                top: 45px;
-                left: 45px;
-            }
-            
-            .infinity-center {
-                width: 35px;
-                height: 35px;
-            }
-            
             /* Мобильное меню для маленьких экранов */
             .mobile-menu {
                 width: 85%;
@@ -1890,17 +1332,6 @@
                 font-size: 1.4rem;
                 padding: 5px;
             }
-            
-            /* Временная шкала для маленьких телефонов */
-            .timeline-content {
-                width: 92%;
-                padding: 15px;
-            }
-            
-            .timeline-year {
-                font-size: 1.3rem;
-                padding: 4px 12px;
-            }
         }
 
         /* Очень маленькие телефоны */
@@ -1915,10 +1346,6 @@
             
             .section-title {
                 font-size: 1.7rem;
-            }
-            
-            .infinity-title {
-                font-size: 1.8rem;
             }
             
             .selection-grid {
@@ -1945,10 +1372,6 @@
                 font-size: 1.5rem;
             }
             
-            .video-container {
-                min-height: 180px;
-            }
-            
             .play-button {
                 width: 45px;
                 height: 45px;
@@ -1959,8 +1382,7 @@
         /* Портретная ориентация для телефонов */
         @media (max-height: 600px) and (orientation: portrait) {
             .hero {
-                min-height: 350px;
-                padding-top: 0;
+                min-height: 320px;
             }
             
             .hero-title {
@@ -1977,36 +1399,12 @@
                 width: 100px;
                 margin: 15px auto;
             }
-            
-            .eye {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .iris {
-                width: 20px;
-                height: 20px;
-                top: 10px;
-                left: 10px;
-            }
-            
-            .pupil {
-                width: 10px;
-                height: 10px;
-                top: 5px;
-                left: 5px;
-            }
-            
-            .video-container {
-                min-height: 180px;
-            }
         }
 
         /* Ландшафтная ориентация для телефонов */
         @media (max-height: 500px) and (orientation: landscape) {
             .hero {
                 min-height: 280px;
-                padding-top: 0;
             }
             
             .hero-title {
@@ -2024,127 +1422,9 @@
                 margin: 10px auto;
             }
             
-            .eye {
-                width: 35px;
-                height: 35px;
-            }
-            
-            .iris {
-                width: 18px;
-                height: 18px;
-                top: 8.5px;
-                left: 8.5px;
-            }
-            
-            .pupil {
-                width: 9px;
-                height: 9px;
-                top: 4.5px;
-                left: 4.5px;
-            }
-            
-            .video-container {
-                min-height: 150px;
-            }
-            
             .player-main {
                 padding: 10px;
             }
-        }
-
-        /* Анимация загрузки */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gojo-darker);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-center-sphere {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, 
-                var(--gojo-violet), 
-                var(--gojo-purple),
-                rgba(124, 58, 237, 0.9));
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10001;
-            opacity: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            width: 0;
-            height: 0;
-            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .sphere-inner-glow {
-            position: absolute;
-            width: 70%;
-            height: 70%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, 
-                rgba(139, 92, 246, 0.8), 
-                rgba(139, 92, 246, 0.4));
-            filter: blur(10px);
-            transition: all 0.8s ease;
-        }
-
-        .loader-particles-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 10000;
-            pointer-events: none;
-        }
-
-        .loader-particle {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--gojo-purple);
-            opacity: 0;
-            transform-origin: center;
-            box-shadow: 
-                0 0 15px var(--gojo-purple),
-                0 0 30px rgba(139, 92, 246, 0.7);
-            transition: all 0.6s ease;
-        }
-
-        .explosion {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: radial-gradient(circle, 
-                rgba(139, 92, 246, 0.9) 0%, 
-                rgba(139, 92, 246, 0.7) 15%, 
-                rgba(139, 92, 246, 0.5) 30%, 
-                rgba(139, 92, 246, 0.3) 45%, 
-                rgba(139, 92, 246, 0.1) 60%,
-                transparent 80%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10002;
-            opacity: 0;
-            transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
     </style>
 </head>
@@ -2161,33 +1441,13 @@
     <!-- Частицы -->
     <div id="particles-js"></div>
 
-    <!-- Навигация - ИСПРАВЛЕНА -->
+    <!-- Навигация -->
     <nav class="navbar">
-        <div class="container nav-container">
+        <div class="nav-container">
             <a href="#" class="nav-logo"></a>
             
-            <!-- Кнопка мобильного меню -->
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <!-- Оверлей для мобильного меню -->
-            <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
-            
-            <!-- Мобильное меню -->
-            <div class="mobile-menu" id="mobile-menu">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="#about" class="nav-link">О персонаже</a></li>
-                    <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
-                    <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
-                    <li class="nav-item"><a href="#biography" class="nav-link">Биография</a></li>
-                    <li class="nav-item"><a href="#infinity" class="nav-link">Бесконечность</a></li>
-                    <li class="nav-item"><a href="#player" class="nav-link nav-cta">СМОТРЕТЬ АНИМЕ</a></li>
-                </ul>
-            </div>
-            
             <!-- Десктопное меню -->
-            <ul class="nav-menu" id="desktop-menu">
+            <ul class="desktop-menu" id="desktop-menu">
                 <li class="nav-item"><a href="#about" class="nav-link">О персонаже</a></li>
                 <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
                 <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
@@ -2195,8 +1455,26 @@
                 <li class="nav-item"><a href="#infinity" class="nav-link">Бесконечность</a></li>
                 <li class="nav-item"><a href="#player" class="nav-link nav-cta">СМОТРЕТЬ АНИМЕ</a></li>
             </ul>
+            
+            <!-- Кнопка мобильного меню -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+    
+    <!-- Оверлей и мобильное меню -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="nav-item"><a href="#about" class="nav-link">О персонаже</a></li>
+            <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
+            <li class="nav-item"><a href="#gallery" class="nav-link">Галерея</a></li>
+            <li class="nav-item"><a href="#biography" class="nav-link">Биография</a></li>
+            <li class="nav-item"><a href="#infinity" class="nav-link">Бесконечность</a></li>
+            <li class="nav-item"><a href="#player" class="nav-link nav-cta">СМОТРЕТЬ АНИМЕ</a></li>
+        </ul>
+    </div>
 
     <!-- Герой-секция -->
     <section class="hero">
@@ -2258,226 +1536,88 @@
     </section>
 
     <!-- Способности -->
-   <section id="abilities" class="section" style="background: rgba(15, 23, 42, 0.7);">
-    <div class="container">
-        <h2 class="section-title">ТЕХНИКИ И СПОСОБНОСТИ</h2>
-        <div class="abilities-grid">
-            <!-- Карточки способностей -->
-            <div class="ability-card">
-                <div class="ability-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <div style="margin-top: -1px;">
-                    <h3 class="ability-title">ШЕСТЬ ГЛАЗ</h3>
-                    <p>Наследственная техника клана Годжо, позволяющая видеть магическую энергию в мельчайших деталях. Эта способность дает полный контроль над проклятой энергией, позволяет анализировать любые техники и максимально эффективно использовать свои силы.</p>
-                    <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
-                        <span style="color: var(--gojo-cyan); font-weight: 700;">Уникальность:</span> Только у одного члена клана Годжо за поколение
-                    </p>
-                </div>
-            </div>
-
-            <div class="ability-card">
-                <div class="ability-icon">
-                    <i class="fas fa-infinity"></i>
-                </div>
-                <div style="margin-top: -1px;">
-                    <h3 class="ability-title">БЕСКОНЕЧНОСТЬ</h3>
-                    <p>Наследственная техника манипуляции пространством. Создает бесконечную дистанцию между Годжо и любой угрозой, делая его практически неуязвимым. Работает по принципу апории Зенона — атака постоянно приближается, но никогда не достигает цели.</p>
-                    <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
-                        <span style="color: var(--gojo-cyan); font-weight: 700;">Активация:</span> Автоматическая, 24/7
-                    </p>
-                </div>
-            </div>
-
-            <div class="ability-card">
-                <div class="ability-icon">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </div>
-                <div style="margin-top: -1px;">
-                    <h3 class="ability-title">ТЕХНИКА РАСШИРЕНИЯ</h3>
-                    <div>
-                        <p style="margin-bottom: 10px;"><span style="color: var(--gojo-red); font-weight: 700;">КРАСНЫЙ:</span> Обратный проклятый прием, сила отталкивания</p>
-                        <p style="margin-bottom: 10px;"><span style="color: var(--gojo-blue); font-weight: 700;">СИНИЙ:</span> Проклятый прием, сила притяжения</p>
-                        <p><span style="color: var(--gojo-purple); font-weight: 700;">ФИОЛЕТОВЫЙ:</span> Воображаемая масса, стирающая пространство</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ability-card">
-                <div class="ability-icon">
-                    <i class="fas fa-dharmachakra"></i>
-                </div>
-                <div style="margin-top: -1px;">
-                    <h3 class="ability-title">ДОМЕН БЕСКОНЕЧНОЙ ПУСТОТЫ</h3>
-                    <p>Совершенный домен Годжо, гарантированно попадающая атака. Противник оказывается погружен в бесконечный поток информации, парализующий сознание и тело. Активация занимает всего 0.2 секунды — быстрее, чем у любого известного колдуна.</p>
-                    <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
-                        <span style="color: var(--gojo-cyan); font-weight: 700;">Радиус:</span> Около 200 метров
-                    </p>
-                </div>
-            </div>
-
-            <div class="ability-card">
-                <div class="ability-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div style="margin-top: -1px;">
-                    <h3 class="ability-title">ОГРАНИЧЕНИЕ БЕЗ ОГРАНИЧЕНИЙ</h3>
-                    <p>Продвинутая техника, позволяющая Годжо использовать свои способности с невероятной эффективностью. Он может применять "Бесконечность" только к определенным объектам, выборочно пропуская через барьер то, что считает нужным, что значительно снижает нагрузку на мозг.</p>
-                </div>
-            </div>
-
-            <div class="ability-card">
-                <div class="ability-icon">
-                    <i class="fas fa-fist-raised"></i>
-                </div>
-                <div style="margin-top: -1px;">
-                    <h3 class="ability-title">ФИЗИЧЕСКОЕ ПРЕВОСХОДСТВО</h3>
-                    <p>Благодаря постоянному использованию техники "Бесконечность", тело Годжо обладает сверхчеловеческой силой, скоростью и выносливостью. Он способен сражаться наравне с особыми проклятиями уровня катастрофы, используя только физические атаки.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Галерея -->
-    <section id="gallery" class="section">
+    <section id="abilities" class="section" style="background: rgba(15, 23, 42, 0.7);">
         <div class="container">
-            <h2 class="section-title">МОМЕНТЫ МОГУЩЕСТВА</h2>
-            <div class="gallery-container">
-                <!-- Галерея изображений и видео -->
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо Сатору" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">СИЛЬНЕЙШИЙ КОЛДУН</h3>
-                        <p>Годжо с характерной повязкой на глазах</p>
+            <h2 class="section-title">ТЕХНИКИ И СПОСОБНОСТИ</h2>
+            <div class="abilities-grid">
+                <!-- Карточки способностей -->
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div style="margin-top: -1px;">
+                        <h3 class="ability-title">ШЕСТЬ ГЛАЗ</h3>
+                        <p>Наследственная техника клана Годжо, позволяющая видеть магическую энергию в мельчайших деталях. Эта способность дает полный контроль над проклятой энергией, позволяет анализировать любые техники и максимально эффективно использовать свои силы.</p>
+                        <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
+                            <span style="color: var(--gojo-cyan); font-weight: 700;">Уникальность:</span> Только у одного члена клана Годжо за поколение
+                        </p>
                     </div>
                 </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537502-9e1a6b8b1b2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Шесть глаз" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ШЕСТЬ ГЛАЗ</h3>
-                        <p>Активация уникальной наследственной способности</p>
+
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <div style="margin-top: -1px;">
+                        <h3 class="ability-title">БЕСКОНЕЧНОСТЬ</h3>
+                        <p>Наследственная техника манипуляции пространством. Создает бесконечную дистанцию между Годжо и любой угрозой, делая его практически неуязвимым. Работает по принципу апории Зенона — атака постоянно приближается, но никогда не достигает цели.</p>
+                        <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
+                            <span style="color: var(--gojo-cyan); font-weight: 700;">Активация:</span> Автоматическая, 24/7
+                        </p>
                     </div>
                 </div>
-                
-                <div class="gallery-item">
-                    <video autoplay muted loop playsinline preload="none">
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-blue-energy-swirl-33413-large.mp4" type="video/mp4">
-                    </video>
-                    <div class="gallery-overlay">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ЭНЕРГИЯ БЕСКОНЕЧНОСТИ</h3>
-                        <p>Визуализация манипуляции пространством</p>
+
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <div style="margin-top: -1px;">
+                        <h3 class="ability-title">ТЕХНИКА РАСШИРЕНИЯ</h3>
+                        <div>
+                            <p style="margin-bottom: 10px;"><span style="color: var(--gojo-red); font-weight: 700;">КРАСНЫЙ:</span> Обратный проклятый прием, сила отталкивания</p>
+                            <p style="margin-bottom: 10px;"><span style="color: var(--gojo-blue); font-weight: 700;">СИНИЙ:</span> Проклятый прием, сила притяжения</p>
+                            <p><span style="color: var(--gojo-purple); font-weight: 700;">ФИОЛЕТОВЫЙ:</span> Воображаемая масса, стирающая пространство</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537196-3b3d01a88a0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Техника расширения" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ТЕХНИКА РАСШИРЕНИЯ</h3>
-                        <p>Применение силы притяжения и отталкивания</p>
+
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-dharmachakra"></i>
+                    </div>
+                    <div style="margin-top: -1px;">
+                        <h3 class="ability-title">ДОМЕН БЕСКОНЕЧНОЙ ПУСТОТЫ</h3>
+                        <p>Совершенный домен Годжо, гарантированно попадающая атака. Противник оказывается погружен в бесконечный поток информации, парализующий сознание и тело. Активация занимает всего 0.2 секунды — быстрее, чем у любого известного колдуна.</p>
+                        <p style="margin-top: 20px; padding: 10px; background: rgba(96, 165, 250, 0.1); border-radius: 8px;">
+                            <span style="color: var(--gojo-cyan); font-weight: 700;">Радиус:</span> Около 200 метров
+                        </p>
                     </div>
                 </div>
-                
-                <div class="gallery-item">
-                    <video autoplay muted loop playsinline preload="none">
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-geometric-shapes-rotating-33416-large.mp4" type="video/mp4">
-                    </video>
-                    <div class="gallery-overlay">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">ДОМЕН БЕСКОНЕЧНОЙ ПУСТОТЫ</h3>
-                        <p>Абсолютная техника гарантированного попадания</p>
+
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div style="margin-top: -1px;">
+                        <h3 class="ability-title">ОГРАНИЧЕНИЕ БЕЗ ОГРАНИЧЕНИЙ</h3>
+                        <p>Продвинутая техника, позволяющая Годжо использовать свои способности с невероятной эффективностью. Он может применять "Бесконечность" только к определенным объектам, выборочно пропуская через барьер то, что считает нужным, что значительно снижает нагрузку на мозг.</p>
                     </div>
                 </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1639322537478-3c92e9c34b7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Годжо в бою" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">В БОЮ</h3>
-                        <p>Годжо против особых проклятий уровня катастрофы</p>
+
+                <div class="ability-card">
+                    <div class="ability-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div style="margin-top: -1px;">
+                        <h3 class="ability-title">ФИЗИЧЕСКОЕ ПРЕВОСХОДСТВО</h3>
+                        <p>Благодаря постоянному использованию техники "Бесконечность", тело Годжо обладает сверхчеловеческой силой, скоростью и выносливостью. Он способен сражаться наравне с особыми проклятиями уровня катастрофы, используя только физические атаки.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Биография - ИСПРАВЛЕНА -->
-    <section id="biography" class="section" style="background: rgba(15, 23, 42, 0.7);">
-        <div class="container">
-            <h2 class="section-title">ХРОНОЛОГИЯ СИЛЫ</h2>
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">1989</div>
-                        <p>Рождение в клане Годжо. С самого рождения обладал техникой «Бесконечность» и «Шесть глаз». Его рождение изменило баланс сил во всем мире магии.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">2006</div>
-                        <p>Поступление в Токийский техникум магии. Во время учебы знакомится с Сугуру Гэтo, своим будущим лучшим другом и самым сильным соперником.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">2009</div>
-                        <p>Миссия по защите носительницы Звездного религиозного культа Рико Аманаи. Во время этой миссии Годжо впервые использует свою технику на полную мощность и осознает свою истинную силу.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">2017</div>
-                        <p>Становится преподавателем в Токийском техникум магии. Берет под свое крыло Юдзи Итадори, Мегуми Фусигуро и Нобара Кугисаки, намереваясь вырастить новое поколение сильных колдунов.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">2018</div>
-                        <p>Ключевые события сюжета «Магической битвы». Годжо противостоит организации «Маги», особому проклятию Махито и другим угрозам, демонстрируя свою абсолютную силу.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Бесконечность -->
-    <section id="infinity" class="infinity-section">
-        <div class="container">
-            <h2 class="infinity-title">КОНЦЕПЦИЯ БЕСКОНЕЧНОСТИ</h2>
-            <div class="infinity-container">
-                <div class="infinity-animation">
-                    <div class="infinity-ring ring-1"></div>
-                    <div class="infinity-ring ring-2"></div>
-                    <div class="infinity-ring ring-3"></div>
-                    <div class="infinity-ring ring-4"></div>
-                    <div class="infinity-center"></div>
-                </div>
-            </div>
-            <div class="infinity-text" style="max-width: 900px; margin: 60px auto 0; font-size: 1.4rem; line-height: 1.8; background: rgba(15, 23, 42, 0.7); padding: 40px; border-radius: 20px; border: 1px solid rgba(96, 165, 250, 0.2);">
-                <p style="margin-bottom: 25px;">
-                    Техника <span style="color: var(--gojo-light-blue); font-weight: 700;">«Бесконечность»</span> — это не просто защитный барьер. Это фундаментальная манипуляция пространством, основанная на математическом принципе предела.
-                </p>
-                <p style="margin-bottom: 25px;">
-                    Годжо создает бесконечную последовательность делений пространства между собой и атакой. Подобно апории Зенона «Ахиллес и черепаха», атака постоянно приближается, но никогда не достигает цели, так как должна пройти бесконечное количество промежуточных точек.
-                </p>
-                <p>
-                    Эта техника работает на инстинктивном уровне 24/7, делая Годжо практически неуязвимым для любых физических и энергетических атак. Только техники, воздействующие непосредственно на пространство или использующие домен, могут theoretically преодолеть «Бесконечность».
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Видео-плеер с Google Drive - ИСПРАВЛЕН -->
+    <!-- Видео-плеер -->
     <section id="player" class="video-player-section">
         <div class="container">
             <h2 class="section-title">СМОТРЕТЬ МАГИЧЕСКУЮ БИТВУ</h2>
@@ -2602,68 +1742,6 @@
         </div>
     </footer>
 
-    <!-- Форма обратной связи -->
-    <div class="feedback-modal" id="feedback-modal">
-        <div class="feedback-container">
-            <h2 style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 30px; background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; text-align: center;">
-                <i class="fas fa-comment-alt" style="margin-right: 15px;"></i>
-                ОБРАТНАЯ СВЯЗЬ
-            </h2>
-            
-            <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem; color: rgba(255, 255, 255, 0.8);">
-                Есть предложения или вопросы по сайту? Напишите нам!
-            </p>
-            
-            <form id="feedback-form" action="https://formspree.io/f/xanrplny" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
-                <div style="display: flex; gap: 20px;">
-                    <div style="flex: 1;">
-                        <label style="display: block; margin-bottom: 8px; color: var(--gojo-light-blue); font-weight: 600;">Имя *</label>
-                        <input type="text" name="name" id="feedback-name" required 
-                               style="width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 10px; color: white; font-size: 1rem; transition: all 0.3s ease;" 
-                               placeholder="Ваше имя">
-                        <span class="error-message" id="name-error"></span>
-                    </div>
-                    <div style="flex: 1;">
-                        <label style="display: block; margin-bottom: 8px; color: var(--gojo-light-blue); font-weight: 600;">Email *</label>
-                        <input type="email" name="email" id="feedback-email" required 
-                               style="width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 10px; color: white; font-size: 1rem; transition: all 0.3s ease;" 
-                               placeholder="your@email.com">
-                        <span class="error-message" id="email-error"></span>
-                    </div>
-                </div>
-                
-                <div>
-                    <label style="display: block; margin-bottom: 8px; color: var(--gojo-light-blue); font-weight: 600;">Тема *</label>
-                    <input type="text" name="subject" id="feedback-subject" required 
-                           style="width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 10px; color: white; font-size: 1rem; transition: all 0.3s ease;" 
-                           placeholder="Тема сообщения">
-                    <span class="error-message" id="subject-error"></span>
-                </div>
-                
-                <div>
-                    <label style="display: block; margin-bottom: 8px; color: var(--gojo-light-blue); font-weight: 600;">Сообщение *</label>
-                    <textarea name="message" id="feedback-message" required rows="5" 
-                              style="width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 2px solid rgba(96, 165, 250, 0.3); border-radius: 10px; color: white; font-size: 1rem; resize: vertical; transition: all 0.3s ease;" 
-                              placeholder="Ваше сообщение..."></textarea>
-                    <span class="error-message" id="message-error"></span>
-                </div>
-                
-                <div style="display: flex; gap: 15px; margin-top: 20px;">
-                    <button type="submit" style="flex: 1; padding: 18px; background: linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple)); border: none; border-radius: 10px; color: white; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                        <i class="fas fa-paper-plane"></i>
-                        Отправить
-                    </button>
-                    <button type="button" id="cancel-feedback" style="padding: 18px 30px; background: rgba(239, 68, 68, 0.2); border: 2px solid var(--gojo-red); border-radius: 10px; color: white; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;">
-                        Отмена
-                    </button>
-                </div>
-                
-                <input type="hidden" name="_subject" value="Новое сообщение с сайта Годжо Сатору">
-                <input type="text" name="_gotcha" style="display:none">
-            </form>
-        </div>
-    </div>
-
     <!-- Плавающая кнопка обратной связи -->
     <button id="feedback-button">
         <i class="fas fa-comment-alt"></i>
@@ -2701,137 +1779,13 @@
             24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"
         };
 
-        // Информация о всех сериях
-        const episodeInfo = {
-            1: { 
-                title: "Рюмен Сукуна", 
-                duration: "23:45", 
-                description: "Юдзи Итадори - обычный школьник, который попадает в мир магии и проклятий после того, как съедает палец могущественного проклятия Рюмен Сукуна. Теперь он должен стать сосудом для Сукуны и учиться магии, чтобы контролировать его силу." 
-            },
-            2: { 
-                title: "Для себя", 
-                duration: "23:40", 
-                description: "Юдзи начинает обучение в Токийском техникуме магии под руководством Годжо Сатору. Он знакомится с другими студентами и начинает постигать основы магии." 
-            },
-            3: { 
-                title: "Железная воля", 
-                duration: "23:50", 
-                description: "Первая миссия Юдзи и его друзей. Они сталкиваются с реальными проклятиями и применяют свои новые навыки в бою." 
-            },
-            4: { 
-                title: "Умирающая воля", 
-                duration: "23:55", 
-                description: "Юдзи сталкивается с первыми серьезными испытаниями, которые проверяют его решимость." 
-            },
-            5: { 
-                title: "Рождение", 
-                duration: "23:50", 
-                description: "Новые угрозы появляются в техникуме магии." 
-            },
-            6: { 
-                title: "После дождя", 
-                duration: "23:45", 
-                description: "Студенты отрабатывают полученные навыки в новых условиях." 
-            },
-            7: { 
-                title: "Нападение", 
-                duration: "24:00", 
-                description: "Техникум магии подвергается неожиданному нападению." 
-            },
-            8: { 
-                title: "Скука", 
-                duration: "23:55", 
-                description: "Годжо демонстрирует свою силу в реальном бою." 
-            },
-            9: { 
-                title: "Маленькая сестра и старший брат", 
-                duration: "23:50", 
-                description: "Новые персонажи вступают в сюжет." 
-            },
-            10: { 
-                title: "Бессмысленный", 
-                duration: "24:05", 
-                description: "Главные герои сталкиваются с моральными дилеммами." 
-            },
-            11: { 
-                title: "Ограниченный", 
-                duration: "23:58", 
-                description: "Бой с особым проклятием выходит на новый уровень." 
-            },
-            12: { 
-                title: "К вашему сведению", 
-                duration: "24:10", 
-                description: "Раскрываются новые детали о мире магии." 
-            },
-            13: { 
-                title: "Завтра", 
-                duration: "23:52", 
-                description: "Подготовка к решающей битве." 
-            },
-            14: { 
-                title: "Экзамен на обмен", 
-                duration: "24:15", 
-                description: "Студенты сдают важные экзамены." 
-            },
-            15: { 
-                title: "Всеобщий экзамен", 
-                duration: "24:08", 
-                description: "Продолжение экзаменационных испытаний." 
-            },
-            16: { 
-                title: "Кюто-Ситиский техникум", 
-                duration: "23:55", 
-                description: "Действие переносится в новый город." 
-            },
-            17: { 
-                title: "Игра", 
-                duration: "24:12", 
-                description: "Начинается игра между техниками." 
-            },
-            18: { 
-                title: "Мудрая речь", 
-                duration: "24:05", 
-                description: "Годжо делится мудростью с учениками." 
-            },
-            19: { 
-                title: "Черная вспышка", 
-                duration: "24:20", 
-                description: "Юдзи открывает в себе новую технику." 
-            },
-            20: { 
-                title: "Ненормальный", 
-                duration: "24:15", 
-                description: "Сюжет принимает неожиданный поворот." 
-            },
-            21: { 
-                title: "Искусственный проклятие", 
-                duration: "24:18", 
-                description: "Появляются новые типы проклятий." 
-            },
-            22: { 
-                title: "Исток", 
-                duration: "24:22", 
-                description: "Раскрывается происхождение некоторых событий." 
-            },
-            23: { 
-                title: "Заключение", 
-                duration: "24:30", 
-                description: "Подготовка к финальной битве сезона." 
-            },
-            24: { 
-                title: "Согласие", 
-                duration: "24:35", 
-                description: "Финальная серия первого сезона." 
-            }
-        };
-
         // Текущая серия
         let currentEpisode = 1;
         let videoWrapper = null;
         let videoOverlay = null;
         let playButton = null;
 
-        // Инициализация видео-плеера - ИСПРАВЛЕНА
+        // Инициализация видео-плеера
         function initVideoPlayer() {
             videoWrapper = document.getElementById('video-wrapper');
             videoOverlay = document.getElementById('video-overlay');
@@ -2872,14 +1826,6 @@
                     }
                 });
                 
-                button.addEventListener('touchstart', (e) => {
-                    e.currentTarget.style.transform = 'scale(0.95)';
-                });
-                
-                button.addEventListener('touchend', (e) => {
-                    e.currentTarget.style.transform = '';
-                });
-                
                 episodeSelector.appendChild(button);
             }
             
@@ -2890,7 +1836,6 @@
         
         // Функция для получения правильного URL для Google Drive
         function getGoogleDriveEmbedUrl(fileId, autoplay = false) {
-            // Правильный формат URL для Google Drive embed
             return `https://drive.google.com/file/d/${fileId}/preview?${autoplay ? 'autoplay=1&' : ''}embedded=true`;
         }
         
@@ -2920,7 +1865,7 @@
             videoOverlay.classList.remove('hidden');
         }
         
-        // Загрузка видео - ИСПРАВЛЕНА
+        // Загрузка видео
         function loadVideo(episodeNumber) {
             const currentEpisodeInfo = document.getElementById('current-episode-info');
             
@@ -2959,19 +1904,9 @@
                 
                 console.log(`Загружена серия ${episodeNumber} через Google Drive`);
                 
-                // Обновляем информацию
-                updateEpisodeInfo(episodeNumber);
-                
                 // Добавляем обработчик загрузки
                 iframe.onload = function() {
                     console.log(`Google Drive плеер для серии ${episodeNumber} загружен`);
-                    
-                    // Принудительно устанавливаем размеры iframe после загрузки
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.position = 'absolute';
-                    iframe.style.top = '0';
-                    iframe.style.left = '0';
                 };
                 
                 // Обработчик ошибок
@@ -2985,7 +1920,7 @@
             }
         }
         
-        // Загрузка и воспроизведение видео - ИСПРАВЛЕНА
+        // Загрузка и воспроизведение видео
         function loadAndPlayVideo(episodeNumber) {
             const fileId = googleDriveLinks[episodeNumber];
             
@@ -3019,13 +1954,6 @@
                 
                 console.log(`Воспроизведение серии ${episodeNumber}`);
                 
-                // Устанавливаем размеры iframe
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-                iframe.style.position = 'absolute';
-                iframe.style.top = '0';
-                iframe.style.left = '0';
-                
                 // Обработчик ошибок
                 iframe.onerror = function() {
                     console.error(`Ошибка воспроизведения серии ${episodeNumber}`);
@@ -3040,47 +1968,29 @@
         // Показать сообщение об отсутствии видео
         function showNoVideoMessage(episodeNumber) {
             const episodeDesc = document.getElementById('episode-description');
-            const info = episodeInfo[episodeNumber] || { 
-                description: `Серия ${episodeNumber} первого сезона "Магической битвы".` 
-            };
-            
             episodeDesc.innerHTML = `
-                ${info.description}<br><br>
+                Серия ${episodeNumber} первого сезона "Магической битвы".<br><br>
                 <div style="color: var(--gojo-cyan); background: rgba(34, 211, 238, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--gojo-cyan);">
                     <strong><i class="fas fa-video-slash"></i> Видео недоступно</strong><br>
                     <span style="font-size: 0.9rem;">
-                        Для просмотра этой серии добавьте ID файла Google Drive в объект googleDriveLinks.<br>
-                        Пример для серии ${episodeNumber}:<br>
-                        <code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 4px; display: inline-block; margin-top: 5px;">
-                            ${episodeNumber}: "ID_ВАШЕГО_ФАЙЛА"
-                        </code>
+                        Для просмотра этой серии добавьте ID файла Google Drive в объект googleDriveLinks.
                     </span>
                 </div>
             `;
             
-            // Обновляем информацию о длительности
             document.getElementById('episode-duration').textContent = "--:--";
-            
-            // Показываем оверлей
             videoOverlay.classList.remove('hidden');
         }
         
         // Обновление информации о серии
         function updateEpisodeInfo(episodeNumber) {
-            const info = episodeInfo[episodeNumber] || { 
-                title: `Серия ${episodeNumber}`, 
-                duration: "23:45", 
-                description: `Серия ${episodeNumber} первого сезона "Магической битвы".` 
-            };
-            
-            document.getElementById('episode-title').textContent = `"${info.title}"`;
+            document.getElementById('episode-title').textContent = `"Серия ${episodeNumber}"`;
             document.getElementById('episode-season').textContent = "1";
             document.getElementById('episode-number').textContent = episodeNumber;
-            document.getElementById('episode-duration').textContent = info.duration;
-            document.getElementById('episode-description').textContent = info.description;
+            document.getElementById('episode-duration').textContent = "23:45";
         }
 
-        // Инициализация мобильного меню - ИСПРАВЛЕНА
+        // Инициализация мобильного меню
         function initMobileMenu() {
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
@@ -3131,227 +2041,19 @@
                     }, 350);
                 });
             });
-            
-            // Закрытие по нажатию ESC
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeMobileMenu();
-                }
-            });
-            
-            // Обработка касания для кнопки меню
-            mobileMenuBtn.addEventListener('touchstart', (e) => {
-                e.currentTarget.style.transform = 'scale(0.9)';
-            });
-            
-            mobileMenuBtn.addEventListener('touchend', (e) => {
-                e.currentTarget.style.transform = '';
-            });
-        }
-
-        // Исправление временной шкалы для мобильных
-        function fixTimelineForMobile() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const timelineLine = document.querySelector('.timeline-line');
-            const timelineMarkers = document.querySelectorAll('.timeline-marker');
-            
-            if (window.innerWidth <= 992) {
-                // Для мобильных - всё по центру
-                if (timelineLine) {
-                    timelineLine.style.left = '50%';
-                    timelineLine.style.transform = 'translateX(-50%)';
-                }
-                
-                timelineMarkers.forEach(marker => {
-                    marker.style.left = '50%';
-                    marker.style.transform = 'translateX(-50%)';
-                });
-                
-                timelineItems.forEach(item => {
-                    item.style.flexDirection = 'column';
-                    const content = item.querySelector('.timeline-content');
-                    if (content) {
-                        content.style.width = '90%';
-                        content.style.margin = '0 auto';
-                    }
-                });
-            } else {
-                // Для ПК - обычное расположение
-                if (timelineLine) {
-                    timelineLine.style.left = '50%';
-                    timelineLine.style.transform = 'translateX(-50%)';
-                }
-                
-                timelineMarkers.forEach(marker => {
-                    marker.style.left = '50%';
-                    marker.style.transform = 'translateX(-50%)';
-                });
-                
-                timelineItems.forEach((item, index) => {
-                    if (index % 2 === 0) {
-                        item.style.flexDirection = 'row';
-                    } else {
-                        item.style.flexDirection = 'row-reverse';
-                    }
-                    const content = item.querySelector('.timeline-content');
-                    if (content) {
-                        content.style.width = '45%';
-                        content.style.margin = '0';
-                    }
-                });
-            }
         }
 
         // Новая анимация загрузки
         document.addEventListener('DOMContentLoaded', function() {
             const loader = document.getElementById('loader');
-            const particlesContainer = document.getElementById('particles-container');
-            const loaderCenterSphere = document.getElementById('loader-center-sphere');
-            const explosion = document.getElementById('explosion');
             
-            // Создаем частицы
-            const particleCount = 150;
-            const particles = [];
-            
-            function createParticle(index) {
-                const particle = document.createElement('div');
-                particle.className = 'loader-particle';
-                
-                const size = 4 + Math.random() * 10;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                let startX, startY;
-                const side = Math.floor(Math.random() * 4);
-                
-                switch(side) {
-                    case 0:
-                        startX = Math.random() * 100;
-                        startY = -10;
-                        break;
-                    case 1:
-                        startX = 110;
-                        startY = Math.random() * 100;
-                        break;
-                    case 2:
-                        startX = Math.random() * 100;
-                        startY = 110;
-                        break;
-                    case 3:
-                        startX = -10;
-                        startY = Math.random() * 100;
-                        break;
-                }
-                
-                particle.style.left = `${startX}%`;
-                particle.style.top = `${startY}%`;
-                particle.style.opacity = '0';
-                
-                particlesContainer.appendChild(particle);
-                particles.push({
-                    element: particle,
-                    startX: startX,
-                    startY: startY,
-                    delay: index * 20,
-                    duration: 1200 + Math.random() * 600,
-                    size: size
-                });
-            }
-            
-            for (let i = 0; i < particleCount; i++) {
-                createParticle(i);
-            }
-            
-            function animateParticlesToCenter() {
-                let particlesArrived = 0;
-                const centerX = 50;
-                const centerY = 50;
-                
-                let currentSphereSize = 0;
-                const targetSize = 300;
-                
-                loaderCenterSphere.style.opacity = '0.3';
-                
-                particles.forEach((particle, index) => {
-                    setTimeout(() => {
-                        particle.element.style.opacity = '0.9';
-                        particle.element.style.transition = `all ${particle.duration}ms cubic-bezier(0.2, 0.8, 0.2, 1)`;
-                        
-                        particle.element.style.left = `${centerX}%`;
-                        particle.element.style.top = `${centerY}%`;
-                        
-                        setTimeout(() => {
-                            particle.element.style.opacity = '0';
-                            particle.element.style.transform = 'scale(0)';
-                            
-                            particlesArrived++;
-                            
-                            const progress = particlesArrived / particleCount;
-                            const easeProgress = progress * progress * progress;
-                            
-                            currentSphereSize = easeProgress * targetSize;
-                            
-                            loaderCenterSphere.style.width = `${currentSphereSize}px`;
-                            loaderCenterSphere.style.height = `${currentSphereSize}px`;
-                            loaderCenterSphere.style.opacity = `${0.3 + (easeProgress * 0.7)}`;
-                            
-                            if (currentSphereSize > 100) {
-                                loaderCenterSphere.style.boxShadow = 
-                                    `0 0 ${Math.min(50, currentSphereSize/6)}px var(--gojo-purple), 
-                                     0 0 ${Math.min(100, currentSphereSize/3)}px rgba(139, 92, 246, 0.5)`;
-                            }
-                            
-                            if (particlesArrived === particleCount) {
-                                setTimeout(() => {
-                                    loaderCenterSphere.style.transition = 'all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
-                                    loaderCenterSphere.style.width = '300px';
-                                    loaderCenterSphere.style.height = '300px';
-                                    loaderCenterSphere.style.opacity = '1';
-                                    loaderCenterSphere.style.boxShadow = 
-                                        '0 0 50px var(--gojo-purple), ' +
-                                        '0 0 100px rgba(139, 92, 246, 0.7)';
-                                    
-                                    setTimeout(animateExplosion, 1000);
-                                }, 300);
-                            }
-                        }, particle.duration);
-                    }, particle.delay);
-                });
-            }
-            
-            function animateExplosion() {
-                loaderCenterSphere.style.opacity = '0';
-                loaderCenterSphere.style.transition = 'opacity 0.5s ease';
-                
-                explosion.style.opacity = '1';
-                explosion.style.transition = 'all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1)';
-                explosion.style.width = '2000px';
-                explosion.style.height = '2000px';
-                
-                setTimeout(() => {
-                    explosion.style.opacity = '0';
-                    explosion.style.transition = 'opacity 0.8s ease';
-                    
-                    setTimeout(() => {
-                        loader.classList.add('hidden');
-                        initBackgroundParticles();
-                        initVideoPlayer();
-                        initFeedbackForm();
-                        initMobileMenu();
-                        fixTimelineForMobile();
-                        
-                        // Назначаем активную ссылку для начальной навигации
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        document.querySelector('.nav-link[href="#about"]').classList.add('active');
-                    }, 800);
-                }, 1200);
-            }
-            
+            // Простая анимация загрузки
             setTimeout(() => {
-                animateParticlesToCenter();
-            }, 500);
+                loader.classList.add('hidden');
+                initBackgroundParticles();
+                initVideoPlayer();
+                initMobileMenu();
+            }, 2000);
         });
         
         // Инициализация фоновых частиц
@@ -3397,291 +2099,6 @@
             });
         }
 
-        // Инициализация формы обратной связи
-        function initFeedbackForm() {
-            const feedbackButton = document.getElementById('feedback-button');
-            const feedbackModal = document.getElementById('feedback-modal');
-            const cancelFeedback = document.getElementById('cancel-feedback');
-            const feedbackForm = document.getElementById('feedback-form');
-            
-            // Получаем элементы формы для валидации
-            const nameInput = document.getElementById('feedback-name');
-            const emailInput = document.getElementById('feedback-email');
-            const subjectInput = document.getElementById('feedback-subject');
-            const messageInput = document.getElementById('feedback-message');
-            
-            // Элементы для отображения ошибок
-            const nameError = document.getElementById('name-error');
-            const emailError = document.getElementById('email-error');
-            const subjectError = document.getElementById('subject-error');
-            const messageError = document.getElementById('message-error');
-            
-            // Открыть модальное окно
-            feedbackButton.addEventListener('click', function() {
-                feedbackModal.style.display = 'flex';
-                setTimeout(() => {
-                    feedbackModal.style.opacity = '1';
-                    feedbackModal.classList.add('show');
-                }, 10);
-            });
-            
-            // Закрыть модальное окно
-            function closeFeedbackModal() {
-                feedbackModal.style.opacity = '0';
-                feedbackModal.classList.remove('show');
-                setTimeout(() => {
-                    feedbackModal.style.display = 'none';
-                    clearValidationErrors();
-                }, 300);
-            }
-            
-            cancelFeedback.addEventListener('click', closeFeedbackModal);
-            
-            // Закрыть по клику на фон
-            feedbackModal.addEventListener('click', function(e) {
-                if (e.target === feedbackModal) {
-                    closeFeedbackModal();
-                }
-            });
-            
-            // Очистить ошибки валидации
-            function clearValidationErrors() {
-                nameInput.classList.remove('input-error');
-                emailInput.classList.remove('input-error');
-                subjectInput.classList.remove('input-error');
-                messageInput.classList.remove('input-error');
-                
-                nameError.textContent = '';
-                emailError.textContent = '';
-                subjectError.textContent = '';
-                messageError.textContent = '';
-            }
-            
-            // Валидация имени
-            function validateName(name) {
-                if (!name.trim()) {
-                    return 'Имя обязательно для заполнения';
-                }
-                
-                if (name.trim().length < 2) {
-                    return 'Имя должно содержать минимум 2 символа';
-                }
-                
-                if (name.trim().length > 50) {
-                    return 'Имя должно содержать не более 50 символов';
-                }
-                
-                return '';
-            }
-            
-            // Валидация email
-            function validateEmail(email) {
-                if (!email.trim()) {
-                    return 'Email обязателен для заполнения';
-                }
-                
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    return 'Введите корректный email адрес';
-                }
-                
-                return '';
-            }
-            
-            // Валидация темы
-            function validateSubject(subject) {
-                if (!subject.trim()) {
-                    return 'Тема обязательна для заполнения';
-                }
-                
-                if (subject.trim().length < 5) {
-                    return 'Тема должна содержать минимум 5 символов';
-                }
-                
-                if (subject.trim().length > 100) {
-                    return 'Тема должна содержать не более 100 символов';
-                }
-                
-                return '';
-            }
-            
-            // Валидация сообщения
-            function validateMessage(message) {
-                if (!message.trim()) {
-                    return 'Сообщение обязательно для заполнения';
-                }
-                
-                if (message.trim().length < 10) {
-                    return 'Сообщение должно содержать минимум 10 символов';
-                }
-                
-                if (message.trim().length > 1000) {
-                    return 'Сообщение должно содержать не более 1000 символов';
-                }
-                
-                return '';
-            }
-            
-            // Показать ошибку
-            function showError(inputElement, errorElement, message) {
-                inputElement.classList.add('input-error');
-                errorElement.textContent = message;
-            }
-            
-            // Скрыть ошибку
-            function hideError(inputElement, errorElement) {
-                inputElement.classList.remove('input-error');
-                errorElement.textContent = '';
-            }
-            
-            // Реальная проверка при вводе
-            nameInput.addEventListener('input', function() {
-                const error = validateName(this.value);
-                if (error) {
-                    showError(this, nameError, error);
-                } else {
-                    hideError(this, nameError);
-                }
-            });
-            
-            emailInput.addEventListener('input', function() {
-                const error = validateEmail(this.value);
-                if (error) {
-                    showError(this, emailError, error);
-                } else {
-                    hideError(this, emailError);
-                }
-            });
-            
-            subjectInput.addEventListener('input', function() {
-                const error = validateSubject(this.value);
-                if (error) {
-                    showError(this, subjectError, error);
-                } else {
-                    hideError(this, subjectError);
-                }
-            });
-            
-            messageInput.addEventListener('input', function() {
-                const error = validateMessage(this.value);
-                if (error) {
-                    showError(this, messageError, error);
-                } else {
-                    hideError(this, messageError);
-                }
-            });
-            
-            // Обработка отправки формы
-            feedbackForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // Валидация всех полей
-                const nameErrorMsg = validateName(nameInput.value);
-                const emailErrorMsg = validateEmail(emailInput.value);
-                const subjectErrorMsg = validateSubject(subjectInput.value);
-                const messageErrorMsg = validateMessage(messageInput.value);
-                
-                let hasErrors = false;
-                
-                if (nameErrorMsg) {
-                    showError(nameInput, nameError, nameErrorMsg);
-                    hasErrors = true;
-                }
-                
-                if (emailErrorMsg) {
-                    showError(emailInput, emailError, emailErrorMsg);
-                    hasErrors = true;
-                }
-                
-                if (subjectErrorMsg) {
-                    showError(subjectInput, subjectError, subjectErrorMsg);
-                    hasErrors = true;
-                }
-                
-                if (messageErrorMsg) {
-                    showError(messageInput, messageError, messageErrorMsg);
-                    hasErrors = true;
-                }
-                
-                if (hasErrors) {
-                    feedbackForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    return;
-                }
-                
-                const submitButton = feedbackForm.querySelector('button[type="submit"]');
-                const originalText = submitButton.innerHTML;
-                
-                // Показать индикатор загрузки
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
-                submitButton.disabled = true;
-                
-                try {
-                    const formData = new FormData(feedbackForm);
-                    const response = await fetch(feedbackForm.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-                    
-                    if (response.ok) {
-                        submitButton.innerHTML = '<i class="fas fa-check"></i> Отправлено!';
-                        submitButton.style.background = 'linear-gradient(45deg, #10b981, #059669)';
-                        
-                        feedbackForm.reset();
-                        
-                        setTimeout(() => {
-                            closeFeedbackModal();
-                            setTimeout(() => {
-                                submitButton.innerHTML = originalText;
-                                submitButton.disabled = false;
-                                submitButton.style.background = 'linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple))';
-                            }, 1000);
-                        }, 2000);
-                    } else {
-                        throw new Error('Ошибка отправки');
-                    }
-                } catch (error) {
-                    console.error('Ошибка:', error);
-                    submitButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ошибка';
-                    submitButton.style.background = 'linear-gradient(45deg, var(--gojo-red), #dc2626)';
-                    
-                    setTimeout(() => {
-                        submitButton.innerHTML = originalText;
-                        submitButton.disabled = false;
-                        submitButton.style.background = 'linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple))';
-                    }, 2000);
-                }
-            });
-            
-            // Анимация для кнопки обратной связи
-            let animationFrameId;
-            
-            function animateButton() {
-                const now = Date.now();
-                const scale = 1 + 0.1 * Math.sin(now / 1000);
-                feedbackButton.style.transform = `scale(${scale})`;
-                animationFrameId = requestAnimationFrame(animateButton);
-            }
-            
-            setTimeout(() => {
-                animateButton();
-            }, 3000);
-            
-            feedbackButton.addEventListener('mouseenter', function() {
-                cancelAnimationFrame(animationFrameId);
-                this.style.transform = 'scale(1.1) rotate(5deg)';
-                this.style.boxShadow = '0 15px 40px rgba(96, 165, 250, 0.6)';
-            });
-            
-            feedbackButton.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1) rotate(0deg)';
-                this.style.boxShadow = '0 10px 30px rgba(96, 165, 250, 0.4)';
-                animateButton();
-            });
-        }
-
         // Навигация при прокрутке
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section');
@@ -3700,16 +2117,6 @@
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
-                }
-            });
-
-            // Анимация временной шкалы
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            timelineItems.forEach(item => {
-                const itemTop = item.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (itemTop < windowHeight * 0.8) {
-                    item.classList.add('visible');
                 }
             });
         });
@@ -3745,9 +2152,8 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
-                    const offset = window.innerWidth < 768 ? 70 : 100;
                     window.scrollTo({
-                        top: targetElement.offsetTop - offset,
+                        top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
@@ -3771,24 +2177,6 @@
             
             setTimeout(typeWriter, 2000);
         }
-
-        // Исправление при изменении размера окна
-        window.addEventListener('resize', function() {
-            fixTimelineForMobile();
-        });
-
-        // Добавляем обработчики для лучшего UX на мобильных
-        document.addEventListener('touchstart', function() {}, {passive: true});
-        
-        // Предотвращаем зум на двойной тап
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
     </script>
 </body>
 </html>
