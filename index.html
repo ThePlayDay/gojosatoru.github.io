@@ -217,7 +217,7 @@
             left: 10px;
         }
 
-        /* Навигация с неоновым эффектом - ИСПРАВЛЕНА */
+        /* Навигация с неоновым эффектом - ИСПРАВЛЕНА ДЛЯ МОБИЛЬНЫХ */
         .navbar {
             position: fixed;
             top: 0;
@@ -259,6 +259,7 @@
             white-space: nowrap;
             height: 100%;
             z-index: 1001;
+            padding-left: 20px;
         }
 
         .nav-logo::before {
@@ -364,6 +365,7 @@
             align-items: center;
             justify-content: center;
             margin: 0;
+            padding-right: 20px;
         }
 
         .mobile-menu-btn:hover {
@@ -454,7 +456,7 @@
             border-radius: 5px;
         }
 
-        /* Карточки способностей с 3D эффектом */
+        /* Карточки способностей с 3D эффектом - ВОССТАНОВЛЕН */
         .abilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1207,7 +1209,7 @@
             font-weight: 700;
         }
 
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ - ИСПРАВЛЕНА ТОЛЬКО ПРОБЛЕМНЫЕ МЕСТА */
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ - ИСПРАВЛЕНА */
 
         /* Большие планшеты и маленькие ноутбуки */
         @media (max-width: 1400px) {
@@ -1280,19 +1282,19 @@
                 font-size: 3rem;
             }
             
-            /* Навигация для планшетов - ИСПРАВЛЕНО: добавлен отступ справа для кнопки */
+            /* Навигация для планшетов - ИСПРАВЛЕНА */
             .nav-menu {
                 display: none;
             }
             
             .mobile-menu-btn {
                 display: flex;
-                margin-right: 15px; /* Добавлен отступ справа */
+                padding-right: 25px;
             }
             
             .nav-logo {
                 font-size: 2rem;
-                margin-left: 15px; /* Добавлен отступ слева */
+                padding-left: 25px;
             }
             
             .nav-logo::before {
@@ -1304,7 +1306,7 @@
                 font-size: 2rem;
             }
             
-            /* Видео-плеер для планшетов */
+            /* Видео-плеер для планшетов - ИСПРАВЛЕН */
             .player-main {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -1327,7 +1329,6 @@
                 font-size: 1.6rem;
             }
             
-            /* ИСПРАВЛЕНИЕ: Видео контейнер должен сохранять пропорции */
             .video-container {
                 min-height: 300px;
                 aspect-ratio: 16/9;
@@ -1440,20 +1441,20 @@
             }
         }
 
-        /* Телефоны в альбомной ориентации - ИСПРАВЛЕНО ПАДДИНГ ДЛЯ НАВИГАЦИИ */
+        /* Телефоны в альбомной ориентации */
         @media (max-width: 768px) {
             body {
-                padding-top: 70px; /* Убедимся что отступ правильный */
+                padding-top: 70px;
             }
             
             .navbar {
-                height: 70px; /* Фиксированная высота */
-                padding: 15px 0; /* Увеличен паддинг для лучшего вида */
+                height: 70px;
+                padding: 15px 0;
             }
             
             .nav-logo {
                 font-size: 1.8rem;
-                margin-left: 15px;
+                padding-left: 20px;
             }
             
             .nav-logo::before {
@@ -1466,7 +1467,7 @@
             }
             
             .mobile-menu-btn {
-                margin-right: 15px;
+                padding-right: 20px;
                 width: 45px;
                 height: 45px;
                 font-size: 1.6rem;
@@ -1494,7 +1495,7 @@
                 font-size: 2.5rem;
             }
             
-            /* Способности для телефонов */
+            /* Способности для телефонов - 3D ЭФФЕКТ СОХРАНЕН */
             .abilities-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
@@ -1502,6 +1503,11 @@
             
             .ability-card {
                 padding: 25px 20px;
+                transform: perspective(800px) rotateY(0deg);
+            }
+            
+            .ability-card:hover {
+                transform: perspective(800px) rotateY(5deg) translateY(-10px);
             }
             
             .ability-icon {
@@ -1522,7 +1528,7 @@
                 height: 280px;
             }
             
-            /* Видео-плеер для телефонов - ИСПРАВЛЕНО: правильные пропорции */
+            /* Видео-плеер для телефонов - ИСПРАВЛЕНО */
             .player-main {
                 padding: 15px;
             }
@@ -1704,10 +1710,10 @@
             }
         }
 
-        /* Маленькие телефоны - ИСПРАВЛЕНО */
+        /* Маленькие телефоны */
         @media (max-width: 576px) {
             body {
-                padding-top: 70px; /* Сохраняем правильный отступ */
+                padding-top: 70px;
             }
             
             .navbar {
@@ -1717,7 +1723,7 @@
             
             .nav-logo {
                 font-size: 1.6rem;
-                margin-left: 10px;
+                padding-left: 15px;
             }
             
             .nav-logo::before {
@@ -1730,7 +1736,7 @@
             }
             
             .mobile-menu-btn {
-                margin-right: 10px;
+                padding-right: 15px;
                 width: 40px;
                 height: 40px;
                 font-size: 1.4rem;
@@ -1762,9 +1768,14 @@
                 padding: 0 15px;
             }
             
-            /* Способности для маленьких телефонов */
+            /* Способности для маленьких телефонов - 3D ЭФФЕКТ СОХРАНЕН */
             .ability-card {
                 padding: 20px 15px;
+                transform: perspective(600px) rotateY(0deg);
+            }
+            
+            .ability-card:hover {
+                transform: perspective(600px) rotateY(3deg) translateY(-8px);
             }
             
             .ability-icon {
@@ -1944,7 +1955,7 @@
             
             .nav-logo {
                 font-size: 1.5rem;
-                margin-left: 8px;
+                padding-left: 12px;
             }
             
             .nav-logo::before {
@@ -2172,7 +2183,7 @@
     <!-- Частицы -->
     <div id="particles-js"></div>
 
-    <!-- Навигация - ОСТАВЛЕНА КАК БЫЛО -->
+    <!-- Навигация - ИСПРАВЛЕНА -->
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="nav-logo"></a>
@@ -3408,7 +3419,7 @@
             });
         }
 
-        // Инициализация формы обратной связи
+        // Инициализация формы обратной связи - УЛУЧШЕННАЯ ВАЛИДАЦИЯ
         function initFeedbackForm() {
             const feedbackButton = document.getElementById('feedback-button');
             const feedbackModal = document.getElementById('feedback-modal');
@@ -3468,7 +3479,7 @@
                 messageError.textContent = '';
             }
             
-            // Валидация имени
+            // Валидация имени - ТОЛЬКО БУКВЫ (русские и английские)
             function validateName(name) {
                 if (!name.trim()) {
                     return 'Имя обязательно для заполнения';
@@ -3482,18 +3493,50 @@
                     return 'Имя должно содержать не более 50 символов';
                 }
                 
+                // Проверка на только буквы (русские и английские) и пробелы
+                const nameRegex = /^[A-Za-zА-Яа-яЁё\s\-]+$/;
+                if (!nameRegex.test(name.trim())) {
+                    return 'Имя должно содержать только буквы (русские или английские)';
+                }
+                
+                // Проверка на минимум одну букву
+                const hasLetters = /[A-Za-zА-Яа-яЁё]/.test(name.trim());
+                if (!hasLetters) {
+                    return 'Имя должно содержать хотя бы одну букву';
+                }
+                
                 return '';
             }
             
-            // Валидация email
+            // Валидация email - С ПРОВЕРКОЙ ДОМЕНА
             function validateEmail(email) {
                 if (!email.trim()) {
                     return 'Email обязателен для заполнения';
                 }
                 
+                // Проверка формата email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
-                    return 'Введите корректный email адрес';
+                    return 'Введите корректный email адрес (пример: user@domain.com)';
+                }
+                
+                // Проверка на допустимые домены
+                const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.ru', 'ya.ru'];
+                const domain = email.split('@')[1].toLowerCase();
+                
+                if (!allowedDomains.includes(domain)) {
+                    return 'Допустимые домены: gmail.com, mail.ru, yandex.ru';
+                }
+                
+                // Проверка на наличие @
+                if (!email.includes('@')) {
+                    return 'Email должен содержать символ @';
+                }
+                
+                // Проверка на наличие текста после @
+                const parts = email.split('@');
+                if (parts.length < 2 || !parts[1].trim()) {
+                    return 'Введите домен после @ (пример: gmail.com)';
                 }
                 
                 return '';
@@ -3537,12 +3580,14 @@
             function showError(inputElement, errorElement, message) {
                 inputElement.classList.add('input-error');
                 errorElement.textContent = message;
+                errorElement.style.display = 'block';
             }
             
             // Скрыть ошибку
             function hideError(inputElement, errorElement) {
                 inputElement.classList.remove('input-error');
                 errorElement.textContent = '';
+                errorElement.style.display = 'none';
             }
             
             // Реальная проверка при вводе
@@ -3615,7 +3660,14 @@
                 }
                 
                 if (hasErrors) {
-                    feedbackForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Прокручиваем к первой ошибке
+                    const firstErrorElement = feedbackForm.querySelector('.input-error');
+                    if (firstErrorElement) {
+                        firstErrorElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center'
+                        });
+                    }
                     return;
                 }
                 
@@ -3640,8 +3692,11 @@
                         submitButton.innerHTML = '<i class="fas fa-check"></i> Отправлено!';
                         submitButton.style.background = 'linear-gradient(45deg, #10b981, #059669)';
                         
+                        // Сброс формы
                         feedbackForm.reset();
+                        clearValidationErrors();
                         
+                        // Показать сообщение об успехе на 2 секунды
                         setTimeout(() => {
                             closeFeedbackModal();
                             setTimeout(() => {
@@ -3662,6 +3717,10 @@
                         submitButton.innerHTML = originalText;
                         submitButton.disabled = false;
                         submitButton.style.background = 'linear-gradient(45deg, var(--gojo-light-blue), var(--gojo-purple))';
+                        
+                        // Показать сообщение об ошибке
+                        emailError.textContent = 'Ошибка отправки. Проверьте подключение к интернету.';
+                        emailError.style.display = 'block';
                     }, 2000);
                 }
             });
@@ -3687,6 +3746,19 @@
             });
             
             feedbackButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.boxShadow = '0 10px 30px rgba(96, 165, 250, 0.4)';
+                animateButton();
+            });
+            
+            // Добавляем обработчик для касания на мобильных
+            feedbackButton.addEventListener('touchstart', function() {
+                cancelAnimationFrame(animationFrameId);
+                this.style.transform = 'scale(1.1) rotate(5deg)';
+                this.style.boxShadow = '0 15px 40px rgba(96, 165, 250, 0.6)';
+            });
+            
+            feedbackButton.addEventListener('touchend', function() {
                 this.style.transform = 'scale(1) rotate(0deg)';
                 this.style.boxShadow = '0 10px 30px rgba(96, 165, 250, 0.4)';
                 animateButton();
@@ -3786,6 +3858,23 @@
         // Исправление при изменении размера окна
         window.addEventListener('resize', function() {
             fixTimelineForMobile();
+            
+            // Перезапуск частиц при изменении размера окна
+            if (window.innerWidth < 768) {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { value: 40, density: { enable: true, value_area: 800 } },
+                        line_linked: { enable: false }
+                    }
+                });
+            } else {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        line_linked: { enable: true }
+                    }
+                });
+            }
         });
 
         // Добавляем обработчики для лучшего UX на мобильных
