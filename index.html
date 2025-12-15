@@ -2890,7 +2890,7 @@
             });
         }
 
-        // Инициализация формы обратной связи
+        // Инициализация формы обратной связи С ОБНОВЛЕННОЙ ВАЛИДАЦИЕЙ
         function initFeedbackForm() {
             const feedbackButton = document.getElementById('feedback-button');
             const feedbackModal = document.getElementById('feedback-modal');
@@ -2950,7 +2950,7 @@
                 messageError.textContent = '';
             }
             
-            // Валидация имени
+            // ОБНОВЛЕННАЯ ВАЛИДАЦИЯ ИМЕНИ - ТОЛЬКО БУКВЫ (русские и английские)
             function validateName(name) {
                 if (!name.trim()) {
                     return 'Имя обязательно для заполнения';
@@ -2964,29 +2964,41 @@
                     return 'Имя должно содержать не более 50 символов';
                 }
                 
-                const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s]+$/;
+                // ТОЛЬКО БУКВЫ (русские, английские, включая Ёё) - НИКАКИХ ПРОБЕЛОВ, ЦИФР, СИМВОЛОВ
+                const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]+$/;
                 if (!nameRegex.test(name.trim())) {
-                    return 'Имя должно содержать только буквы и пробелы';
+                    return 'Имя должно содержать только буквы (без пробелов, цифр и специальных символов)';
                 }
                 
                 return '';
             }
             
-            // Валидация email
+            // ОБНОВЛЕННАЯ ВАЛИДАЦИЯ EMAIL - проверка на @ и разрешенные домены
             function validateEmail(email) {
                 if (!email.trim()) {
                     return 'Email обязателен для заполнения';
                 }
                 
+                // Проверяем наличие @
                 if (!email.includes('@')) {
                     return 'Email должен содержать символ @';
                 }
                 
+                // Разделяем email на имя и домен
                 const parts = email.split('@');
                 if (parts.length !== 2) {
                     return 'Некорректный формат email';
                 }
                 
+                const domain = parts[1].toLowerCase();
+                
+                // Проверяем домены - только разрешенные
+                const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.ru'];
+                if (!allowedDomains.includes(domain)) {
+                    return 'Разрешены только email с доменами: gmail.com, mail.ru, yandex.ru';
+                }
+                
+                // Общая проверка формата email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     return 'Введите корректный email адрес';
