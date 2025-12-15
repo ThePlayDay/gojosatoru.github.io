@@ -1794,32 +1794,33 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // === ССЫЛКИ НА GOOGLE DRIVE ДЛЯ ВСЕХ СЕРИЙ ===
+        // ВАЖНО: Замените эти ID на реальные ID ваших файлов с Google Drive
         const googleDriveLinks = {
-    1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3", // ID файла для серии 1
-    2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX", // ID файла для серии 2
-    3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg", // ID файла для серии 3
-    4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n", // ID файла для серии 4
-    5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0", // ID файла для серии 5
-    6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI", // ID файла для серии 6
-    7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e", // ID файла для серии 7
-    8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-", // ID файла для серии 8
-    9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka", // ID файла для серии 9
-    10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J", // ID файла для серии 10
-    11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb", // ID файла для серии 11
-    12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL", // ID файла для серии 12
-    13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z", // ID файла для серии 13
-    14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6", // ID файла для серии 14
-    15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3", // ID файла для серии 15
-    16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D", // ID файла для серии 16
-    17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_", // ID файла для серии 17
-    18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI", // ID файла для серии 18
-    19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj", // ID файла для серии 19
-    20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl", // ID файла для серии 20
-    21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm", // ID файла для серии 21
-    22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy", // ID файла для серии 22
-    23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk", // ID файла для серии 23
-    24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"  // ID файла для серии 24
-};
+            1: "1jAMwV2L656MFlaydATjtxbtU-5DWU_c3", // ID файла для серии 1
+            2: "1tqG3G2IOnDpzFRXzQwByTZmNSeGKM9SX", // ID файла для серии 2
+            3: "1rvJgiwSpkPCA1y8LebO8vKSeUZ0YFebg", // ID файла для серии 3
+            4: "1CMbYhdrs8faERVos2Xo3jGi_7j3oEK7n", // ID файла для серии 4
+            5: "1Jvyy3D69Wvp1EPFy8ZfFPDlDuVsrO-f0", // ID файла для серии 5
+            6: "1mVLKLEF7hpPbriZ2jsFShXMQRnbABGjI", // ID файла для серии 6
+            7: "1jAzH_zgrFh7c62lnqL9SprR56U9Wqi-e", // ID файла для серии 7
+            8: "123pQ3XXdSoflpXLyVVyygm9Vs5WZlv8-", // ID файла для серии 8
+            9: "191ZGQTpEAB6KMvJekIymlS97xmGue5Ka", // ID файла для серии 9
+            10: "11nUJTYudNU1rC0Yi-_xRfgMwDyasD68J", // ID файла для серии 10
+            11: "1QduQhEkF41NVyzREHOvkWGaBwSOkdGXb", // ID файла для серии 11
+            12: "1q4Wzuf-2-CYUYbxZQj-DGImCf8O0ZgWL", // ID файла для серии 12
+            13: "1eunhnn8N3xjsYEZSvQRddPfuQKNPNZ0z", // ID файла для серии 13
+            14: "1yQjTOnDOymMomflQwyXMzs3GKHBKxYD6", // ID файла для серии 14
+            15: "1O5V2TVpp8ytxUmgChFt8_9Lqt_j52-d3", // ID файла для серии 15
+            16: "1b0K01NWb7Bu1g_RaR1umBVxhSgu4HH7D", // ID файла для серии 16
+            17: "1Nj08EB6Mdq-W2SamMpvkdmBuazrDQrL_", // ID файла для серии 17
+            18: "1uriwzBSO2P1nReUu-UCzSItDsPuFKTTI", // ID файла для серии 18
+            19: "18HidqojSVnR0lQUCLDHlqY9IgOt18ANj", // ID файла для серии 19
+            20: "1CV_yCOFboOLQkXzGAmR4450J9UolCfnl", // ID файла для серии 20
+            21: "1VVsXER-5koC8PvlxBUAUnH5e-9GbeWZm", // ID файла для серии 21
+            22: "1WkEsckLq-a7E3XUlfQNDwHUW--OUeiKy", // ID файла для серии 22
+            23: "1a0vZRE_1gYVniGqLe67HuG20BZ4FRhNk", // ID файла для серии 23
+            24: "1yCDH_TmyEXUZeBYROYOA5FMmyCvF23I3"  // ID файла для серии 24
+        };
 
         // Информация о всех сериях
         const episodeInfo = {
@@ -2040,16 +2041,17 @@
             videoWrapper.innerHTML = '';
             
             if (fileId && fileId !== '') {
-                // Создаем iframe с Google Drive плеером
+                // ПРАВИЛЬНЫЙ URL для Google Drive - используем embed с правильными параметрами
                 const iframe = document.createElement('iframe');
                 iframe.className = 'google-drive-player';
                 
-                // Используем правильный URL для превью
-                iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
+                // Используем правильный URL для Google Drive embed
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=0&controls=1`;
                 iframe.frameBorder = "0";
-                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
                 iframe.allowFullscreen = true;
-                iframe.title = `Серия ${episodeNumber}`;
+                iframe.title = `Магическая битва - Сезон 1, Серия ${episodeNumber}`;
+                iframe.referrerPolicy = "no-referrer";
                 
                 videoWrapper.appendChild(iframe);
                 
@@ -2083,11 +2085,14 @@
                 // Создаем новый iframe для воспроизведения с автоплеем
                 const iframe = document.createElement('iframe');
                 iframe.className = 'google-drive-player';
-                iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1`;
+                
+                // URL для воспроизведения с автоплеем
+                iframe.src = `https://drive.google.com/file/d/${fileId}/preview?autoplay=1&controls=1`;
                 iframe.frameBorder = "0";
-                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
                 iframe.allowFullscreen = true;
-                iframe.title = `Серия ${episodeNumber}`;
+                iframe.title = `Магическая битва - Сезон 1, Серия ${episodeNumber}`;
+                iframe.referrerPolicy = "no-referrer";
                 
                 videoWrapper.appendChild(iframe);
                 
@@ -2338,7 +2343,7 @@
             });
         }
 
-        // Инициализация формы обратной связи с исходной валидацией
+        // Инициализация формы обратной связи с ИСПРАВЛЕННОЙ валидацией
         function initFeedbackForm() {
             const feedbackButton = document.getElementById('feedback-button');
             const feedbackModal = document.getElementById('feedback-modal');
@@ -2398,7 +2403,7 @@
                 messageError.textContent = '';
             }
             
-            // ВАЛИДАЦИЯ ИМЕНИ - ИСХОДНАЯ РАБОЧАЯ ВЕРСИЯ
+            // ИСПРАВЛЕННАЯ ВАЛИДАЦИЯ ИМЕНИ - ТОЛЬКО БУКВЫ
             function validateName(name) {
                 if (!name.trim()) {
                     return 'Имя обязательно для заполнения';
@@ -2412,21 +2417,42 @@
                     return 'Имя должно содержать не более 50 символов';
                 }
                 
-                // Разрешены буквы (русские, английские, включая Ёё), пробелы и дефисы
-                const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-]+$/;
+                // ТОЛЬКО БУКВЫ (русские, английские, включая Ёё)
+                // Убраны пробелы и дефисы из разрешенных символов
+                const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]+$/;
                 if (!nameRegex.test(name.trim())) {
-                    return 'Имя должно содержать только буквы, пробелы и дефисы';
+                    return 'Имя должно содержать только буквы (без пробелов, цифр и специальных символов)';
                 }
                 
                 return '';
             }
             
-            // Валидация email
+            // ИСПРАВЛЕННАЯ ВАЛИДАЦИЯ EMAIL - ТОЛЬКО ОПРЕДЕЛЕННЫЕ ДОМЕНЫ
             function validateEmail(email) {
                 if (!email.trim()) {
                     return 'Email обязателен для заполнения';
                 }
                 
+                // Проверяем наличие @
+                if (!email.includes('@')) {
+                    return 'Email должен содержать символ @';
+                }
+                
+                // Разделяем email на имя и домен
+                const parts = email.split('@');
+                if (parts.length !== 2) {
+                    return 'Некорректный формат email';
+                }
+                
+                const domain = parts[1].toLowerCase();
+                
+                // Проверяем домены
+                const allowedDomains = ['gmail.com', 'mail.ru', 'yandex.ru'];
+                if (!allowedDomains.includes(domain)) {
+                    return 'Разрешены только email с доменами: gmail.com, mail.ru, yandex.ru';
+                }
+                
+                // Общая проверка формата email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     return 'Введите корректный email адрес';
