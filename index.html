@@ -353,7 +353,7 @@
             border-radius: 5px;
         }
 
-        /* КАРТОЧКИ СПОСОБНОСТЕЙ С 3D ЭФФЕКТОМ ПАРАЛЛАКСА КАК В ЗАКРЕПЛЕННОЙ ВЕРСИИ */
+        /* Карточки способностей с 3D эффектом */
         .abilities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -371,21 +371,12 @@
             overflow: hidden;
             transform-style: preserve-3d;
             transform: perspective(1000px) rotateY(0deg);
-            /* Эффекты из закрепленной версии */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
-        /* ВОССТАНОВЛЕН ЭФФЕКТ ПРИ НАВЕДЕНИИ ДЛЯ ВСЕХ УСТРОЙСТВ */
         .ability-card:hover {
-            transform: perspective(1000px) rotateY(10deg) translateY(-15px) scale(1.05);
-            box-shadow: 
-                0 25px 50px rgba(96, 165, 250, 0.3),
-                0 0 30px rgba(96, 165, 250, 0.1),
-                0 0 60px rgba(96, 165, 250, 0.05);
+            transform: perspective(1000px) rotateY(10deg) translateY(-15px);
+            box-shadow: 0 25px 50px rgba(96, 165, 250, 0.3);
             border-color: var(--gojo-light-blue);
-            z-index: 10;
         }
 
         .ability-card::before {
@@ -745,19 +736,17 @@
             padding: 30px;
         }
 
-        /* ИСПРАВЛЕННЫЙ ВИДЕО-КОНТЕЙНЕР */
         .video-container {
             position: relative;
             background: #000;
             border-radius: 15px;
             overflow: hidden;
-            aspect-ratio: 16/9; /* Стандартное соотношение для видео */
+            aspect-ratio: 16/9;
             margin-bottom: 20px;
             min-height: 400px;
             width: 100%;
         }
 
-        /* ИСПРАВЛЕННЫЙ ВРАППЕР ДЛЯ IFRAME */
         .video-wrapper {
             position: absolute;
             top: 0;
@@ -770,7 +759,6 @@
             justify-content: center;
         }
 
-        /* ИСПРАВЛЕННЫЙ GOOGLE DRIVE ПЛЕЕР */
         .google-drive-player {
             width: 100%;
             height: 100%;
@@ -1077,47 +1065,26 @@
             font-weight: 700;
         }
 
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
-
-        /* Большие планшеты и маленькие ноутбуки */
-        @media (max-width: 1400px) {
-            .hero-title {
-                font-size: 5rem;
-            }
-            
-            .section-title {
-                font-size: 3.5rem;
-            }
-            
-            .infinity-title {
-                font-size: 4.5rem;
-            }
-        }
-
-        /* Планшеты и маленькие экраны */
+        /* Мобильная адаптация */
         @media (max-width: 1200px) {
             .hero-title {
-                font-size: 4rem;
+                font-size: 4.5rem;
             }
             
             .section-title {
                 font-size: 3rem;
             }
             
-            .infinity-title {
-                font-size: 4rem;
+            .player-main {
+                grid-template-columns: 1fr;
             }
             
-            .player-main {
+            .episode-details {
                 grid-template-columns: 1fr;
             }
             
             .video-container {
                 min-height: 400px;
-            }
-            
-            .abilities-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
 
@@ -1136,17 +1103,6 @@
             
             .video-container {
                 min-height: 350px;
-            }
-            
-            /* 3D ЭФФЕКТ СОХРАНЕН ДЛЯ ВСЕХ УСТРОЙСТВ */
-            .ability-card:hover {
-                transform: perspective(1000px) rotateY(10deg) translateY(-15px) scale(1.05);
-                box-shadow: 
-                    0 25px 50px rgba(96, 165, 250, 0.3),
-                    0 0 30px rgba(96, 165, 250, 0.1),
-                    0 0 60px rgba(96, 165, 250, 0.05);
-                border-color: var(--gojo-light-blue);
-                z-index: 10;
             }
         }
 
@@ -1220,36 +1176,9 @@
                 font-size: 2rem;
             }
             
-            /* Корректировка для мобильных */
             .video-container {
                 aspect-ratio: 16/9;
                 min-height: 250px;
-            }
-
-            /* СПОСОБНОСТИ ДЛЯ ТЕЛЕФОНОВ - 3D ЭФФЕКТ СОХРАНЕН */
-            .abilities-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .ability-card {
-                padding: 25px 20px;
-            }
-            
-            .ability-card:hover {
-                transform: perspective(1000px) rotateY(10deg) translateY(-15px) scale(1.05);
-                box-shadow: 
-                    0 25px 50px rgba(96, 165, 250, 0.3),
-                    0 0 30px rgba(96, 165, 250, 0.1),
-                    0 0 60px rgba(96, 165, 250, 0.05);
-            }
-            
-            .ability-icon {
-                font-size: 2.8rem;
-            }
-            
-            .ability-title {
-                font-size: 1.6rem;
             }
 
             #feedback-button {
@@ -1262,81 +1191,6 @@
 
             .feedback-container {
                 padding: 30px 20px;
-            }
-        }
-
-        /* Маленькие телефоны */
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 1.9rem;
-            }
-            
-            .infinity-title {
-                font-size: 2rem;
-            }
-            
-            /* СПОСОБНОСТИ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ - 3D ЭФФЕКТ СОХРАНЕН */
-            .ability-card {
-                padding: 20px 15px;
-            }
-            
-            .ability-card:hover {
-                transform: perspective(1000px) rotateY(10deg) translateY(-15px) scale(1.05);
-            }
-            
-            .ability-icon {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .ability-title {
-                font-size: 1.4rem;
-            }
-            
-            .video-container {
-                min-height: 200px;
-                border-radius: 10px;
-            }
-            
-            .play-button {
-                width: 50px;
-                height: 50px;
-                font-size: 1.8rem;
-            }
-        }
-
-        /* Очень маленькие телефоны */
-        @media (max-width: 375px) {
-            .hero-title {
-                font-size: 1.9rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.7rem;
-            }
-            
-            .infinity-title {
-                font-size: 1.8rem;
-            }
-            
-            .selection-grid {
-                grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
-            }
-            
-            .ability-card {
-                padding: 15px 12px;
             }
         }
 
@@ -2484,14 +2338,14 @@
             });
         }
 
-        // Инициализация формы обратной связи с ИСПРАВЛЕННОЙ ВАЛИДАЦИЕЙ ИМЕНИ
+        // Инициализация формы обратной связи с исходной валидацией
         function initFeedbackForm() {
             const feedbackButton = document.getElementById('feedback-button');
             const feedbackModal = document.getElementById('feedback-modal');
             const cancelFeedback = document.getElementById('cancel-feedback');
             const feedbackForm = document.getElementById('feedback-form');
             
-            // Получаем элементы формы для валидации
+            // Получаем элементы формы
             const nameInput = document.getElementById('feedback-name');
             const emailInput = document.getElementById('feedback-email');
             const subjectInput = document.getElementById('feedback-subject');
@@ -2544,30 +2398,24 @@
                 messageError.textContent = '';
             }
             
-            // ИСПРАВЛЕННАЯ ВАЛИДАЦИЯ ИМЕНИ - ТОЛЬКО БУКВЫ (русские, английские, включая Ёё)
-            // ПРОБЕЛЫ И ДЕФИСЫ ЗАПРЕЩЕНЫ
+            // ВАЛИДАЦИЯ ИМЕНИ - ИСХОДНАЯ РАБОЧАЯ ВЕРСИЯ
             function validateName(name) {
                 if (!name.trim()) {
                     return 'Имя обязательно для заполнения';
                 }
                 
-                // Проверка на минимальную длину
                 if (name.trim().length < 2) {
                     return 'Имя должно содержать минимум 2 символа';
                 }
                 
-                // Проверка на максимальную длину
                 if (name.trim().length > 50) {
                     return 'Имя должно содержать не более 50 символов';
                 }
                 
-                // ИСПРАВЛЕННЫЙ РЕГУЛЯРНЫЙ ВЫРАЖЕНИЕ - ТОЛЬКО БУКВЫ, БЕЗ ПРОБЕЛОВ И ДЕФИСОВ
-                // Разрешены: A-Z, a-z, А-Я, а-я, Ёё
-                // Запрещены: пробелы, дефисы, цифры, специальные символы
-                const nameRegex = /^[A-Za-zА-Яа-яЁё]+$/;
-                
+                // Разрешены буквы (русские, английские, включая Ёё), пробелы и дефисы
+                const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-]+$/;
                 if (!nameRegex.test(name.trim())) {
-                    return 'Имя может содержать только буквы (русские или английские, включая Ёё) без пробелов и дефисов';
+                    return 'Имя должно содержать только буквы, пробелы и дефисы';
                 }
                 
                 return '';
@@ -2579,7 +2427,6 @@
                     return 'Email обязателен для заполнения';
                 }
                 
-                // Базовая проверка формата email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     return 'Введите корректный email адрес';
@@ -2634,15 +2481,8 @@
                 errorElement.textContent = '';
             }
             
-            // Реальная проверка при вводе ДЛЯ ИМЕНИ
+            // Реальная проверка при вводе
             nameInput.addEventListener('input', function() {
-                // ИСПРАВЛЕНО: Убираем все символы, кроме букв
-                // Разрешены: A-Z, a-z, А-Я, а-я, Ёё
-                const cleanValue = this.value.replace(/[^A-Za-zА-Яа-яЁё]/g, '');
-                if (cleanValue !== this.value) {
-                    this.value = cleanValue;
-                }
-                
                 const error = validateName(this.value);
                 if (error) {
                     showError(this, nameError, error);
@@ -2854,6 +2694,28 @@
                 const y = Math.sin(angle) * distance;
                 
                 eye.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Магнитный эффект для карточек
+        const cards = document.querySelectorAll('.ability-card, .gallery-item');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angleY = (x - centerX) / 25;
+                const angleX = (centerY - y) / 25;
+                
+                this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
             });
         });
 
