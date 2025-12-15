@@ -1190,7 +1190,7 @@
                 min-height: 350px;
             }
             
-            /* Исправление для временной шкалы */
+            /* ИСПРАВЛЕНИЕ ДЛЯ ВРЕМЕННОЙ ШКАЛЫ - ЛИНИЯ И ТОЧКИ ПО ЦЕНТРУ */
             .timeline-item {
                 flex-direction: column !important;
                 margin-bottom: 60px;
@@ -1204,12 +1204,13 @@
                 margin-right: 0 !important;
             }
             
+            /* ЛИНИЯ И ТОЧКИ ОСТАЮТСЯ ПО ЦЕНТРУ - УБРАТЬ СМЕЩЕНИЕ ВЛЕВО */
             .timeline-line {
-                left: 30px !important;
+                left: 50% !important; /* Центрируем линию */
             }
             
             .timeline-marker {
-                left: 30px !important;
+                left: 50% !important; /* Центрируем точки */
                 transform: translateX(-50%);
             }
             
@@ -1571,14 +1572,6 @@
             
             .timeline-content {
                 width: 40%;
-            }
-            
-            .timeline-line {
-                left: 50%;
-            }
-            
-            .timeline-marker {
-                left: 50%;
             }
         }
 
