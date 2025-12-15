@@ -87,6 +87,7 @@
         /* Герой-секция с параллаксом */
         .hero {
             height: 100vh;
+            min-height: 600px;
             position: relative;
             display: flex;
             align-items: center;
@@ -114,6 +115,7 @@
             z-index: 2;
             padding: 20px;
             transform-style: preserve-3d;
+            width: 100%;
         }
 
         .hero-title {
@@ -320,6 +322,72 @@
             background: linear-gradient(45deg, var(--gojo-pink), var(--gojo-red));
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Мобильное меню */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--gojo-light-blue);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(2, 7, 23, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0;
+            width: 100%;
+        }
+
+        .mobile-menu .nav-link {
+            width: 100%;
+            min-width: auto;
+            padding: 20px;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: transparent;
+            border: none;
+            color: var(--gojo-light-blue);
+            font-size: 2.5rem;
+            cursor: pointer;
+            padding: 5px;
         }
 
         /* Разделы */
@@ -727,6 +795,7 @@
         .player-controls {
             display: flex;
             gap: 15px;
+            align-items: center;
         }
 
         .player-main {
@@ -1065,7 +1134,7 @@
             font-weight: 700;
         }
 
-        /* Мобильная адаптация */
+        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-width: 1200px) {
             .hero-title {
                 font-size: 4.5rem;
@@ -1097,12 +1166,30 @@
                 display: none;
             }
             
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .player-main {
                 padding: 20px;
             }
             
             .video-container {
                 min-height: 350px;
+            }
+            
+            .section {
+                padding: 100px 0;
+            }
+            
+            .abilities-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
             }
         }
 
@@ -1113,6 +1200,7 @@
             
             .hero-subtitle {
                 font-size: 1.5rem;
+                letter-spacing: 2px;
             }
             
             .section {
@@ -1121,6 +1209,13 @@
             
             .section-title {
                 font-size: 2.5rem;
+                margin-bottom: 50px;
+            }
+            
+            .section-title::after {
+                width: 100px;
+                height: 4px;
+                bottom: -15px;
             }
             
             .infinity-title {
@@ -1140,6 +1235,13 @@
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
+                padding: 20px;
+            }
+            
+            .player-title {
+                font-size: 1.8rem;
+                flex-direction: column;
+                gap: 10px;
             }
             
             .selection-grid {
@@ -1191,6 +1293,270 @@
 
             .feedback-container {
                 padding: 30px 20px;
+                width: 95%;
+            }
+            
+            .feedback-container h2 {
+                font-size: 2rem;
+            }
+            
+            /* Адаптация временной шкалы для мобильных */
+            .timeline-container {
+                padding: 20px 0;
+                margin-top: 40px;
+            }
+            
+            .timeline-line {
+                left: 20px;
+                width: 4px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                margin-bottom: 50px;
+                justify-content: flex-start;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 40px;
+                padding: 20px;
+            }
+            
+            .timeline-marker {
+                left: 20px;
+                transform: translateX(0);
+                width: 20px;
+                height: 20px;
+            }
+            
+            /* Адаптация секции бесконечности */
+            .infinity-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .infinity-animation {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .ring-1 {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .ring-2 {
+                width: 200px;
+                height: 200px;
+                top: 25px;
+                left: 25px;
+            }
+            
+            .ring-3 {
+                width: 150px;
+                height: 150px;
+                top: 50px;
+                left: 50px;
+            }
+            
+            .ring-4 {
+                width: 100px;
+                height: 100px;
+                top: 75px;
+                left: 75px;
+            }
+            
+            .infinity-text {
+                padding: 30px 20px;
+                font-size: 1.2rem;
+                margin-top: 40px;
+            }
+            
+            /* Адаптация карточек способностей */
+            .ability-card {
+                padding: 30px 20px;
+            }
+            
+            .ability-icon {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .ability-title {
+                font-size: 1.8rem;
+            }
+            
+            /* Адаптация галереи */
+            .gallery-item {
+                height: 300px;
+            }
+            
+            .gallery-overlay {
+                padding: 20px 15px 15px;
+            }
+            
+            .gallery-overlay h3 {
+                font-size: 1.3rem;
+            }
+            
+            /* Адаптация футера */
+            footer {
+                padding: 50px 0 20px;
+            }
+            
+            footer .container > div {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .infinity-title {
+                font-size: 2.2rem;
+            }
+            
+            .player-title {
+                font-size: 1.5rem;
+            }
+            
+            .abilities-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .gojo-eyes {
+                width: 120px;
+                gap: 20px;
+            }
+            
+            .eye {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .iris {
+                width: 25px;
+                height: 25px;
+                top: 12.5px;
+                left: 12.5px;
+            }
+            
+            .pupil {
+                width: 12px;
+                height: 12px;
+                top: 6.5px;
+                left: 6.5px;
+            }
+            
+            .infinity-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .infinity-animation {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .ring-1 {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .ring-2 {
+                width: 160px;
+                height: 160px;
+                top: 20px;
+                left: 20px;
+            }
+            
+            .ring-3 {
+                width: 120px;
+                height: 120px;
+                top: 40px;
+                left: 40px;
+            }
+            
+            .ring-4 {
+                width: 80px;
+                height: 80px;
+                top: 60px;
+                left: 60px;
+            }
+            
+            .infinity-center {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .selection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            }
+            
+            .selection-btn {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .season-tab {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            
+            .gojo-quote {
+                font-size: 1.2rem;
+                padding: 20px;
+                margin: 20px auto;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .infinity-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-logo::before {
+                font-size: 1.3rem;
+                margin-right: 8px;
+            }
+            
+            .selection-grid {
+                grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
             }
         }
 
@@ -1307,6 +1673,9 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="nav-logo"></a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#about" class="nav-link active">О персонаже</a></li>
                 <li class="nav-item"><a href="#abilities" class="nav-link">Способности</a></li>
@@ -1317,6 +1686,21 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#about" class="nav-link active" onclick="closeMobileMenu()">О персонаже</a></li>
+            <li><a href="#abilities" class="nav-link" onclick="closeMobileMenu()">Способности</a></li>
+            <li><a href="#gallery" class="nav-link" onclick="closeMobileMenu()">Галерея</a></li>
+            <li><a href="#biography" class="nav-link" onclick="closeMobileMenu()">Биография</a></li>
+            <li><a href="#infinity" class="nav-link" onclick="closeMobileMenu()">Бесконечность</a></li>
+            <li><a href="#player" class="nav-link nav-cta" onclick="closeMobileMenu()">СМОТРЕТЬ АНИМЕ</a></li>
+        </ul>
+    </div>
 
     <!-- Герой-секция -->
     <section class="hero">
@@ -1952,6 +2336,38 @@
         let videoOverlay = null;
         let playButton = null;
 
+        // Управление мобильным меню
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenuBtn = document.getElementById('close-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-menu .nav-link');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeMenuBtn.addEventListener('click', closeMobileMenu);
+            
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Закрытие меню при клике вне его области
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    closeMobileMenu();
+                }
+            });
+        }
+        
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         // Инициализация видео-плеера
         function initVideoPlayer() {
             videoWrapper = document.getElementById('video-wrapper');
@@ -2295,6 +2711,7 @@
                     setTimeout(() => {
                         loader.classList.add('hidden');
                         initBackgroundParticles();
+                        initMobileMenu();
                         initVideoPlayer();
                         initFeedbackForm();
                     }, 800);
